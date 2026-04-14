@@ -94,9 +94,13 @@ export function ActivityDetailPanel() {
   // close, fall back to the lagging copy so the exit transition has content.
   const activity: Activity | null = selectedActivity ?? displayed;
 
+  // Panel animates as a slide-up bottom sheet on mobile and as a scale+fade
+  // centered modal on desktop. The base classes always include the desktop
+  // centering translate (-50%, -50%); the open/close variants layer opacity
+  // and scale on top without disturbing the centering transform.
   const panelTransform = isOpen
-    ? "translate-y-0 md:translate-x-0"
-    : "translate-y-full md:translate-y-0 md:translate-x-full";
+    ? "translate-y-0 md:-translate-x-1/2 md:-translate-y-1/2 md:scale-100 md:opacity-100"
+    : "translate-y-full md:-translate-x-1/2 md:-translate-y-1/2 md:scale-95 md:opacity-0 md:pointer-events-none";
 
   const backdropClasses = `fixed inset-0 z-40 bg-black/30 transition-opacity duration-300 ${
     isOpen ? "opacity-100" : "pointer-events-none opacity-0"
@@ -115,7 +119,7 @@ export function ActivityDetailPanel() {
         aria-modal="true"
         aria-labelledby="activity-detail-heading"
         aria-hidden={!isOpen}
-        className={`fixed z-50 flex flex-col bg-white shadow-2xl transition-transform duration-300 inset-x-0 bottom-0 rounded-t-2xl max-h-[85vh] md:inset-y-0 md:right-0 md:left-auto md:bottom-auto md:w-[420px] md:max-h-full md:rounded-none ${panelTransform}`}
+        className={`fixed z-50 flex flex-col bg-white shadow-2xl transition-all duration-300 inset-x-0 bottom-0 rounded-t-2xl max-h-[85vh] md:inset-auto md:bottom-auto md:left-1/2 md:top-1/2 md:w-[480px] md:max-w-[90vw] md:max-h-[85vh] md:rounded-2xl ${panelTransform}`}
       >
         {activity ? (
           <ActivityDetailContent

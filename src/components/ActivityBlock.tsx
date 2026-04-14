@@ -15,7 +15,7 @@ function Stars({ difficulty }: { difficulty: 0 | 1 | 2 | 3 }) {
   return (
     <span
       aria-label={`Dificultad ${difficulty} de 3`}
-      className="ml-1 text-[10px] leading-none"
+      className="ml-1 shrink-0 text-[10px] leading-none"
     >
       {"\u2605".repeat(difficulty)}
     </span>
@@ -28,9 +28,9 @@ export function ActivityBlock({
   onClick,
 }: ActivityBlockProps) {
   const colors = CATEGORY_COLORS[activity.category];
-  const secondary = [activity.instructor, activity.room]
-    .filter((v) => v && v.length > 0)
-    .join(" \u00B7 ");
+  // Secondary info (instructor · room) is only shown on pill hover/tap via
+  // the detail panel — keeps the pill readable when many activities overlap.
+  const fullLabel = `${activity.name} · ${activity.startTime}\u2013${activity.endTime} · ${[activity.instructor, activity.room].filter(Boolean).join(" · ")}`;
 
   return (
     <button
@@ -38,18 +38,16 @@ export function ActivityBlock({
       onClick={() => onClick(activity)}
       style={style}
       className={`absolute overflow-hidden rounded-md border-l-4 ${colors.bg} ${colors.text} ${colors.border} px-1.5 py-1 text-left text-[11px] leading-tight shadow-sm transition hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-700`}
-      title={`${activity.name} ${activity.startTime}-${activity.endTime} ${secondary}`}
+      title={fullLabel}
+      aria-label={fullLabel}
     >
-      <div className="flex items-center truncate font-bold">
-        <span className="truncate">{activity.name}</span>
+      <div className="flex items-start gap-1 font-semibold">
+        <span className="flex-1 truncate">{activity.name}</span>
         <Stars difficulty={activity.difficulty} />
       </div>
-      <div className="truncate text-[10px] opacity-80">
+      <div className="truncate text-[10px] tabular-nums opacity-75">
         {activity.startTime}&ndash;{activity.endTime}
       </div>
-      {secondary && (
-        <div className="truncate text-[10px] opacity-70">{secondary}</div>
-      )}
     </button>
   );
 }
