@@ -21,6 +21,7 @@ import { WeekNavigator } from "./WeekNavigator";
 import { ViewToggle } from "./ViewToggle";
 import { FilterBar } from "./FilterBar";
 import { LastUpdatedBanner } from "./LastUpdatedBanner";
+import { ActivityDetailPanel } from "./ActivityDetailPanel";
 
 function getCurrentMondayYMD(): string {
   const now = new Date();
@@ -131,6 +132,7 @@ function ShellInner({ children }: ShellInnerProps) {
       filters={filters}
       setFilters={setFilters}
     >
+      <ActivityDetailPanel />
       <div className="flex min-h-screen flex-col">
         <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur">
           <div className="mx-auto flex w-full max-w-6xl flex-col gap-3 px-4 py-3">
