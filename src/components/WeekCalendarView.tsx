@@ -389,7 +389,9 @@ export function WeekCalendarView() {
   const [sheetState, setSheetState] = useState<SheetState | null>(null);
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const headerStripInnerRef = useRef<HTMLDivElement>(null);
   const todayColumnRef = useRef<HTMLDivElement>(null);
+  const todayHeaderRef = useRef<HTMLButtonElement>(null);
   const nowMarkerRef = useRef<HTMLDivElement>(null);
 
   const filtered = useMemo(
@@ -486,61 +488,68 @@ export function WeekCalendarView() {
   }
 
   const RAIL_WIDTH = 56;
+  const DAY_HEADER_HEIGHT = 48;
+
+  // Mirror the body's horizontal scroll on the sticky header strip via direct
+  // DOM mutation (keeps the day labels visually aligned with the day columns
+  // below during swipe/scroll). We can't put the real day headers inside an
+  // overflow-x:auto container and have them be vertically sticky because
+  // browsers compute overflow-y to `auto` when overflow-x is `auto`, which
+  // breaks position:sticky relative to the page viewport.
+  const onBodyScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const sl = e.currentTarget.scrollLeft;
+    if (headerStripInnerRef.current) {
+      headerStripInnerRef.current.style.transform = `translate3d(${-sl}px, 0, 0)`;
+    }
+  };
+
+  const openDaySheet = (ymd: string) => {
+    const dayActivities = (byDay[ymd] ?? []).slice();
+    if (dayActivities.length === 0) return;
+    setSheetState({
+      title: formatDayHeading(ymd),
+      subtitle: `${dayActivities.length} actividades`,
+      ariaLabel: `Actividades del ${formatDayHeading(ymd)}`,
+      activities: dayActivities,
+    });
+  };
 
   return (
-    <div className="flex">
-      {/* Hour rail — sibling of (not inside) the scroll container, so it
-          never scrolls horizontally. */}
+    <div>
+      {/* Sticky header strip — one row: hour-rail spacer + day headers.
+          Stays pinned below the shell header while the user scrolls the
+          calendar body vertically. Horizontal alignment with the body's
+          scrollable day columns is maintained via a transform updated in
+          onBodyScroll. */}
       <div
-        className="flex-shrink-0 bg-white"
-        style={{ width: RAIL_WIDTH }}
-        aria-hidden="true"
+        className="sticky z-30 flex bg-white"
+        style={{ top: "var(--shell-header-h, 0px)" }}
       >
-        <div className="h-12 border-b border-slate-200" />
-        <div className="relative" style={{ height: TOTAL_HEIGHT }}>
-          {HOURS.map((h, i) => (
-            <div
-              key={h}
-              className="absolute right-2 -translate-y-2 text-[10px] text-slate-500"
-              style={{ top: i * SLOT_HEIGHT }}
-            >
-              {h}
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Horizontal scroll container holds only the day columns. */}
-      <div ref={scrollContainerRef} className="flex-1 overflow-x-auto">
-        <div className="flex min-w-max snap-x snap-mandatory md:min-w-0 md:snap-none">
-          {days.map((ymd) => {
-            const isToday = ymd === todayYMD;
-            const dayItems = renderedByDay[ymd] ?? [];
-            return (
-              <div
-                key={ymd}
-                ref={isToday ? todayColumnRef : undefined}
-                className={`flex w-[calc(100vw-88px)] flex-shrink-0 snap-start flex-col border-r border-slate-200 last:border-r-0 md:w-auto md:flex-1 md:flex-shrink ${
-                  isToday ? "bg-slate-50 ring-1 ring-inset ring-slate-300" : ""
-                }`}
-              >
+        <div
+          className="flex-shrink-0 border-b border-slate-200 bg-white"
+          style={{ width: RAIL_WIDTH, height: DAY_HEADER_HEIGHT }}
+          aria-hidden="true"
+        />
+        <div className="flex-1 overflow-hidden">
+          <div
+            ref={headerStripInnerRef}
+            className="flex min-w-max md:min-w-0"
+            style={{ willChange: "transform" }}
+          >
+            {days.map((ymd) => {
+              const isToday = ymd === todayYMD;
+              return (
                 <button
+                  key={ymd}
+                  ref={isToday ? todayHeaderRef : undefined}
                   type="button"
-                  onClick={() => {
-                    const dayActivities = (byDay[ymd] ?? []).slice();
-                    if (dayActivities.length === 0) return;
-                    setSheetState({
-                      title: formatDayHeading(ymd),
-                      subtitle: `${dayActivities.length} actividades`,
-                      ariaLabel: `Actividades del ${formatDayHeading(ymd)}`,
-                      activities: dayActivities,
-                    });
-                  }}
+                  onClick={() => openDaySheet(ymd)}
                   aria-label={`Ver todas las actividades del ${formatDayHeading(ymd)}`}
-                  className={`flex h-12 flex-col items-center justify-center border-b border-slate-200 text-xs transition hover:bg-slate-100 focus:outline-none focus-visible:bg-slate-100 focus-visible:ring-2 focus-visible:ring-slate-700 focus-visible:ring-inset ${
+                  style={{ height: DAY_HEADER_HEIGHT }}
+                  className={`flex w-[calc(100vw-88px)] flex-shrink-0 flex-col items-center justify-center border-b border-r border-slate-200 text-xs transition last:border-r-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-700 focus-visible:ring-inset md:w-auto md:flex-1 ${
                     isToday
-                      ? "font-bold text-slate-900"
-                      : "font-medium text-slate-700"
+                      ? "bg-sky-100 font-bold text-sky-900 hover:bg-sky-200"
+                      : "bg-slate-100 font-medium text-slate-700 hover:bg-slate-200"
                   }`}
                 >
                   <span>{DAY_LABELS_ES[days.indexOf(ymd)]}</span>
@@ -548,8 +557,52 @@ export function WeekCalendarView() {
                     {getDayNumber(ymd)}
                   </span>
                 </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
 
-                <div className="relative" style={{ height: TOTAL_HEIGHT }}>
+      <div className="flex">
+        {/* Hour rail — sibling of (not inside) the scroll container, so it
+            never scrolls horizontally. */}
+        <div
+          className="flex-shrink-0 bg-white"
+          style={{ width: RAIL_WIDTH }}
+          aria-hidden="true"
+        >
+          <div className="relative" style={{ height: TOTAL_HEIGHT }}>
+            {HOURS.map((h, i) => (
+              <div
+                key={h}
+                className="absolute right-2 -translate-y-2 text-[10px] text-slate-500"
+                style={{ top: i * SLOT_HEIGHT }}
+              >
+                {h}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Horizontal scroll container holds only the day columns. */}
+        <div
+          ref={scrollContainerRef}
+          onScroll={onBodyScroll}
+          className="flex-1 overflow-x-auto"
+        >
+          <div className="flex min-w-max snap-x snap-mandatory md:min-w-0 md:snap-none">
+            {days.map((ymd) => {
+              const isToday = ymd === todayYMD;
+              const dayItems = renderedByDay[ymd] ?? [];
+              return (
+                <div
+                  key={ymd}
+                  ref={isToday ? todayColumnRef : undefined}
+                  className={`flex w-[calc(100vw-88px)] flex-shrink-0 snap-start flex-col border-r border-slate-200 last:border-r-0 md:w-auto md:flex-1 md:flex-shrink ${
+                    isToday ? "bg-slate-50 ring-1 ring-inset ring-slate-300" : ""
+                  }`}
+                >
+                  <div className="relative" style={{ height: TOTAL_HEIGHT }}>
                   {HOURS.map((_, i) => (
                     <div
                       key={i}
@@ -640,10 +693,11 @@ export function WeekCalendarView() {
                       </button>
                     );
                   })}
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
 
