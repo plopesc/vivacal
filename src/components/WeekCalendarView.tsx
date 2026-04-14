@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type { Activity } from "@/types/activity";
 import { useAppState } from "@/context/AppState";
@@ -378,10 +378,19 @@ function ActivityListSheet({
 }
 
 export function WeekCalendarView() {
-  const { selectedWeek, filters, setSelectedActivity } = useAppState();
+  const {
+    selectedWeek,
+    filters,
+    setSelectedActivity,
+    scrollToTodayNonce,
+  } = useAppState();
   const { activities, isLoading, error } = useWeekActivities(selectedWeek);
   const nowMinutes = useNowMinutes();
   const [sheetState, setSheetState] = useState<SheetState | null>(null);
+
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const todayColumnRef = useRef<HTMLDivElement>(null);
+  const nowMarkerRef = useRef<HTMLDivElement>(null);
 
   const filtered = useMemo(
     () => filterActivities(activities, filters),
@@ -416,6 +425,29 @@ export function WeekCalendarView() {
     ((nowMinutes - DAY_START_HOUR * 60) / 60) * SLOT_HEIGHT;
   const showNowLine =
     weekIncludesToday && nowTop >= 0 && nowTop <= TOTAL_HEIGHT;
+
+  // When "Hoy" is pressed, scroll the day-columns container horizontally to
+  // today's column (relevant on mobile/small screens where we snap-scroll one
+  // day at a time) and scroll the page vertically to the current-time marker
+  // (if today is in the visible week) so the user lands near "now".
+  useEffect(() => {
+    if (scrollToTodayNonce === 0) return;
+    const id = requestAnimationFrame(() => {
+      const col = todayColumnRef.current;
+      const scroller = scrollContainerRef.current;
+      if (col && scroller) {
+        scroller.scrollTo({
+          left: col.offsetLeft,
+          behavior: "smooth",
+        });
+      }
+      const marker = nowMarkerRef.current;
+      if (marker) {
+        marker.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    });
+    return () => cancelAnimationFrame(id);
+  }, [scrollToTodayNonce, selectedWeek]);
 
   if (isLoading) {
     return (
@@ -479,7 +511,7 @@ export function WeekCalendarView() {
       </div>
 
       {/* Horizontal scroll container holds only the day columns. */}
-      <div className="flex-1 overflow-x-auto">
+      <div ref={scrollContainerRef} className="flex-1 overflow-x-auto">
         <div className="flex min-w-max snap-x snap-mandatory md:min-w-0 md:snap-none">
           {days.map((ymd) => {
             const isToday = ymd === todayYMD;
@@ -487,6 +519,7 @@ export function WeekCalendarView() {
             return (
               <div
                 key={ymd}
+                ref={isToday ? todayColumnRef : undefined}
                 className={`flex w-[calc(100vw-88px)] flex-shrink-0 snap-start flex-col border-r border-slate-200 last:border-r-0 md:w-auto md:flex-1 md:flex-shrink ${
                   isToday ? "bg-slate-50 ring-1 ring-inset ring-slate-300" : ""
                 }`}
@@ -527,8 +560,13 @@ export function WeekCalendarView() {
 
                   {isToday && showNowLine && (
                     <div
+                      ref={nowMarkerRef}
                       className="pointer-events-none absolute left-0 right-0 z-20 border-t border-rose-500"
-                      style={{ top: nowTop }}
+                      style={{
+                        top: nowTop,
+                        // Leave room beneath the shell header when scrolled to.
+                        scrollMarginTop: "var(--shell-header-h, 0px)",
+                      }}
                       aria-hidden="true"
                     >
                       <div className="absolute -left-1 -top-1 h-2 w-2 rounded-full bg-rose-500" />

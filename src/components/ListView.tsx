@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { useAppState } from "@/context/AppState";
 import { useWeekActivities } from "@/hooks/useWeekActivities";
 import { filterActivities, groupByDay } from "@/lib/filters";
@@ -70,7 +70,12 @@ function ActivityRow({ activity, onSelect }: ActivityRowProps) {
 }
 
 export function ListView() {
-  const { selectedWeek, filters, setSelectedActivity } = useAppState();
+  const {
+    selectedWeek,
+    filters,
+    setSelectedActivity,
+    scrollToTodayNonce,
+  } = useAppState();
   const { activities, isLoading, error } = useWeekActivities(selectedWeek);
 
   const { dayKeys, groups } = useMemo(() => {
@@ -81,6 +86,22 @@ export function ListView() {
   }, [activities, filters]);
 
   const todayYMD = getTodayYMD();
+
+  // When "Hoy" is pressed, scroll today's section into view (or the last
+  // day if today isn't in the current week). The scroll triggers after the
+  // week data has loaded and rendered.
+  const todayRef = useRef<HTMLElement>(null);
+  const lastSectionRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    if (scrollToTodayNonce === 0) return;
+    const target = todayRef.current ?? lastSectionRef.current;
+    if (!target) return;
+    // Defer to the next frame so layout reflects the latest render.
+    const id = requestAnimationFrame(() => {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    return () => cancelAnimationFrame(id);
+  }, [scrollToTodayNonce, dayKeys]);
 
   if (isLoading) {
     return (
@@ -120,14 +141,30 @@ export function ListView() {
   }
 
   return (
-    <div className="rounded-lg border border-slate-200 bg-white overflow-hidden">
-      {dayKeys.map((day) => {
+    // Note: no `overflow-hidden` here — it would create a containing block for
+    // `position: sticky` on the day headers and clip them, breaking stickiness.
+    // Rounded corners are achieved via the first/last child rounding below.
+    <div className="rounded-lg border border-slate-200 bg-white">
+      {dayKeys.map((day, i) => {
         const isToday = day === todayYMD;
+        const isLast = i === dayKeys.length - 1;
         return (
-          <section key={day}>
+          <section
+            key={day}
+            ref={isToday ? todayRef : isLast ? lastSectionRef : undefined}
+            // scroll-margin-top accounts for the sticky shell header, so
+            // scrollIntoView lands the section just below it.
+            style={{ scrollMarginTop: "var(--shell-header-h, 0px)" }}
+          >
             <h2
-              className={`sticky top-0 z-10 bg-white/95 backdrop-blur px-4 py-2 text-sm font-semibold text-slate-800 border-b border-slate-200 ${
-                isToday ? "border-l-4 border-l-sky-500" : ""
+              // Stick below the global shell header, not behind it.
+              style={{ top: "var(--shell-header-h, 0px)" }}
+              className={`sticky z-10 px-4 py-2 text-sm font-semibold border-b border-slate-200 ${
+                i === 0 ? "rounded-t-lg" : ""
+              } ${
+                isToday
+                  ? "border-l-4 border-l-sky-500 bg-sky-100 text-sky-900"
+                  : "bg-slate-100 text-slate-800"
               }`}
             >
               {formatDayHeader(day)}

@@ -31,7 +31,8 @@ function getCurrentMondayYMD(): string {
 }
 
 export function WeekNavigator() {
-  const { manifest, selectedWeek, setSelectedWeek } = useAppState();
+  const { manifest, selectedWeek, setSelectedWeek, requestScrollToToday } =
+    useAppState();
 
   if (!manifest || !selectedWeek || manifest.weeks.length === 0) {
     return (
@@ -62,6 +63,8 @@ export function WeekNavigator() {
     } else if (manifest.latestWeek) {
       setSelectedWeek(manifest.latestWeek);
     }
+    // Tell views to scroll to today on the next render.
+    requestScrollToToday();
   };
 
   const arrowBase =

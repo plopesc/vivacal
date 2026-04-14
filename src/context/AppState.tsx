@@ -28,6 +28,12 @@ export interface AppStateValue {
   setFilters: (f: Partial<AppFilters>) => void;
   selectedActivity: Activity | null;
   setSelectedActivity: (a: Activity | null) => void;
+  /**
+   * Monotonically increasing counter that views subscribe to and scroll to
+   * today when it changes. Incremented each time the user presses "Hoy".
+   */
+  scrollToTodayNonce: number;
+  requestScrollToToday: () => void;
 }
 
 const AppStateContext = createContext<AppStateValue | null>(null);
@@ -56,9 +62,14 @@ export function AppStateProvider({
   const [selectedActivity, setSelectedActivity] = useState<Activity | null>(
     null,
   );
+  const [scrollToTodayNonce, setScrollToTodayNonce] = useState(0);
 
   const setSelectedActivityCb = useCallback((a: Activity | null) => {
     setSelectedActivity(a);
+  }, []);
+
+  const requestScrollToToday = useCallback(() => {
+    setScrollToTodayNonce((n) => n + 1);
   }, []);
 
   const value = useMemo<AppStateValue>(
@@ -72,6 +83,8 @@ export function AppStateProvider({
       setFilters,
       selectedActivity,
       setSelectedActivity: setSelectedActivityCb,
+      scrollToTodayNonce,
+      requestScrollToToday,
     }),
     [
       manifest,
@@ -83,6 +96,8 @@ export function AppStateProvider({
       setFilters,
       selectedActivity,
       setSelectedActivityCb,
+      scrollToTodayNonce,
+      requestScrollToToday,
     ],
   );
 
