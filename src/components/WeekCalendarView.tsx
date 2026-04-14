@@ -200,38 +200,43 @@ export function WeekCalendarView() {
     );
   }
 
-  return (
-    <div className="overflow-x-auto">
-      <div className="flex min-w-full">
-        {/* Left hour rail */}
-        <div
-          className="sticky left-0 z-10 flex-shrink-0 bg-white"
-          style={{ width: 56 }}
-        >
-          {/* Header spacer to align with day headers */}
-          <div className="h-12 border-b border-slate-200" />
-          <div className="relative" style={{ height: TOTAL_HEIGHT }}>
-            {HOURS.map((h, i) => (
-              <div
-                key={h}
-                className="absolute right-2 -translate-y-2 text-[10px] text-slate-500"
-                style={{ top: i * SLOT_HEIGHT }}
-              >
-                {h}
-              </div>
-            ))}
-          </div>
-        </div>
+  const RAIL_WIDTH = 56;
 
-        {/* Day columns container: desktop flex-1 each, mobile snap-scroll */}
-        <div className="flex flex-1 snap-x snap-mandatory md:snap-none">
+  return (
+    <div className="flex">
+      {/* Hour rail — sibling of (not inside) the scroll container, so it
+          never scrolls horizontally. */}
+      <div
+        className="flex-shrink-0 bg-white"
+        style={{ width: RAIL_WIDTH }}
+        aria-hidden="true"
+      >
+        {/* Header spacer to align with day headers */}
+        <div className="h-12 border-b border-slate-200" />
+        <div className="relative" style={{ height: TOTAL_HEIGHT }}>
+          {HOURS.map((h, i) => (
+            <div
+              key={h}
+              className="absolute right-2 -translate-y-2 text-[10px] text-slate-500"
+              style={{ top: i * SLOT_HEIGHT }}
+            >
+              {h}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Horizontal scroll container holds only the day columns. */}
+      <div className="flex-1 overflow-x-auto">
+        {/* Day columns: desktop flex-1 each, mobile snap-scroll */}
+        <div className="flex min-w-max snap-x snap-mandatory md:min-w-0 md:snap-none">
           {days.map((ymd) => {
             const isToday = ymd === todayYMD;
             const dayPositioned = positionedByDay[ymd] ?? [];
             return (
               <div
                 key={ymd}
-                className={`flex w-[85vw] flex-shrink-0 snap-start flex-col border-r border-slate-200 last:border-r-0 md:w-auto md:flex-1 md:flex-shrink ${
+                className={`flex w-[calc(100vw-88px)] flex-shrink-0 snap-start flex-col border-r border-slate-200 last:border-r-0 md:w-auto md:flex-1 md:flex-shrink ${
                   isToday ? "bg-slate-50 ring-1 ring-inset ring-slate-300" : ""
                 }`}
               >
