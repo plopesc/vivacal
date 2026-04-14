@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 import type { Activity, Category } from "@/types/activity";
 import { useAppState } from "@/context/AppState";
 import { CATEGORY_LABELS, CATEGORY_ORDER } from "@/lib/categories";
@@ -67,7 +68,9 @@ export function FilterBar({ activities }: FilterBarProps) {
   const clearAll = () =>
     setFilters({ category: null, instructor: null, room: null });
 
-  // Mobile bottom-sheet state.
+  // Mobile bottom-sheet state. The sheet is portaled to document.body so it
+  // escapes the header's containing block (the header uses backdrop-filter,
+  // which otherwise scopes our `fixed inset-0` dialog to the header's height).
   const [sheetOpen, setSheetOpen] = useState(false);
   useEffect(() => {
     if (!sheetOpen) return;
@@ -75,7 +78,13 @@ export function FilterBar({ activities }: FilterBarProps) {
       if (e.key === "Escape") setSheetOpen(false);
     };
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    // Lock body scroll while the sheet is open.
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
   }, [sheetOpen]);
 
   const categoryDropdown = (
@@ -153,60 +162,63 @@ export function FilterBar({ activities }: FilterBarProps) {
         )}
       </div>
 
-      {/* Mobile bottom sheet */}
-      {sheetOpen && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label="Filtros"
-          className="fixed inset-0 z-50 md:hidden"
-        >
-          <button
-            type="button"
-            aria-label="Cerrar filtros"
-            onClick={() => setSheetOpen(false)}
-            className="absolute inset-0 bg-slate-900/40"
-          />
-          <div className="absolute inset-x-0 bottom-0 rounded-t-2xl bg-white p-4 shadow-xl">
-            <div className="mb-3 flex items-center justify-between">
-              <h2 className="text-base font-semibold text-slate-900">
-                Filtros
-              </h2>
-              <button
-                type="button"
-                aria-label="Cerrar"
-                onClick={() => setSheetOpen(false)}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full text-slate-500 hover:bg-slate-100"
-              >
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-            <div className="flex flex-col gap-3">
-              {categoryDropdown}
-              {instructorDropdown}
-              {roomDropdown}
-            </div>
-            <div className="mt-4 flex gap-2">
-              {anyActive && (
+      {/* Mobile bottom sheet — portaled to document.body so it's not trapped
+          inside the header's backdrop-filter containing block. */}
+      {sheetOpen && typeof document !== "undefined" &&
+        createPortal(
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Filtros"
+            className="fixed inset-0 z-50 md:hidden"
+          >
+            <button
+              type="button"
+              aria-label="Cerrar filtros"
+              onClick={() => setSheetOpen(false)}
+              className="absolute inset-0 bg-slate-900/40"
+            />
+            <div className="absolute inset-x-0 bottom-0 flex max-h-[85vh] flex-col rounded-t-2xl bg-white p-4 shadow-xl">
+              <div className="mb-3 flex items-center justify-between">
+                <h2 className="text-base font-semibold text-slate-900">
+                  Filtros
+                </h2>
                 <button
                   type="button"
-                  onClick={clearAll}
-                  className="inline-flex h-10 flex-1 items-center justify-center rounded-full border border-slate-300 bg-white px-4 text-sm font-medium text-slate-700"
+                  aria-label="Cerrar"
+                  onClick={() => setSheetOpen(false)}
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full text-slate-500 hover:bg-slate-100"
                 >
-                  Limpiar
+                  <span aria-hidden="true">×</span>
                 </button>
-              )}
-              <button
-                type="button"
-                onClick={() => setSheetOpen(false)}
-                className="inline-flex h-10 flex-1 items-center justify-center rounded-full bg-slate-900 px-4 text-sm font-medium text-white"
-              >
-                Aplicar
-              </button>
+              </div>
+              <div className="flex flex-col gap-3 overflow-y-auto">
+                {categoryDropdown}
+                {instructorDropdown}
+                {roomDropdown}
+              </div>
+              <div className="mt-4 flex gap-2">
+                {anyActive && (
+                  <button
+                    type="button"
+                    onClick={clearAll}
+                    className="inline-flex h-10 flex-1 items-center justify-center rounded-full border border-slate-300 bg-white px-4 text-sm font-medium text-slate-700"
+                  >
+                    Limpiar
+                  </button>
+                )}
+                <button
+                  type="button"
+                  onClick={() => setSheetOpen(false)}
+                  className="inline-flex h-10 flex-1 items-center justify-center rounded-full bg-slate-900 px-4 text-sm font-medium text-white"
+                >
+                  Aplicar
+                </button>
+              </div>
             </div>
-          </div>
-        </div>
-      )}
+          </div>,
+          document.body,
+        )}
     </>
   );
 }
