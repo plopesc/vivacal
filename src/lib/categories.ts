@@ -37,10 +37,16 @@ export const ACTIVITY_CATEGORY_MAP: Record<string, Category> = {
   ABDOMINALES: "tonificacion",
 };
 
-/** Normalize an activity name: uppercase, strip stars, collapse whitespace. */
+/**
+ * Normalize an activity name for map lookup: uppercase, strip stars,
+ * strip diacritics, collapse whitespace. Keeps "TRAINING GLÚTEO" matching
+ * "TRAINING GLUTEO" in the map (the scraper uses the same normalization).
+ */
 export function normalizeActivityName(name: string): string {
   return name
     .toUpperCase()
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "")
     .replace(/\*+/g, "")
     .replace(/\s+/g, " ")
     .trim();
