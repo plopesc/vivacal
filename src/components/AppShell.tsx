@@ -158,12 +158,12 @@ function ShellInner({ children }: ShellInnerProps) {
       >
         <header
           ref={headerRef}
-          className="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur"
+          className="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90"
         >
           <div className="mx-auto flex w-full max-w-6xl flex-col gap-3 px-4 py-3">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="flex items-center gap-3">
-                <h1 className="text-xl font-bold tracking-tight text-slate-900">
+                <h1 className="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
                   ViVaCal
                 </h1>
                 <LastUpdatedBanner />

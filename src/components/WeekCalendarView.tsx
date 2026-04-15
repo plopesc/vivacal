@@ -522,11 +522,11 @@ export function WeekCalendarView() {
           scrollable day columns is maintained via a transform updated in
           onBodyScroll. */}
       <div
-        className="sticky z-30 flex bg-white"
+        className="sticky z-30 flex bg-white dark:bg-slate-950"
         style={{ top: "var(--shell-header-h, 0px)" }}
       >
         <div
-          className="flex-shrink-0 border-b border-slate-200 bg-white"
+          className="flex-shrink-0 border-b border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950"
           style={{ width: RAIL_WIDTH, height: DAY_HEADER_HEIGHT }}
           aria-hidden="true"
         />
@@ -546,14 +546,14 @@ export function WeekCalendarView() {
                   onClick={() => openDaySheet(ymd)}
                   aria-label={`Ver todas las actividades del ${formatDayHeading(ymd)}`}
                   style={{ height: DAY_HEADER_HEIGHT }}
-                  className={`flex w-[calc(100vw-88px)] flex-shrink-0 flex-col items-center justify-center border-b border-r border-slate-200 text-xs transition last:border-r-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-700 focus-visible:ring-inset md:w-auto md:flex-1 ${
+                  className={`flex w-[calc(100vw-88px)] flex-shrink-0 flex-col items-center justify-center border-b border-r border-slate-200 text-xs transition last:border-r-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-700 focus-visible:ring-inset md:w-auto md:flex-1 dark:border-slate-800 ${
                     isToday
-                      ? "bg-sky-100 font-bold text-sky-900 hover:bg-sky-200"
-                      : "bg-slate-100 font-medium text-slate-700 hover:bg-slate-200"
+                      ? "bg-sky-100 font-bold text-sky-900 hover:bg-sky-200 dark:bg-sky-900/40 dark:text-sky-100 dark:hover:bg-sky-900/60"
+                      : "bg-slate-100 font-medium text-slate-700 hover:bg-slate-200 dark:bg-slate-800/60 dark:text-slate-200 dark:hover:bg-slate-700"
                   }`}
                 >
                   <span>{DAY_LABELS_ES[days.indexOf(ymd)]}</span>
-                  <span className="text-[10px] text-slate-500">
+                  <span className="text-[10px] text-slate-500 dark:text-slate-400">
                     {getDayNumber(ymd)}
                   </span>
                 </button>
@@ -567,7 +567,7 @@ export function WeekCalendarView() {
         {/* Hour rail — sibling of (not inside) the scroll container, so it
             never scrolls horizontally. */}
         <div
-          className="flex-shrink-0 bg-white"
+          className="flex-shrink-0 bg-white dark:bg-slate-950"
           style={{ width: RAIL_WIDTH }}
           aria-hidden="true"
         >
@@ -575,7 +575,7 @@ export function WeekCalendarView() {
             {HOURS.map((h, i) => (
               <div
                 key={h}
-                className="absolute right-2 -translate-y-2 text-[10px] text-slate-500"
+                className="absolute right-2 -translate-y-2 text-[10px] text-slate-500 dark:text-slate-400"
                 style={{ top: i * SLOT_HEIGHT }}
               >
                 {h}
@@ -598,15 +598,17 @@ export function WeekCalendarView() {
                 <div
                   key={ymd}
                   ref={isToday ? todayColumnRef : undefined}
-                  className={`flex w-[calc(100vw-88px)] flex-shrink-0 snap-start flex-col border-r border-slate-200 last:border-r-0 md:w-auto md:flex-1 md:flex-shrink ${
-                    isToday ? "bg-slate-50 ring-1 ring-inset ring-slate-300" : ""
+                  className={`flex w-[calc(100vw-88px)] flex-shrink-0 snap-start flex-col border-r border-slate-200 last:border-r-0 md:w-auto md:flex-1 md:flex-shrink dark:border-slate-800 ${
+                    isToday
+                      ? "bg-slate-50 ring-1 ring-inset ring-slate-300 dark:bg-slate-900/60 dark:ring-slate-700"
+                      : ""
                   }`}
                 >
                   <div className="relative" style={{ height: TOTAL_HEIGHT }}>
                   {HOURS.map((_, i) => (
                     <div
                       key={i}
-                      className="absolute left-0 right-0 border-t border-slate-100"
+                      className="absolute left-0 right-0 border-t border-slate-100 dark:border-slate-800"
                       style={{ top: i * SLOT_HEIGHT }}
                     />
                   ))}
@@ -682,7 +684,7 @@ export function WeekCalendarView() {
                           width: `calc(${widthPct}% - 4px)`,
                         }}
                         aria-label={`Ver ${item.activities.length} actividades más entre ${timeRange}`}
-                        className="absolute flex flex-col items-center justify-center gap-0.5 overflow-hidden rounded-md border border-dashed border-slate-400 bg-slate-50 px-1 py-1 text-center font-semibold text-slate-700 shadow-sm transition hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-700"
+                        className="absolute flex flex-col items-center justify-center gap-0.5 overflow-hidden rounded-md border border-dashed border-slate-400 bg-slate-50 px-1 py-1 text-center font-semibold text-slate-700 shadow-sm transition hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-700 dark:border-slate-600 dark:bg-slate-800/80 dark:text-slate-200 dark:hover:bg-slate-700"
                       >
                         <span className="text-[11px] leading-none">
                           +{item.activities.length} más
