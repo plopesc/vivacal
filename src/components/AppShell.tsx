@@ -5,8 +5,6 @@ import {
   useCallback,
   useEffect,
   useMemo,
-  useRef,
-  useState,
   type ReactNode,
 } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -124,21 +122,6 @@ function ShellInner({ children }: ShellInnerProps) {
   // Current week's activities feed the FilterBar dropdowns.
   const { activities } = useWeekActivities(selectedWeek);
 
-  // Measure the sticky header's height and expose it as --shell-header-h so
-  // sub-views (e.g. ListView day headers) can stick *below* it instead of
-  // behind it. ResizeObserver handles responsive wrapping of the header.
-  const headerRef = useRef<HTMLElement>(null);
-  const [headerHeight, setHeaderHeight] = useState(0);
-  useEffect(() => {
-    const el = headerRef.current;
-    if (!el) return;
-    const update = () => setHeaderHeight(el.offsetHeight);
-    update();
-    const ro = new ResizeObserver(update);
-    ro.observe(el);
-    return () => ro.disconnect();
-  }, []);
-
   return (
     <AppStateProvider
       manifest={manifest}
@@ -150,16 +133,10 @@ function ShellInner({ children }: ShellInnerProps) {
       setFilters={setFilters}
     >
       <ActivityDetailPanel />
-      <div
-        className="flex min-h-screen flex-col"
-        style={
-          { "--shell-header-h": `${headerHeight}px` } as React.CSSProperties
-        }
-      >
-        <header
-          ref={headerRef}
-          className="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90"
-        >
+      {/* Pin the shell to the viewport so the calendar/list scroll inside
+          `<main>` instead of growing the page. Footer stays visible. */}
+      <div className="flex h-screen flex-col overflow-hidden">
+        <header className="border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90">
           <div className="mx-auto flex w-full max-w-6xl flex-col gap-3 px-4 py-3">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="flex items-center gap-3">
@@ -179,7 +156,7 @@ function ShellInner({ children }: ShellInnerProps) {
           </div>
         </header>
 
-        <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6">
+        <main className="mx-auto w-full min-h-0 max-w-6xl flex-1 overflow-y-auto px-4 py-3">
           {children}
         </main>
 

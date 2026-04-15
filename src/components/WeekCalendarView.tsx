@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type { Activity } from "@/types/activity";
 import { useAppState } from "@/context/AppState";
@@ -9,14 +9,15 @@ import { filterActivities } from "@/lib/filters";
 import { CATEGORY_COLORS } from "@/lib/categories";
 import { ActivityBlock } from "./ActivityBlock";
 
-const DAY_START_HOUR = 6;
-const DAY_END_HOUR = 22;
-const SLOT_HEIGHT = 60; // px per hour
-const TOTAL_HEIGHT = (DAY_END_HOUR - DAY_START_HOUR) * SLOT_HEIGHT;
-const HOURS: string[] = Array.from(
-  { length: DAY_END_HOUR - DAY_START_HOUR + 1 },
-  (_, i) => `${String(DAY_START_HOUR + i).padStart(2, "0")}:00`,
-);
+// Fallbacks used when there are no activities to derive a range from.
+const DEFAULT_START_HOUR = 8;
+const DEFAULT_END_HOUR = 22;
+// Slot height adapts to the available body height between MIN and MAX so the
+// grid fits without scrolling whenever the viewport allows it. When the body
+// is shorter than (hourCount * MIN_SLOT_HEIGHT) the grid scrolls vertically.
+const MIN_SLOT_HEIGHT = 40;
+const MAX_SLOT_HEIGHT = 60;
+const INITIAL_SLOT_HEIGHT = 50; // used until the body has been measured
 const DAY_LABELS_ES = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
 
 /**
@@ -389,6 +390,24 @@ export function WeekCalendarView() {
   const todayColumnRef = useRef<HTMLDivElement>(null);
   const todayHeaderRef = useRef<HTMLButtonElement>(null);
   const nowMarkerRef = useRef<HTMLDivElement>(null);
+  // Measured client height of the vertical scroll body. Drives the dynamic
+  // slot height below so the grid fits the viewport without scrolling
+  // whenever there's room. Callback ref + ResizeObserver: the body only
+  // renders after the loading/error/empty guards, so a useEffect running on
+  // mount would catch a null ref the first time around.
+  const [bodyHeight, setBodyHeight] = useState(0);
+  const observerRef = useRef<ResizeObserver | null>(null);
+  const bodyRef = useCallback((el: HTMLDivElement | null) => {
+    observerRef.current?.disconnect();
+    if (!el) {
+      observerRef.current = null;
+      return;
+    }
+    setBodyHeight(el.clientHeight);
+    const ro = new ResizeObserver(() => setBodyHeight(el.clientHeight));
+    ro.observe(el);
+    observerRef.current = ro;
+  }, []);
 
   const filtered = useMemo(
     () => filterActivities(activities, filters),
@@ -417,11 +436,52 @@ export function WeekCalendarView() {
     return out;
   }, [days, byDay]);
 
+  // Trim the visible hour range to what's actually used in the filtered data.
+  // Keeps the grid as compact as possible so the page rarely needs to scroll
+  // vertically. Falls back to defaults when nothing matches the filters.
+  const { startHour, endHour } = useMemo(() => {
+    if (filtered.length === 0) {
+      return { startHour: DEFAULT_START_HOUR, endHour: DEFAULT_END_HOUR };
+    }
+    let minStart = Infinity;
+    let maxEnd = -Infinity;
+    for (const a of filtered) {
+      minStart = Math.min(minStart, parseHM(a.startTime));
+      maxEnd = Math.max(maxEnd, parseHM(a.endTime));
+    }
+    return {
+      startHour: Math.max(0, Math.floor(minStart / 60)),
+      endHour: Math.min(24, Math.ceil(maxEnd / 60)),
+    };
+  }, [filtered]);
+
+  const hourCount = endHour - startHour;
+  // Stretch slot height to fit the body when possible; clamp between MIN/MAX
+  // so a tiny viewport still scrolls and a huge one doesn't make pills absurd.
+  const slotHeight = useMemo(() => {
+    if (bodyHeight <= 0 || hourCount <= 0) return INITIAL_SLOT_HEIGHT;
+    const ideal = Math.floor(bodyHeight / hourCount);
+    return Math.max(MIN_SLOT_HEIGHT, Math.min(MAX_SLOT_HEIGHT, ideal));
+  }, [bodyHeight, hourCount]);
+  const totalHeight = hourCount * slotHeight;
+  // Labels for every hour boundary (start..end inclusive). Positioned so the
+  // first and last labels stay fully visible inside the grid: top-anchored
+  // for 06:00..21:00, bottom-anchored for the trailing 22:00. Hour separator
+  // lines render only up to the row before last so the bottom edge of the
+  // grid doesn't grow scrollHeight by 1px.
+  const hours = useMemo(
+    () =>
+      Array.from(
+        { length: endHour - startHour + 1 },
+        (_, i) => `${String(startHour + i).padStart(2, "0")}:00`,
+      ),
+    [startHour, endHour],
+  );
+
   const todayYMD = getTodayYMD();
   const weekIncludesToday = days.includes(todayYMD);
-  const nowTop = ((nowMinutes - DAY_START_HOUR * 60) / 60) * SLOT_HEIGHT;
-  const showNowLine =
-    weekIncludesToday && nowTop >= 0 && nowTop <= TOTAL_HEIGHT;
+  const nowTop = ((nowMinutes - startHour * 60) / 60) * slotHeight;
+  const showNowLine = weekIncludesToday && nowTop >= 0 && nowTop <= totalHeight;
 
   // When "Hoy" is pressed, scroll the day-columns container horizontally to
   // today's column (relevant on mobile/small screens where we snap-scroll one
@@ -510,16 +570,12 @@ export function WeekCalendarView() {
   };
 
   return (
-    <div>
-      {/* Sticky header strip — one row: hour-rail spacer + day headers.
-          Stays pinned below the shell header while the user scrolls the
-          calendar body vertically. Horizontal alignment with the body's
-          scrollable day columns is maintained via a transform updated in
-          onBodyScroll. */}
-      <div
-        className="sticky z-30 flex bg-white dark:bg-slate-950"
-        style={{ top: "var(--shell-header-h, 0px)" }}
-      >
+    <div className="flex h-full flex-col">
+      {/* Day-header strip — fixed row at the top of the calendar host. The
+          parent (`<main>`) doesn't scroll, so this stays put without
+          `position: sticky`. Horizontal alignment with the body's scrollable
+          day columns is maintained via a transform updated in onBodyScroll. */}
+      <div className="flex bg-white dark:bg-slate-950">
         <div
           className="flex-shrink-0 border-b border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950"
           style={{ width: RAIL_WIDTH, height: DAY_HEADER_HEIGHT }}
@@ -558,142 +614,152 @@ export function WeekCalendarView() {
         </div>
       </div>
 
-      <div className="flex">
-        {/* Hour rail — sibling of (not inside) the scroll container, so it
-            never scrolls horizontally. */}
-        <div
-          className="flex-shrink-0 bg-white dark:bg-slate-950"
-          style={{ width: RAIL_WIDTH }}
-          aria-hidden="true"
-        >
-          <div className="relative" style={{ height: TOTAL_HEIGHT }}>
-            {HOURS.map((h, i) => (
-              <div
-                key={h}
-                className="absolute right-2 -translate-y-2 text-[10px] text-slate-500 dark:text-slate-400"
-                style={{ top: i * SLOT_HEIGHT }}
-              >
-                {h}
-              </div>
-            ))}
+      {/* Scrollable body — the only thing that scrolls vertically. The hour
+          rail and day columns share this scroll container so they move
+          together. The day-header strip above stays pinned without sticky
+          because its parent (`<main>`) doesn't scroll. */}
+      <div ref={bodyRef} className="min-h-0 flex-1 overflow-y-auto">
+        <div className="flex">
+          {/* Hour rail — sibling of (not inside) the horizontal scroll
+              container, so it never scrolls horizontally. */}
+          <div
+            className="flex-shrink-0 bg-white dark:bg-slate-950"
+            style={{ width: RAIL_WIDTH }}
+            aria-hidden="true"
+          >
+            <div className="relative" style={{ height: totalHeight }}>
+              {hours.map((h, i) => {
+                const isLast = i === hours.length - 1;
+                return (
+                  <div
+                    key={h}
+                    className="absolute right-2 text-[10px] text-slate-500 dark:text-slate-400"
+                    style={isLast ? { bottom: 2 } : { top: i * slotHeight + 2 }}
+                  >
+                    {h}
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </div>
 
-        {/* Horizontal scroll container holds only the day columns. */}
-        <div
-          ref={scrollContainerRef}
-          onScroll={onBodyScroll}
-          className="flex-1 overflow-x-auto"
-        >
-          <div className="flex min-w-max snap-x snap-mandatory md:min-w-0 md:snap-none">
-            {days.map((ymd) => {
-              const isToday = ymd === todayYMD;
-              const dayItems = renderedByDay[ymd] ?? [];
-              return (
-                <div
-                  key={ymd}
-                  ref={isToday ? todayColumnRef : undefined}
-                  className={`flex w-[calc(100vw-88px)] flex-shrink-0 snap-start flex-col border-r border-slate-200 last:border-r-0 md:w-auto md:flex-1 md:flex-shrink dark:border-slate-800 ${
-                    isToday
-                      ? "bg-slate-50 ring-1 ring-inset ring-slate-300 dark:bg-slate-900/60 dark:ring-slate-700"
-                      : ""
-                  }`}
-                >
-                  <div className="relative" style={{ height: TOTAL_HEIGHT }}>
-                    {HOURS.map((_, i) => (
-                      <div
-                        key={i}
-                        className="absolute left-0 right-0 border-t border-slate-100 dark:border-slate-800"
-                        style={{ top: i * SLOT_HEIGHT }}
-                      />
-                    ))}
+          {/* Horizontal scroll container holds only the day columns.
+              `overflow-y: clip` is required because `overflow-x: auto` would
+              otherwise resolve overflow-y to `auto` per CSS spec, producing
+              a phantom vertical scrollbar from sub-pixel content overflow. */}
+          <div
+            ref={scrollContainerRef}
+            onScroll={onBodyScroll}
+            className="flex-1 overflow-x-auto overflow-y-clip"
+          >
+            <div className="flex min-w-max snap-x snap-mandatory md:min-w-0 md:snap-none">
+              {days.map((ymd) => {
+                const isToday = ymd === todayYMD;
+                const dayItems = renderedByDay[ymd] ?? [];
+                return (
+                  <div
+                    key={ymd}
+                    ref={isToday ? todayColumnRef : undefined}
+                    className={`flex w-[calc(100vw-88px)] flex-shrink-0 snap-start flex-col border-r border-slate-200 last:border-r-0 md:w-auto md:flex-1 md:flex-shrink dark:border-slate-800 ${
+                      isToday
+                        ? "bg-slate-50 ring-1 ring-inset ring-slate-300 dark:bg-slate-900/60 dark:ring-slate-700"
+                        : ""
+                    }`}
+                  >
+                    <div
+                      className="relative overflow-hidden"
+                      style={{ height: totalHeight }}
+                    >
+                      {hours.slice(0, -1).map((_, i) => (
+                        <div
+                          key={i}
+                          className="absolute left-0 right-0 border-t border-slate-100 dark:border-slate-800"
+                          style={{ top: i * slotHeight }}
+                        />
+                      ))}
 
-                    {isToday && showNowLine && (
-                      <div
-                        ref={nowMarkerRef}
-                        className="pointer-events-none absolute left-0 right-0 z-20 border-t border-rose-500"
-                        style={{
-                          top: nowTop,
-                          // Leave room beneath the shell header when scrolled to.
-                          scrollMarginTop: "var(--shell-header-h, 0px)",
-                        }}
-                        aria-hidden="true"
-                      >
-                        <div className="absolute -left-1 -top-1 h-2 w-2 rounded-full bg-rose-500" />
-                      </div>
-                    )}
+                      {isToday && showNowLine && (
+                        <div
+                          ref={nowMarkerRef}
+                          className="pointer-events-none absolute left-0 right-0 z-20 border-t border-rose-500"
+                          style={{ top: nowTop }}
+                          aria-hidden="true"
+                        >
+                          <div className="absolute -left-1 -top-1 h-2 w-2 rounded-full bg-rose-500" />
+                        </div>
+                      )}
 
-                    {dayItems.map((item, idx) => {
-                      if (item.kind === "activity") {
-                        const { activity, col, totalCols } = item.data;
-                        const startMin = parseHM(activity.startTime);
+                      {dayItems.map((item, idx) => {
+                        if (item.kind === "activity") {
+                          const { activity, col, totalCols } = item.data;
+                          const startMin = parseHM(activity.startTime);
+                          const top =
+                            ((startMin - startHour * 60) / 60) * slotHeight;
+                          const height =
+                            (activity.duration / 60) * slotHeight - 2;
+                          const widthPct = 100 / totalCols;
+                          const leftPct = col * widthPct;
+                          return (
+                            <ActivityBlock
+                              key={activity.id}
+                              activity={activity}
+                              onClick={setSelectedActivity}
+                              style={{
+                                top,
+                                height,
+                                left: `calc(${leftPct}% + 2px)`,
+                                width: `calc(${widthPct}% - 4px)`,
+                              }}
+                            />
+                          );
+                        }
+
+                        // Overflow chip
                         const top =
-                          ((startMin - DAY_START_HOUR * 60) / 60) * SLOT_HEIGHT;
+                          ((item.startMin - startHour * 60) / 60) * slotHeight;
                         const height =
-                          (activity.duration / 60) * SLOT_HEIGHT - 2;
-                        const widthPct = 100 / totalCols;
-                        const leftPct = col * widthPct;
+                          ((item.endMin - item.startMin) / 60) * slotHeight - 2;
+                        const widthPct = 100 / item.totalCols;
+                        const leftPct = item.col * widthPct;
+                        const timeRange = formatTimeRange(
+                          item.startMin,
+                          item.endMin,
+                        );
                         return (
-                          <ActivityBlock
-                            key={activity.id}
-                            activity={activity}
-                            onClick={setSelectedActivity}
+                          <button
+                            key={`overflow-${ymd}-${idx}`}
+                            type="button"
+                            onClick={() =>
+                              setSheetState({
+                                title: `${item.activities.length} actividades`,
+                                subtitle: timeRange,
+                                ariaLabel: "Actividades simultáneas",
+                                activities: item.activities,
+                              })
+                            }
                             style={{
                               top,
                               height,
                               left: `calc(${leftPct}% + 2px)`,
                               width: `calc(${widthPct}% - 4px)`,
                             }}
-                          />
+                            aria-label={`Ver ${item.activities.length} actividades más entre ${timeRange}`}
+                            className="absolute flex flex-col items-center justify-center gap-0.5 overflow-hidden rounded-md border border-dashed border-slate-400 bg-slate-50 px-1 py-1 text-center font-semibold text-slate-700 shadow-sm transition hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-700 dark:border-slate-600 dark:bg-slate-800/80 dark:text-slate-200 dark:hover:bg-slate-700"
+                          >
+                            <span className="text-[11px] leading-none">
+                              +{item.activities.length} más
+                            </span>
+                            <span className="text-[9px] leading-none tabular-nums opacity-75">
+                              {timeRange}
+                            </span>
+                          </button>
                         );
-                      }
-
-                      // Overflow chip
-                      const top =
-                        ((item.startMin - DAY_START_HOUR * 60) / 60) *
-                        SLOT_HEIGHT;
-                      const height =
-                        ((item.endMin - item.startMin) / 60) * SLOT_HEIGHT - 2;
-                      const widthPct = 100 / item.totalCols;
-                      const leftPct = item.col * widthPct;
-                      const timeRange = formatTimeRange(
-                        item.startMin,
-                        item.endMin,
-                      );
-                      return (
-                        <button
-                          key={`overflow-${ymd}-${idx}`}
-                          type="button"
-                          onClick={() =>
-                            setSheetState({
-                              title: `${item.activities.length} actividades`,
-                              subtitle: timeRange,
-                              ariaLabel: "Actividades simultáneas",
-                              activities: item.activities,
-                            })
-                          }
-                          style={{
-                            top,
-                            height,
-                            left: `calc(${leftPct}% + 2px)`,
-                            width: `calc(${widthPct}% - 4px)`,
-                          }}
-                          aria-label={`Ver ${item.activities.length} actividades más entre ${timeRange}`}
-                          className="absolute flex flex-col items-center justify-center gap-0.5 overflow-hidden rounded-md border border-dashed border-slate-400 bg-slate-50 px-1 py-1 text-center font-semibold text-slate-700 shadow-sm transition hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-700 dark:border-slate-600 dark:bg-slate-800/80 dark:text-slate-200 dark:hover:bg-slate-700"
-                        >
-                          <span className="text-[11px] leading-none">
-                            +{item.activities.length} más
-                          </span>
-                          <span className="text-[9px] leading-none tabular-nums opacity-75">
-                            {timeRange}
-                          </span>
-                        </button>
-                      );
-                    })}
+                      })}
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

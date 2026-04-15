@@ -148,14 +148,11 @@ export function ListView() {
           <section
             key={day}
             ref={isToday ? todayRef : isLast ? lastSectionRef : undefined}
-            // scroll-margin-top accounts for the sticky shell header, so
-            // scrollIntoView lands the section just below it.
-            style={{ scrollMarginTop: "var(--shell-header-h, 0px)" }}
           >
             <h2
-              // Stick below the global shell header, not behind it.
-              style={{ top: "var(--shell-header-h, 0px)" }}
-              className={`sticky z-10 px-4 py-2 text-sm font-semibold border-b border-slate-200 ${
+              // Sticks to the top of `<main>` (which is the actual scroll
+              // container in the new shell layout).
+              className={`sticky top-0 z-10 px-4 py-2 text-sm font-semibold border-b border-slate-200 ${
                 i === 0 ? "rounded-t-lg" : ""
               } ${
                 isToday
