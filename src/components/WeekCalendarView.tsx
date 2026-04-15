@@ -622,7 +622,10 @@ export function WeekCalendarView() {
             style={{ width: RAIL_WIDTH }}
             aria-hidden="true"
           >
-            <div className="relative" style={{ height: totalHeight }}>
+            <div
+              className="relative overflow-hidden"
+              style={{ height: totalHeight }}
+            >
               {hours.map((h, i) => (
                 <div
                   key={h}
@@ -658,7 +661,10 @@ export function WeekCalendarView() {
                         : ""
                     }`}
                   >
-                    <div className="relative" style={{ height: totalHeight }}>
+                    <div
+                      className="relative overflow-hidden"
+                      style={{ height: totalHeight }}
+                    >
                       {hours.map((_, i) => (
                         <div
                           key={i}
