@@ -21,6 +21,7 @@
     "serwist": "^9.5.7"
   },
   "devDependencies": {
+    "@playwright/cli": "^0.1.8",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

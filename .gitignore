@@ -4,6 +4,12 @@
 CLAUDE.md
 review.xml
 
+# playwright-cli local run artifacts (snapshots, console logs, screenshots,
+# scratch config). Regenerated per run — not source.
+.playwright/
+.playwright-cli/
+.playwright-screenshots/
+
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
