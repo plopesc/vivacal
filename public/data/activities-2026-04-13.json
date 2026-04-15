@@ -1498,7 +1498,7 @@
       "difficulty": 1
     },
     {
-      "id": "1ecbc5e1fae8",
+      "id": "0536de7f0c62",
       "name": "PEAK CYCLE",
       "category": "cardiovasculares",
       "date": "2026-04-15",
@@ -1506,7 +1506,7 @@
       "startTime": "09:30",
       "endTime": "10:15",
       "duration": 45,
-      "instructor": "MARCOS",
+      "instructor": "LUCÍA",
       "room": "CICLO",
       "capacity": {
         "current": 0,
@@ -1583,7 +1583,7 @@
       "difficulty": 2
     },
     {
-      "id": "65a1f78eccaa",
+      "id": "8edcd04d7b7b",
       "name": "VITAL POWER",
       "category": "tonificacion",
       "date": "2026-04-15",
@@ -1591,7 +1591,7 @@
       "startTime": "10:30",
       "endTime": "11:20",
       "duration": 50,
-      "instructor": "LYDIA",
+      "instructor": "LUCÍA",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -1617,7 +1617,7 @@
       "difficulty": 0
     },
     {
-      "id": "76045312530e",
+      "id": "38acb637d182",
       "name": "ZUMBA",
       "category": "coreograficas",
       "date": "2026-04-15",
@@ -1625,7 +1625,7 @@
       "startTime": "11:30",
       "endTime": "12:20",
       "duration": 50,
-      "instructor": "GALA",
+      "instructor": "LYDIA",
       "room": "SALA 2",
       "capacity": {
         "current": 0,
@@ -1634,7 +1634,7 @@
       "difficulty": 1
     },
     {
-      "id": "868ca264d8a4",
+      "id": "0a29992d41ee",
       "name": "VITAL MOVE",
       "category": "cuerpo-y-mente",
       "date": "2026-04-15",
@@ -1642,7 +1642,7 @@
       "startTime": "11:30",
       "endTime": "12:20",
       "duration": 50,
-      "instructor": "LYDIA",
+      "instructor": "LUIS",
       "room": "SALA 1",
       "capacity": {
         "current": 0,
@@ -1651,7 +1651,7 @@
       "difficulty": 1
     },
     {
-      "id": "384d9c431bd7",
+      "id": "e9d64ea1621d",
       "name": "FUERZA",
       "category": "tonificacion",
       "date": "2026-04-15",
@@ -1659,7 +1659,7 @@
       "startTime": "11:30",
       "endTime": "12:20",
       "duration": 50,
-      "instructor": "LUIS",
+      "instructor": "GALA",
       "room": "TERRAZA",
       "capacity": {
         "current": 0,
