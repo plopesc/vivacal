@@ -161,7 +161,7 @@ function ShellInner({ children }: ShellInnerProps) {
         </main>
 
         <footer className="border-t border-slate-200 px-4 py-3 text-center text-xs text-slate-500 dark:border-slate-800 dark:text-slate-400">
-          Datos de{" "}
+          Proyecto independiente sin afiliación con Viding · Datos de{" "}
           <a
             href="https://valladolid-viding.viding.es/ActividadesColectivas/ActividadesColectivasHorarioSemanal"
             target="_blank"
@@ -169,8 +169,8 @@ function ShellInner({ children }: ShellInnerProps) {
             className="underline hover:text-slate-700 dark:hover:text-slate-200"
           >
             valladolid-viding.viding.es
-          </a>
-          . Hecho con{" "}
+          </a>{" "}
+          · Hecho con{" "}
           <span aria-label="cariño" className="text-rose-500">
             ♥
           </span>{" "}
@@ -192,16 +192,6 @@ function ShellInner({ children }: ShellInnerProps) {
           >
             Claude Code
           </a>
-          .{" "}
-          <a
-            href="https://github.com/plopesc/vivacal"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline hover:text-slate-700 dark:hover:text-slate-200"
-          >
-            Código
-          </a>
-          .
         </footer>
       </div>
     </AppStateProvider>
