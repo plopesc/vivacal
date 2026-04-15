@@ -183,7 +183,7 @@ function ShellInner({ children }: ShellInnerProps) {
           {children}
         </main>
 
-        <footer className="border-t border-slate-200 px-4 py-4 text-center text-xs text-slate-500 dark:border-slate-800 dark:text-slate-400">
+        <footer className="flex flex-col items-center gap-1 border-t border-slate-200 px-4 py-4 text-center text-xs text-slate-500 dark:border-slate-800 dark:text-slate-400">
           <p>
             Proyecto independiente sin afiliación con Viding. Datos extraídos
             automáticamente de{" "}
@@ -203,6 +203,22 @@ function ShellInner({ children }: ShellInnerProps) {
               className="underline hover:text-slate-700 dark:hover:text-slate-200"
             >
               GitHub
+            </a>
+            .
+          </p>
+          <p>
+            Hecho con{" "}
+            <span aria-label="cariño" className="text-rose-500">
+              ♥
+            </span>{" "}
+            por{" "}
+            <a
+              href="https://github.com/plopesc"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-slate-700 dark:hover:text-slate-200"
+            >
+              plopesc
             </a>
             .
           </p>
