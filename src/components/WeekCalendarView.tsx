@@ -635,11 +635,14 @@ export function WeekCalendarView() {
             </div>
           </div>
 
-          {/* Horizontal scroll container holds only the day columns. */}
+          {/* Horizontal scroll container holds only the day columns.
+              `overflow-y: clip` is required because `overflow-x: auto` would
+              otherwise resolve overflow-y to `auto` per CSS spec, producing
+              a phantom vertical scrollbar from sub-pixel content overflow. */}
           <div
             ref={scrollContainerRef}
             onScroll={onBodyScroll}
-            className="flex-1 overflow-x-auto"
+            className="flex-1 overflow-x-auto overflow-y-clip"
           >
             <div className="flex min-w-max snap-x snap-mandatory md:min-w-0 md:snap-none">
               {days.map((ymd) => {
