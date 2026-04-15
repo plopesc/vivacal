@@ -534,16 +534,12 @@ export function WeekCalendarView() {
   };
 
   return (
-    <div>
-      {/* Sticky header strip — one row: hour-rail spacer + day headers.
-          Stays pinned below the shell header while the user scrolls the
-          calendar body vertically. Horizontal alignment with the body's
-          scrollable day columns is maintained via a transform updated in
-          onBodyScroll. */}
-      <div
-        className="sticky z-30 flex bg-white dark:bg-slate-950"
-        style={{ top: "var(--shell-header-h, 0px)" }}
-      >
+    <div className="flex h-full flex-col">
+      {/* Day-header strip — fixed row at the top of the calendar host. The
+          parent (`<main>`) doesn't scroll, so this stays put without
+          `position: sticky`. Horizontal alignment with the body's scrollable
+          day columns is maintained via a transform updated in onBodyScroll. */}
+      <div className="flex bg-white dark:bg-slate-950">
         <div
           className="flex-shrink-0 border-b border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950"
           style={{ width: RAIL_WIDTH, height: DAY_HEADER_HEIGHT }}
@@ -582,141 +578,144 @@ export function WeekCalendarView() {
         </div>
       </div>
 
-      <div className="flex">
-        {/* Hour rail — sibling of (not inside) the scroll container, so it
-            never scrolls horizontally. */}
-        <div
-          className="flex-shrink-0 bg-white dark:bg-slate-950"
-          style={{ width: RAIL_WIDTH }}
-          aria-hidden="true"
-        >
-          <div className="relative" style={{ height: totalHeight }}>
-            {hours.map((h, i) => (
-              <div
-                key={h}
-                className="absolute right-2 -translate-y-2 text-[10px] text-slate-500 dark:text-slate-400"
-                style={{ top: i * SLOT_HEIGHT }}
-              >
-                {h}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Horizontal scroll container holds only the day columns. */}
-        <div
-          ref={scrollContainerRef}
-          onScroll={onBodyScroll}
-          className="flex-1 overflow-x-auto"
-        >
-          <div className="flex min-w-max snap-x snap-mandatory md:min-w-0 md:snap-none">
-            {days.map((ymd) => {
-              const isToday = ymd === todayYMD;
-              const dayItems = renderedByDay[ymd] ?? [];
-              return (
+      {/* Scrollable body — the only thing that scrolls vertically. The hour
+          rail and day columns share this scroll container so they move
+          together. The day-header strip above stays pinned without sticky
+          because its parent (`<main>`) doesn't scroll. */}
+      <div className="min-h-0 flex-1 overflow-y-auto">
+        <div className="flex">
+          {/* Hour rail — sibling of (not inside) the horizontal scroll
+              container, so it never scrolls horizontally. */}
+          <div
+            className="flex-shrink-0 bg-white dark:bg-slate-950"
+            style={{ width: RAIL_WIDTH }}
+            aria-hidden="true"
+          >
+            <div className="relative" style={{ height: totalHeight }}>
+              {hours.map((h, i) => (
                 <div
-                  key={ymd}
-                  ref={isToday ? todayColumnRef : undefined}
-                  className={`flex w-[calc(100vw-88px)] flex-shrink-0 snap-start flex-col border-r border-slate-200 last:border-r-0 md:w-auto md:flex-1 md:flex-shrink dark:border-slate-800 ${
-                    isToday
-                      ? "bg-slate-50 ring-1 ring-inset ring-slate-300 dark:bg-slate-900/60 dark:ring-slate-700"
-                      : ""
-                  }`}
+                  key={h}
+                  className="absolute right-2 -translate-y-2 text-[10px] text-slate-500 dark:text-slate-400"
+                  style={{ top: i * SLOT_HEIGHT }}
                 >
-                  <div className="relative" style={{ height: totalHeight }}>
-                    {hours.map((_, i) => (
-                      <div
-                        key={i}
-                        className="absolute left-0 right-0 border-t border-slate-100 dark:border-slate-800"
-                        style={{ top: i * SLOT_HEIGHT }}
-                      />
-                    ))}
+                  {h}
+                </div>
+              ))}
+            </div>
+          </div>
 
-                    {isToday && showNowLine && (
-                      <div
-                        ref={nowMarkerRef}
-                        className="pointer-events-none absolute left-0 right-0 z-20 border-t border-rose-500"
-                        style={{
-                          top: nowTop,
-                          // Leave room beneath the shell header when scrolled to.
-                          scrollMarginTop: "var(--shell-header-h, 0px)",
-                        }}
-                        aria-hidden="true"
-                      >
-                        <div className="absolute -left-1 -top-1 h-2 w-2 rounded-full bg-rose-500" />
-                      </div>
-                    )}
+          {/* Horizontal scroll container holds only the day columns. */}
+          <div
+            ref={scrollContainerRef}
+            onScroll={onBodyScroll}
+            className="flex-1 overflow-x-auto"
+          >
+            <div className="flex min-w-max snap-x snap-mandatory md:min-w-0 md:snap-none">
+              {days.map((ymd) => {
+                const isToday = ymd === todayYMD;
+                const dayItems = renderedByDay[ymd] ?? [];
+                return (
+                  <div
+                    key={ymd}
+                    ref={isToday ? todayColumnRef : undefined}
+                    className={`flex w-[calc(100vw-88px)] flex-shrink-0 snap-start flex-col border-r border-slate-200 last:border-r-0 md:w-auto md:flex-1 md:flex-shrink dark:border-slate-800 ${
+                      isToday
+                        ? "bg-slate-50 ring-1 ring-inset ring-slate-300 dark:bg-slate-900/60 dark:ring-slate-700"
+                        : ""
+                    }`}
+                  >
+                    <div className="relative" style={{ height: totalHeight }}>
+                      {hours.map((_, i) => (
+                        <div
+                          key={i}
+                          className="absolute left-0 right-0 border-t border-slate-100 dark:border-slate-800"
+                          style={{ top: i * SLOT_HEIGHT }}
+                        />
+                      ))}
 
-                    {dayItems.map((item, idx) => {
-                      if (item.kind === "activity") {
-                        const { activity, col, totalCols } = item.data;
-                        const startMin = parseHM(activity.startTime);
+                      {isToday && showNowLine && (
+                        <div
+                          ref={nowMarkerRef}
+                          className="pointer-events-none absolute left-0 right-0 z-20 border-t border-rose-500"
+                          style={{ top: nowTop }}
+                          aria-hidden="true"
+                        >
+                          <div className="absolute -left-1 -top-1 h-2 w-2 rounded-full bg-rose-500" />
+                        </div>
+                      )}
+
+                      {dayItems.map((item, idx) => {
+                        if (item.kind === "activity") {
+                          const { activity, col, totalCols } = item.data;
+                          const startMin = parseHM(activity.startTime);
+                          const top =
+                            ((startMin - startHour * 60) / 60) * SLOT_HEIGHT;
+                          const height =
+                            (activity.duration / 60) * SLOT_HEIGHT - 2;
+                          const widthPct = 100 / totalCols;
+                          const leftPct = col * widthPct;
+                          return (
+                            <ActivityBlock
+                              key={activity.id}
+                              activity={activity}
+                              onClick={setSelectedActivity}
+                              style={{
+                                top,
+                                height,
+                                left: `calc(${leftPct}% + 2px)`,
+                                width: `calc(${widthPct}% - 4px)`,
+                              }}
+                            />
+                          );
+                        }
+
+                        // Overflow chip
                         const top =
-                          ((startMin - startHour * 60) / 60) * SLOT_HEIGHT;
+                          ((item.startMin - startHour * 60) / 60) * SLOT_HEIGHT;
                         const height =
-                          (activity.duration / 60) * SLOT_HEIGHT - 2;
-                        const widthPct = 100 / totalCols;
-                        const leftPct = col * widthPct;
+                          ((item.endMin - item.startMin) / 60) * SLOT_HEIGHT -
+                          2;
+                        const widthPct = 100 / item.totalCols;
+                        const leftPct = item.col * widthPct;
+                        const timeRange = formatTimeRange(
+                          item.startMin,
+                          item.endMin,
+                        );
                         return (
-                          <ActivityBlock
-                            key={activity.id}
-                            activity={activity}
-                            onClick={setSelectedActivity}
+                          <button
+                            key={`overflow-${ymd}-${idx}`}
+                            type="button"
+                            onClick={() =>
+                              setSheetState({
+                                title: `${item.activities.length} actividades`,
+                                subtitle: timeRange,
+                                ariaLabel: "Actividades simultáneas",
+                                activities: item.activities,
+                              })
+                            }
                             style={{
                               top,
                               height,
                               left: `calc(${leftPct}% + 2px)`,
                               width: `calc(${widthPct}% - 4px)`,
                             }}
-                          />
+                            aria-label={`Ver ${item.activities.length} actividades más entre ${timeRange}`}
+                            className="absolute flex flex-col items-center justify-center gap-0.5 overflow-hidden rounded-md border border-dashed border-slate-400 bg-slate-50 px-1 py-1 text-center font-semibold text-slate-700 shadow-sm transition hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-700 dark:border-slate-600 dark:bg-slate-800/80 dark:text-slate-200 dark:hover:bg-slate-700"
+                          >
+                            <span className="text-[11px] leading-none">
+                              +{item.activities.length} más
+                            </span>
+                            <span className="text-[9px] leading-none tabular-nums opacity-75">
+                              {timeRange}
+                            </span>
+                          </button>
                         );
-                      }
-
-                      // Overflow chip
-                      const top =
-                        ((item.startMin - startHour * 60) / 60) * SLOT_HEIGHT;
-                      const height =
-                        ((item.endMin - item.startMin) / 60) * SLOT_HEIGHT - 2;
-                      const widthPct = 100 / item.totalCols;
-                      const leftPct = item.col * widthPct;
-                      const timeRange = formatTimeRange(
-                        item.startMin,
-                        item.endMin,
-                      );
-                      return (
-                        <button
-                          key={`overflow-${ymd}-${idx}`}
-                          type="button"
-                          onClick={() =>
-                            setSheetState({
-                              title: `${item.activities.length} actividades`,
-                              subtitle: timeRange,
-                              ariaLabel: "Actividades simultáneas",
-                              activities: item.activities,
-                            })
-                          }
-                          style={{
-                            top,
-                            height,
-                            left: `calc(${leftPct}% + 2px)`,
-                            width: `calc(${widthPct}% - 4px)`,
-                          }}
-                          aria-label={`Ver ${item.activities.length} actividades más entre ${timeRange}`}
-                          className="absolute flex flex-col items-center justify-center gap-0.5 overflow-hidden rounded-md border border-dashed border-slate-400 bg-slate-50 px-1 py-1 text-center font-semibold text-slate-700 shadow-sm transition hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-700 dark:border-slate-600 dark:bg-slate-800/80 dark:text-slate-200 dark:hover:bg-slate-700"
-                        >
-                          <span className="text-[11px] leading-none">
-                            +{item.activities.length} más
-                          </span>
-                          <span className="text-[9px] leading-none tabular-nums opacity-75">
-                            {timeRange}
-                          </span>
-                        </button>
-                      );
-                    })}
+                      })}
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
