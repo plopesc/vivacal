@@ -182,6 +182,56 @@ function ShellInner({ children }: ShellInnerProps) {
         <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6">
           {children}
         </main>
+
+        <footer className="flex flex-col items-center gap-1 border-t border-slate-200 px-4 py-4 text-center text-xs text-slate-500 dark:border-slate-800 dark:text-slate-400">
+          <p>
+            Proyecto independiente sin afiliación con Viding. Datos extraídos
+            automáticamente de{" "}
+            <a
+              href="https://valladolid-viding.viding.es/ActividadesColectivas/ActividadesColectivasHorarioSemanal"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-slate-700 dark:hover:text-slate-200"
+            >
+              valladolid-viding.viding.es
+            </a>
+            . Código en{" "}
+            <a
+              href="https://github.com/plopesc/vivacal"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-slate-700 dark:hover:text-slate-200"
+            >
+              GitHub
+            </a>
+            .
+          </p>
+          <p>
+            Hecho con{" "}
+            <span aria-label="cariño" className="text-rose-500">
+              ♥
+            </span>{" "}
+            por{" "}
+            <a
+              href="https://github.com/plopesc"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-slate-700 dark:hover:text-slate-200"
+            >
+              plopesc
+            </a>
+            , con la ayuda de{" "}
+            <a
+              href="https://claude.com/claude-code"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-slate-700 dark:hover:text-slate-200"
+            >
+              Claude Code
+            </a>
+            .
+          </p>
+        </footer>
       </div>
     </AppStateProvider>
   );
