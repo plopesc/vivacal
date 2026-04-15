@@ -139,7 +139,11 @@ interface ContentProps {
   onClose: () => void;
 }
 
-function ActivityDetailContent({ activity, closeBtnRef, onClose }: ContentProps) {
+function ActivityDetailContent({
+  activity,
+  closeBtnRef,
+  onClose,
+}: ContentProps) {
   const colors = CATEGORY_COLORS[activity.category];
   const stars = renderStars(activity.difficulty);
   const dateLine = formatSpanishDate(activity.date);

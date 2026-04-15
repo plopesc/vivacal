@@ -378,12 +378,8 @@ function ActivityListSheet({
 }
 
 export function WeekCalendarView() {
-  const {
-    selectedWeek,
-    filters,
-    setSelectedActivity,
-    scrollToTodayNonce,
-  } = useAppState();
+  const { selectedWeek, filters, setSelectedActivity, scrollToTodayNonce } =
+    useAppState();
   const { activities, isLoading, error } = useWeekActivities(selectedWeek);
   const nowMinutes = useNowMinutes();
   const [sheetState, setSheetState] = useState<SheetState | null>(null);
@@ -423,8 +419,7 @@ export function WeekCalendarView() {
 
   const todayYMD = getTodayYMD();
   const weekIncludesToday = days.includes(todayYMD);
-  const nowTop =
-    ((nowMinutes - DAY_START_HOUR * 60) / 60) * SLOT_HEIGHT;
+  const nowTop = ((nowMinutes - DAY_START_HOUR * 60) / 60) * SLOT_HEIGHT;
   const showNowLine =
     weekIncludesToday && nowTop >= 0 && nowTop <= TOTAL_HEIGHT;
 
@@ -605,96 +600,96 @@ export function WeekCalendarView() {
                   }`}
                 >
                   <div className="relative" style={{ height: TOTAL_HEIGHT }}>
-                  {HOURS.map((_, i) => (
-                    <div
-                      key={i}
-                      className="absolute left-0 right-0 border-t border-slate-100 dark:border-slate-800"
-                      style={{ top: i * SLOT_HEIGHT }}
-                    />
-                  ))}
+                    {HOURS.map((_, i) => (
+                      <div
+                        key={i}
+                        className="absolute left-0 right-0 border-t border-slate-100 dark:border-slate-800"
+                        style={{ top: i * SLOT_HEIGHT }}
+                      />
+                    ))}
 
-                  {isToday && showNowLine && (
-                    <div
-                      ref={nowMarkerRef}
-                      className="pointer-events-none absolute left-0 right-0 z-20 border-t border-rose-500"
-                      style={{
-                        top: nowTop,
-                        // Leave room beneath the shell header when scrolled to.
-                        scrollMarginTop: "var(--shell-header-h, 0px)",
-                      }}
-                      aria-hidden="true"
-                    >
-                      <div className="absolute -left-1 -top-1 h-2 w-2 rounded-full bg-rose-500" />
-                    </div>
-                  )}
+                    {isToday && showNowLine && (
+                      <div
+                        ref={nowMarkerRef}
+                        className="pointer-events-none absolute left-0 right-0 z-20 border-t border-rose-500"
+                        style={{
+                          top: nowTop,
+                          // Leave room beneath the shell header when scrolled to.
+                          scrollMarginTop: "var(--shell-header-h, 0px)",
+                        }}
+                        aria-hidden="true"
+                      >
+                        <div className="absolute -left-1 -top-1 h-2 w-2 rounded-full bg-rose-500" />
+                      </div>
+                    )}
 
-                  {dayItems.map((item, idx) => {
-                    if (item.kind === "activity") {
-                      const { activity, col, totalCols } = item.data;
-                      const startMin = parseHM(activity.startTime);
+                    {dayItems.map((item, idx) => {
+                      if (item.kind === "activity") {
+                        const { activity, col, totalCols } = item.data;
+                        const startMin = parseHM(activity.startTime);
+                        const top =
+                          ((startMin - DAY_START_HOUR * 60) / 60) * SLOT_HEIGHT;
+                        const height =
+                          (activity.duration / 60) * SLOT_HEIGHT - 2;
+                        const widthPct = 100 / totalCols;
+                        const leftPct = col * widthPct;
+                        return (
+                          <ActivityBlock
+                            key={activity.id}
+                            activity={activity}
+                            onClick={setSelectedActivity}
+                            style={{
+                              top,
+                              height,
+                              left: `calc(${leftPct}% + 2px)`,
+                              width: `calc(${widthPct}% - 4px)`,
+                            }}
+                          />
+                        );
+                      }
+
+                      // Overflow chip
                       const top =
-                        ((startMin - DAY_START_HOUR * 60) / 60) * SLOT_HEIGHT;
+                        ((item.startMin - DAY_START_HOUR * 60) / 60) *
+                        SLOT_HEIGHT;
                       const height =
-                        (activity.duration / 60) * SLOT_HEIGHT - 2;
-                      const widthPct = 100 / totalCols;
-                      const leftPct = col * widthPct;
+                        ((item.endMin - item.startMin) / 60) * SLOT_HEIGHT - 2;
+                      const widthPct = 100 / item.totalCols;
+                      const leftPct = item.col * widthPct;
+                      const timeRange = formatTimeRange(
+                        item.startMin,
+                        item.endMin,
+                      );
                       return (
-                        <ActivityBlock
-                          key={activity.id}
-                          activity={activity}
-                          onClick={setSelectedActivity}
+                        <button
+                          key={`overflow-${ymd}-${idx}`}
+                          type="button"
+                          onClick={() =>
+                            setSheetState({
+                              title: `${item.activities.length} actividades`,
+                              subtitle: timeRange,
+                              ariaLabel: "Actividades simultáneas",
+                              activities: item.activities,
+                            })
+                          }
                           style={{
                             top,
                             height,
                             left: `calc(${leftPct}% + 2px)`,
                             width: `calc(${widthPct}% - 4px)`,
                           }}
-                        />
+                          aria-label={`Ver ${item.activities.length} actividades más entre ${timeRange}`}
+                          className="absolute flex flex-col items-center justify-center gap-0.5 overflow-hidden rounded-md border border-dashed border-slate-400 bg-slate-50 px-1 py-1 text-center font-semibold text-slate-700 shadow-sm transition hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-700 dark:border-slate-600 dark:bg-slate-800/80 dark:text-slate-200 dark:hover:bg-slate-700"
+                        >
+                          <span className="text-[11px] leading-none">
+                            +{item.activities.length} más
+                          </span>
+                          <span className="text-[9px] leading-none tabular-nums opacity-75">
+                            {timeRange}
+                          </span>
+                        </button>
                       );
-                    }
-
-                    // Overflow chip
-                    const top =
-                      ((item.startMin - DAY_START_HOUR * 60) / 60) *
-                      SLOT_HEIGHT;
-                    const height =
-                      ((item.endMin - item.startMin) / 60) * SLOT_HEIGHT - 2;
-                    const widthPct = 100 / item.totalCols;
-                    const leftPct = item.col * widthPct;
-                    const timeRange = formatTimeRange(
-                      item.startMin,
-                      item.endMin,
-                    );
-                    return (
-                      <button
-                        key={`overflow-${ymd}-${idx}`}
-                        type="button"
-                        onClick={() =>
-                          setSheetState({
-                            title: `${item.activities.length} actividades`,
-                            subtitle: timeRange,
-                            ariaLabel: "Actividades simultáneas",
-                            activities: item.activities,
-                          })
-                        }
-                        style={{
-                          top,
-                          height,
-                          left: `calc(${leftPct}% + 2px)`,
-                          width: `calc(${widthPct}% - 4px)`,
-                        }}
-                        aria-label={`Ver ${item.activities.length} actividades más entre ${timeRange}`}
-                        className="absolute flex flex-col items-center justify-center gap-0.5 overflow-hidden rounded-md border border-dashed border-slate-400 bg-slate-50 px-1 py-1 text-center font-semibold text-slate-700 shadow-sm transition hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-700 dark:border-slate-600 dark:bg-slate-800/80 dark:text-slate-200 dark:hover:bg-slate-700"
-                      >
-                        <span className="text-[11px] leading-none">
-                          +{item.activities.length} más
-                        </span>
-                        <span className="text-[9px] leading-none tabular-nums opacity-75">
-                          {timeRange}
-                        </span>
-                      </button>
-                    );
-                  })}
+                    })}
                   </div>
                 </div>
               );

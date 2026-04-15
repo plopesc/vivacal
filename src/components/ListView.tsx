@@ -70,12 +70,8 @@ function ActivityRow({ activity, onSelect }: ActivityRowProps) {
 }
 
 export function ListView() {
-  const {
-    selectedWeek,
-    filters,
-    setSelectedActivity,
-    scrollToTodayNonce,
-  } = useAppState();
+  const { selectedWeek, filters, setSelectedActivity, scrollToTodayNonce } =
+    useAppState();
   const { activities, isLoading, error } = useWeekActivities(selectedWeek);
 
   const { dayKeys, groups } = useMemo(() => {
