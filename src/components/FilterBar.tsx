@@ -29,12 +29,12 @@ function Dropdown({
   formatOption?: (v: string) => string;
 }) {
   return (
-    <label className="flex flex-col gap-1 text-xs font-medium text-slate-600">
+    <label className="flex flex-col gap-1 text-xs font-medium text-slate-600 dark:text-slate-300">
       <span>{label}</span>
       <select
         value={value ?? ""}
         onChange={(e) => onChange(e.target.value || null)}
-        className="h-9 rounded-lg border border-slate-300 bg-white px-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-400"
+        className="h-9 rounded-lg border border-slate-300 bg-white px-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-400 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
         aria-label={label}
       >
         <option value="">Todas</option>
@@ -125,7 +125,7 @@ export function FilterBar({ activities }: FilterBarProps) {
             type="button"
             onClick={clearAll}
             aria-label="Limpiar filtros"
-            className="mb-0.5 inline-flex h-9 items-center rounded-full border border-slate-300 bg-white px-3 text-sm font-medium text-slate-700 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-400"
+            className="mb-0.5 inline-flex h-9 items-center rounded-full border border-slate-300 bg-white px-3 text-sm font-medium text-slate-700 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-400 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
           >
             Limpiar
           </button>
@@ -140,7 +140,7 @@ export function FilterBar({ activities }: FilterBarProps) {
           aria-label="Abrir filtros"
           aria-haspopup="dialog"
           aria-expanded={sheetOpen}
-          className="inline-flex h-9 items-center rounded-full border border-slate-300 bg-white px-3 text-sm font-medium text-slate-700 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-400"
+          className="inline-flex h-9 items-center rounded-full border border-slate-300 bg-white px-3 text-sm font-medium text-slate-700 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-400 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
         >
           Filtros
           {anyActive && (
@@ -155,7 +155,7 @@ export function FilterBar({ activities }: FilterBarProps) {
             type="button"
             onClick={clearAll}
             aria-label="Limpiar filtros"
-            className="inline-flex h-9 items-center rounded-full border border-slate-300 bg-white px-3 text-sm font-medium text-slate-700 hover:bg-slate-100"
+            className="inline-flex h-9 items-center rounded-full border border-slate-300 bg-white px-3 text-sm font-medium text-slate-700 hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
           >
             Limpiar
           </button>
@@ -178,16 +178,16 @@ export function FilterBar({ activities }: FilterBarProps) {
               onClick={() => setSheetOpen(false)}
               className="absolute inset-0 bg-slate-900/40"
             />
-            <div className="absolute inset-x-0 bottom-0 flex max-h-[85vh] flex-col rounded-t-2xl bg-white p-4 shadow-xl">
+            <div className="absolute inset-x-0 bottom-0 flex max-h-[85vh] flex-col rounded-t-2xl bg-white p-4 shadow-xl dark:bg-slate-900">
               <div className="mb-3 flex items-center justify-between">
-                <h2 className="text-base font-semibold text-slate-900">
+                <h2 className="text-base font-semibold text-slate-900 dark:text-slate-100">
                   Filtros
                 </h2>
                 <button
                   type="button"
                   aria-label="Cerrar"
                   onClick={() => setSheetOpen(false)}
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full text-slate-500 hover:bg-slate-100"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"
                 >
                   <span aria-hidden="true">×</span>
                 </button>
@@ -202,7 +202,7 @@ export function FilterBar({ activities }: FilterBarProps) {
                   <button
                     type="button"
                     onClick={clearAll}
-                    className="inline-flex h-10 flex-1 items-center justify-center rounded-full border border-slate-300 bg-white px-4 text-sm font-medium text-slate-700"
+                    className="inline-flex h-10 flex-1 items-center justify-center rounded-full border border-slate-300 bg-white px-4 text-sm font-medium text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
                   >
                     Limpiar
                   </button>
@@ -210,7 +210,7 @@ export function FilterBar({ activities }: FilterBarProps) {
                 <button
                   type="button"
                   onClick={() => setSheetOpen(false)}
-                  className="inline-flex h-10 flex-1 items-center justify-center rounded-full bg-slate-900 px-4 text-sm font-medium text-white"
+                  className="inline-flex h-10 flex-1 items-center justify-center rounded-full bg-slate-900 px-4 text-sm font-medium text-white dark:bg-slate-100 dark:text-slate-900"
                 >
                   Aplicar
                 </button>

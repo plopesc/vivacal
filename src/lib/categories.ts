@@ -70,12 +70,36 @@ export interface CategoryColor {
  * tailwind.config (if any) since classes are applied dynamically.
  */
 export const CATEGORY_COLORS: Record<Category, CategoryColor> = {
-  acuaticas: { bg: "bg-sky-100", text: "text-sky-900", border: "border-sky-400" },
-  cardiovasculares: { bg: "bg-rose-100", text: "text-rose-900", border: "border-rose-400" },
-  coreograficas: { bg: "bg-fuchsia-100", text: "text-fuchsia-900", border: "border-fuchsia-400" },
-  "cuerpo-y-mente": { bg: "bg-emerald-100", text: "text-emerald-900", border: "border-emerald-400" },
-  tonificacion: { bg: "bg-amber-100", text: "text-amber-900", border: "border-amber-400" },
-  otros: { bg: "bg-slate-100", text: "text-slate-900", border: "border-slate-400" },
+  acuaticas: {
+    bg: "bg-sky-100 dark:bg-sky-900/40",
+    text: "text-sky-900 dark:text-sky-100",
+    border: "border-sky-400 dark:border-sky-500",
+  },
+  cardiovasculares: {
+    bg: "bg-rose-100 dark:bg-rose-900/40",
+    text: "text-rose-900 dark:text-rose-100",
+    border: "border-rose-400 dark:border-rose-500",
+  },
+  coreograficas: {
+    bg: "bg-fuchsia-100 dark:bg-fuchsia-900/40",
+    text: "text-fuchsia-900 dark:text-fuchsia-100",
+    border: "border-fuchsia-400 dark:border-fuchsia-500",
+  },
+  "cuerpo-y-mente": {
+    bg: "bg-emerald-100 dark:bg-emerald-900/40",
+    text: "text-emerald-900 dark:text-emerald-100",
+    border: "border-emerald-400 dark:border-emerald-500",
+  },
+  tonificacion: {
+    bg: "bg-amber-100 dark:bg-amber-900/40",
+    text: "text-amber-900 dark:text-amber-100",
+    border: "border-amber-400 dark:border-amber-500",
+  },
+  otros: {
+    bg: "bg-slate-100 dark:bg-slate-800",
+    text: "text-slate-900 dark:text-slate-100",
+    border: "border-slate-400 dark:border-slate-600",
+  },
 };
 
 export const CATEGORY_LABELS: Record<Category, string> = {

@@ -13,7 +13,10 @@
   },
   "runArgs": [
     "--cap-add=NET_ADMIN",
-    "--cap-add=NET_RAW"
+    "--cap-add=NET_RAW",
+    "--security-opt=seccomp=unconfined",
+    "--ipc=host",
+    "--shm-size=1g"
   ],
   "customizations": {
     "vscode": {

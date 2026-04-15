@@ -91,3 +91,7 @@ RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/
 # Valid options: stable, latest, or specific version (e.g., 2.0.22)
 RUN curl -fsSL https://claude.ai/install.sh | bash -s ${CLAUDE_CODE_VERSION:-latest} \
   && echo 'export PATH="$HOME/.claude/bin:$PATH"' >> ~/.zshrc
+
+# Install Chromium system dependencies for Playwright
+RUN sudo npx -y playwright install-deps chromium \
+  && sudo rm -rf /var/lib/apt/lists/*
