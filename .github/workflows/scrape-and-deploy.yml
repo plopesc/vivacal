@@ -28,6 +28,13 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          # SSH deploy key with write access. actions/checkout uses it for
+          # the initial fetch and persists it for the subsequent `git push`,
+          # so the scheduled job can commit refreshed data even though main
+          # is protected. The key must be added to the repo (Settings →
+          # Deploy keys → Allow write access) and is registered as a bypass
+          # actor on the "Protect main" ruleset.
+          ssh-key: ${{ secrets.SCRAPE_DEPLOY_KEY }}
 
       - name: Setup Node
         uses: actions/setup-node@v4
