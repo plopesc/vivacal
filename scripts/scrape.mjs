@@ -102,7 +102,9 @@ function parseWeekHtml(html, weekStartDate) {
     try {
       payload = JSON.parse(raw);
     } catch (err) {
-      console.warn(`Skipping activity with unparseable data-json: ${err.message}`);
+      console.warn(
+        `Skipping activity with unparseable data-json: ${err.message}`,
+      );
       return;
     }
 

@@ -41,6 +41,7 @@ On each run it:
 5. **Deploys** the `out/` directory to GitHub Pages via `actions/deploy-pages`.
 
 The scraped data shape:
+
 - `public/data/activities-YYYY-MM-DD.json` — one file per Monday-starting week, each with `{ weekStart, activities: [...] }`
 - `public/data/manifest.json` — index with `lastUpdated`, `earliestWeek`, `latestWeek`, and the sorted list of available weeks. The UI uses this to bound week navigation.
 

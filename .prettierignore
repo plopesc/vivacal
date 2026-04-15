@@ -1,0 +1,11 @@
+.next/
+out/
+build/
+node_modules/
+public/data/
+public/sw.js
+public/swe-worker-*.js
+package-lock.json
+.playwright/
+.playwright-cli/
+.playwright-screenshots/

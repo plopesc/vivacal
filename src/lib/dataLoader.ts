@@ -22,10 +22,9 @@ export async function loadManifest(): Promise<Manifest> {
  * service worker handles invalidation across deploys.
  */
 export async function loadWeek(weekStart: string): Promise<WeekData> {
-  const res = await fetch(
-    withBasePath(`/data/activities-${weekStart}.json`),
-    { cache: "force-cache" },
-  );
+  const res = await fetch(withBasePath(`/data/activities-${weekStart}.json`), {
+    cache: "force-cache",
+  });
   if (!res.ok) {
     throw new Error(`week ${weekStart} load failed: ${res.status}`);
   }

@@ -91,7 +91,7 @@ export function FilterBar({ activities }: FilterBarProps) {
     <Dropdown
       label="Categoría"
       value={filters.category}
-      onChange={(v) => setFilters({ category: (v as Category | null) })}
+      onChange={(v) => setFilters({ category: v as Category | null })}
       options={categoryOptions}
       formatOption={(v) => CATEGORY_LABELS[v as Category] ?? v}
     />
@@ -164,7 +164,8 @@ export function FilterBar({ activities }: FilterBarProps) {
 
       {/* Mobile bottom sheet — portaled to document.body so it's not trapped
           inside the header's backdrop-filter containing block. */}
-      {sheetOpen && typeof document !== "undefined" &&
+      {sheetOpen &&
+        typeof document !== "undefined" &&
         createPortal(
           <div
             role="dialog"
