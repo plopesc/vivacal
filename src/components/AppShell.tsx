@@ -220,6 +220,15 @@ function ShellInner({ children }: ShellInnerProps) {
             >
               plopesc
             </a>
+            , con la ayuda de{" "}
+            <a
+              href="https://claude.com/claude-code"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-slate-700 dark:hover:text-slate-200"
+            >
+              Claude Code
+            </a>
             .
           </p>
         </footer>
