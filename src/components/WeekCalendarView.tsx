@@ -9,14 +9,10 @@ import { filterActivities } from "@/lib/filters";
 import { CATEGORY_COLORS } from "@/lib/categories";
 import { ActivityBlock } from "./ActivityBlock";
 
-const DAY_START_HOUR = 6;
-const DAY_END_HOUR = 22;
-const SLOT_HEIGHT = 60; // px per hour
-const TOTAL_HEIGHT = (DAY_END_HOUR - DAY_START_HOUR) * SLOT_HEIGHT;
-const HOURS: string[] = Array.from(
-  { length: DAY_END_HOUR - DAY_START_HOUR + 1 },
-  (_, i) => `${String(DAY_START_HOUR + i).padStart(2, "0")}:00`,
-);
+// Fallbacks used when there are no activities to derive a range from.
+const DEFAULT_START_HOUR = 8;
+const DEFAULT_END_HOUR = 22;
+const SLOT_HEIGHT = 50; // px per hour
 const DAY_LABELS_ES = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
 
 /**
@@ -417,11 +413,39 @@ export function WeekCalendarView() {
     return out;
   }, [days, byDay]);
 
+  // Trim the visible hour range to what's actually used in the filtered data.
+  // Keeps the grid as compact as possible so the page rarely needs to scroll
+  // vertically. Falls back to defaults when nothing matches the filters.
+  const { startHour, endHour } = useMemo(() => {
+    if (filtered.length === 0) {
+      return { startHour: DEFAULT_START_HOUR, endHour: DEFAULT_END_HOUR };
+    }
+    let minStart = Infinity;
+    let maxEnd = -Infinity;
+    for (const a of filtered) {
+      minStart = Math.min(minStart, parseHM(a.startTime));
+      maxEnd = Math.max(maxEnd, parseHM(a.endTime));
+    }
+    return {
+      startHour: Math.max(0, Math.floor(minStart / 60)),
+      endHour: Math.min(24, Math.ceil(maxEnd / 60)),
+    };
+  }, [filtered]);
+
+  const totalHeight = (endHour - startHour) * SLOT_HEIGHT;
+  const hours = useMemo(
+    () =>
+      Array.from(
+        { length: endHour - startHour + 1 },
+        (_, i) => `${String(startHour + i).padStart(2, "0")}:00`,
+      ),
+    [startHour, endHour],
+  );
+
   const todayYMD = getTodayYMD();
   const weekIncludesToday = days.includes(todayYMD);
-  const nowTop = ((nowMinutes - DAY_START_HOUR * 60) / 60) * SLOT_HEIGHT;
-  const showNowLine =
-    weekIncludesToday && nowTop >= 0 && nowTop <= TOTAL_HEIGHT;
+  const nowTop = ((nowMinutes - startHour * 60) / 60) * SLOT_HEIGHT;
+  const showNowLine = weekIncludesToday && nowTop >= 0 && nowTop <= totalHeight;
 
   // When "Hoy" is pressed, scroll the day-columns container horizontally to
   // today's column (relevant on mobile/small screens where we snap-scroll one
@@ -566,8 +590,8 @@ export function WeekCalendarView() {
           style={{ width: RAIL_WIDTH }}
           aria-hidden="true"
         >
-          <div className="relative" style={{ height: TOTAL_HEIGHT }}>
-            {HOURS.map((h, i) => (
+          <div className="relative" style={{ height: totalHeight }}>
+            {hours.map((h, i) => (
               <div
                 key={h}
                 className="absolute right-2 -translate-y-2 text-[10px] text-slate-500 dark:text-slate-400"
@@ -599,8 +623,8 @@ export function WeekCalendarView() {
                       : ""
                   }`}
                 >
-                  <div className="relative" style={{ height: TOTAL_HEIGHT }}>
-                    {HOURS.map((_, i) => (
+                  <div className="relative" style={{ height: totalHeight }}>
+                    {hours.map((_, i) => (
                       <div
                         key={i}
                         className="absolute left-0 right-0 border-t border-slate-100 dark:border-slate-800"
@@ -628,7 +652,7 @@ export function WeekCalendarView() {
                         const { activity, col, totalCols } = item.data;
                         const startMin = parseHM(activity.startTime);
                         const top =
-                          ((startMin - DAY_START_HOUR * 60) / 60) * SLOT_HEIGHT;
+                          ((startMin - startHour * 60) / 60) * SLOT_HEIGHT;
                         const height =
                           (activity.duration / 60) * SLOT_HEIGHT - 2;
                         const widthPct = 100 / totalCols;
@@ -650,8 +674,7 @@ export function WeekCalendarView() {
 
                       // Overflow chip
                       const top =
-                        ((item.startMin - DAY_START_HOUR * 60) / 60) *
-                        SLOT_HEIGHT;
+                        ((item.startMin - startHour * 60) / 60) * SLOT_HEIGHT;
                       const height =
                         ((item.endMin - item.startMin) / 60) * SLOT_HEIGHT - 2;
                       const widthPct = 100 / item.totalCols;
