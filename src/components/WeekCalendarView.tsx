@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type { Activity } from "@/types/activity";
 import { useAppState } from "@/context/AppState";
@@ -12,7 +12,12 @@ import { ActivityBlock } from "./ActivityBlock";
 // Fallbacks used when there are no activities to derive a range from.
 const DEFAULT_START_HOUR = 8;
 const DEFAULT_END_HOUR = 22;
-const SLOT_HEIGHT = 50; // px per hour
+// Slot height adapts to the available body height between MIN and MAX so the
+// grid fits without scrolling whenever the viewport allows it. When the body
+// is shorter than (hourCount * MIN_SLOT_HEIGHT) the grid scrolls vertically.
+const MIN_SLOT_HEIGHT = 40;
+const MAX_SLOT_HEIGHT = 60;
+const INITIAL_SLOT_HEIGHT = 50; // used until the body has been measured
 const DAY_LABELS_ES = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
 
 /**
@@ -385,6 +390,24 @@ export function WeekCalendarView() {
   const todayColumnRef = useRef<HTMLDivElement>(null);
   const todayHeaderRef = useRef<HTMLButtonElement>(null);
   const nowMarkerRef = useRef<HTMLDivElement>(null);
+  // Measured client height of the vertical scroll body. Drives the dynamic
+  // slot height below so the grid fits the viewport without scrolling
+  // whenever there's room. Callback ref + ResizeObserver: the body only
+  // renders after the loading/error/empty guards, so a useEffect running on
+  // mount would catch a null ref the first time around.
+  const [bodyHeight, setBodyHeight] = useState(0);
+  const observerRef = useRef<ResizeObserver | null>(null);
+  const bodyRef = useCallback((el: HTMLDivElement | null) => {
+    observerRef.current?.disconnect();
+    if (!el) {
+      observerRef.current = null;
+      return;
+    }
+    setBodyHeight(el.clientHeight);
+    const ro = new ResizeObserver(() => setBodyHeight(el.clientHeight));
+    ro.observe(el);
+    observerRef.current = ro;
+  }, []);
 
   const filtered = useMemo(
     () => filterActivities(activities, filters),
@@ -432,7 +455,15 @@ export function WeekCalendarView() {
     };
   }, [filtered]);
 
-  const totalHeight = (endHour - startHour) * SLOT_HEIGHT;
+  const hourCount = endHour - startHour;
+  // Stretch slot height to fit the body when possible; clamp between MIN/MAX
+  // so a tiny viewport still scrolls and a huge one doesn't make pills absurd.
+  const slotHeight = useMemo(() => {
+    if (bodyHeight <= 0 || hourCount <= 0) return INITIAL_SLOT_HEIGHT;
+    const ideal = Math.floor(bodyHeight / hourCount);
+    return Math.max(MIN_SLOT_HEIGHT, Math.min(MAX_SLOT_HEIGHT, ideal));
+  }, [bodyHeight, hourCount]);
+  const totalHeight = hourCount * slotHeight;
   const hours = useMemo(
     () =>
       Array.from(
@@ -444,7 +475,7 @@ export function WeekCalendarView() {
 
   const todayYMD = getTodayYMD();
   const weekIncludesToday = days.includes(todayYMD);
-  const nowTop = ((nowMinutes - startHour * 60) / 60) * SLOT_HEIGHT;
+  const nowTop = ((nowMinutes - startHour * 60) / 60) * slotHeight;
   const showNowLine = weekIncludesToday && nowTop >= 0 && nowTop <= totalHeight;
 
   // When "Hoy" is pressed, scroll the day-columns container horizontally to
@@ -582,7 +613,7 @@ export function WeekCalendarView() {
           rail and day columns share this scroll container so they move
           together. The day-header strip above stays pinned without sticky
           because its parent (`<main>`) doesn't scroll. */}
-      <div className="min-h-0 flex-1 overflow-y-auto">
+      <div ref={bodyRef} className="min-h-0 flex-1 overflow-y-auto">
         <div className="flex">
           {/* Hour rail — sibling of (not inside) the horizontal scroll
               container, so it never scrolls horizontally. */}
@@ -596,7 +627,7 @@ export function WeekCalendarView() {
                 <div
                   key={h}
                   className="absolute right-2 -translate-y-2 text-[10px] text-slate-500 dark:text-slate-400"
-                  style={{ top: i * SLOT_HEIGHT }}
+                  style={{ top: i * slotHeight }}
                 >
                   {h}
                 </div>
@@ -629,7 +660,7 @@ export function WeekCalendarView() {
                         <div
                           key={i}
                           className="absolute left-0 right-0 border-t border-slate-100 dark:border-slate-800"
-                          style={{ top: i * SLOT_HEIGHT }}
+                          style={{ top: i * slotHeight }}
                         />
                       ))}
 
@@ -649,9 +680,9 @@ export function WeekCalendarView() {
                           const { activity, col, totalCols } = item.data;
                           const startMin = parseHM(activity.startTime);
                           const top =
-                            ((startMin - startHour * 60) / 60) * SLOT_HEIGHT;
+                            ((startMin - startHour * 60) / 60) * slotHeight;
                           const height =
-                            (activity.duration / 60) * SLOT_HEIGHT - 2;
+                            (activity.duration / 60) * slotHeight - 2;
                           const widthPct = 100 / totalCols;
                           const leftPct = col * widthPct;
                           return (
@@ -671,10 +702,9 @@ export function WeekCalendarView() {
 
                         // Overflow chip
                         const top =
-                          ((item.startMin - startHour * 60) / 60) * SLOT_HEIGHT;
+                          ((item.startMin - startHour * 60) / 60) * slotHeight;
                         const height =
-                          ((item.endMin - item.startMin) / 60) * SLOT_HEIGHT -
-                          2;
+                          ((item.endMin - item.startMin) / 60) * slotHeight - 2;
                         const widthPct = 100 / item.totalCols;
                         const leftPct = item.col * widthPct;
                         const timeRange = formatTimeRange(
