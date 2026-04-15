@@ -464,6 +464,11 @@ export function WeekCalendarView() {
     return Math.max(MIN_SLOT_HEIGHT, Math.min(MAX_SLOT_HEIGHT, ideal));
   }, [bodyHeight, hourCount]);
   const totalHeight = hourCount * slotHeight;
+  // Labels for every hour boundary (start..end inclusive). Positioned so the
+  // first and last labels stay fully visible inside the grid: top-anchored
+  // for 06:00..21:00, bottom-anchored for the trailing 22:00. Hour separator
+  // lines render only up to the row before last so the bottom edge of the
+  // grid doesn't grow scrollHeight by 1px.
   const hours = useMemo(
     () =>
       Array.from(
@@ -622,19 +627,19 @@ export function WeekCalendarView() {
             style={{ width: RAIL_WIDTH }}
             aria-hidden="true"
           >
-            <div
-              className="relative overflow-hidden"
-              style={{ height: totalHeight }}
-            >
-              {hours.map((h, i) => (
-                <div
-                  key={h}
-                  className="absolute right-2 -translate-y-2 text-[10px] text-slate-500 dark:text-slate-400"
-                  style={{ top: i * slotHeight }}
-                >
-                  {h}
-                </div>
-              ))}
+            <div className="relative" style={{ height: totalHeight }}>
+              {hours.map((h, i) => {
+                const isLast = i === hours.length - 1;
+                return (
+                  <div
+                    key={h}
+                    className="absolute right-2 text-[10px] text-slate-500 dark:text-slate-400"
+                    style={isLast ? { bottom: 2 } : { top: i * slotHeight + 2 }}
+                  >
+                    {h}
+                  </div>
+                );
+              })}
             </div>
           </div>
 
@@ -665,7 +670,7 @@ export function WeekCalendarView() {
                       className="relative overflow-hidden"
                       style={{ height: totalHeight }}
                     >
-                      {hours.map((_, i) => (
+                      {hours.slice(0, -1).map((_, i) => (
                         <div
                           key={i}
                           className="absolute left-0 right-0 border-t border-slate-100 dark:border-slate-800"
