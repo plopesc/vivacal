@@ -2,7 +2,7 @@
   "weekStart": "2026-04-20",
   "activities": [
     {
-      "id": "34b454da5120",
+      "id": "bdfd1eb52d5f",
       "name": "PEAK CYCLE",
       "category": "cardiovasculares",
       "date": "2026-04-20",
@@ -10,7 +10,7 @@
       "startTime": "06:35",
       "endTime": "07:20",
       "duration": 45,
-      "instructor": "CICLO",
+      "instructor": "MARTA",
       "room": "CICLO",
       "capacity": {
         "current": 0,
@@ -19,7 +19,7 @@
       "difficulty": 1
     },
     {
-      "id": "4222a87a4430",
+      "id": "92be18dbb489",
       "name": "BODY PUMP",
       "category": "cardiovasculares",
       "date": "2026-04-20",
@@ -27,7 +27,7 @@
       "startTime": "07:30",
       "endTime": "08:20",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "MARTA",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -53,7 +53,7 @@
       "difficulty": 1
     },
     {
-      "id": "3dd1902806ca",
+      "id": "c933d22c6e65",
       "name": "BODY BALANCE",
       "category": "cuerpo-y-mente",
       "date": "2026-04-20",
@@ -61,7 +61,7 @@
       "startTime": "08:30",
       "endTime": "09:20",
       "duration": 50,
-      "instructor": "SALA 1",
+      "instructor": "MARTA",
       "room": "SALA 1",
       "capacity": {
         "current": 0,
@@ -87,7 +87,7 @@
       "difficulty": 1
     },
     {
-      "id": "dde0e9a40c46",
+      "id": "5113c6ea3a65",
       "name": "PEAK CYCLE",
       "category": "cardiovasculares",
       "date": "2026-04-20",
@@ -95,7 +95,7 @@
       "startTime": "09:30",
       "endTime": "10:15",
       "duration": 45,
-      "instructor": "CICLO",
+      "instructor": "DIEGO",
       "room": "CICLO",
       "capacity": {
         "current": 0,
@@ -104,7 +104,7 @@
       "difficulty": 1
     },
     {
-      "id": "1f9aea1b0617",
+      "id": "8a09e844579f",
       "name": "VITAL MOVE",
       "category": "cuerpo-y-mente",
       "date": "2026-04-20",
@@ -112,7 +112,7 @@
       "startTime": "09:30",
       "endTime": "10:20",
       "duration": 50,
-      "instructor": "SALA 1",
+      "instructor": "LUIS",
       "room": "SALA 1",
       "capacity": {
         "current": 0,
@@ -121,7 +121,7 @@
       "difficulty": 1
     },
     {
-      "id": "1f7c232f9d52",
+      "id": "d474278edfef",
       "name": "BODY PUMP",
       "category": "cardiovasculares",
       "date": "2026-04-20",
@@ -129,7 +129,7 @@
       "startTime": "09:30",
       "endTime": "10:20",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "MANUELA",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -155,7 +155,7 @@
       "difficulty": 2
     },
     {
-      "id": "f63fb3251f85",
+      "id": "85dd0029a911",
       "name": "BARRE",
       "category": "cuerpo-y-mente",
       "date": "2026-04-20",
@@ -163,7 +163,7 @@
       "startTime": "10:30",
       "endTime": "11:15",
       "duration": 45,
-      "instructor": "SALA 2",
+      "instructor": "MANUELA",
       "room": "SALA 2",
       "capacity": {
         "current": 0,
@@ -172,7 +172,7 @@
       "difficulty": 2
     },
     {
-      "id": "bf76c98e9715",
+      "id": "163059e450de",
       "name": "HYROX",
       "category": "cardiovasculares",
       "date": "2026-04-20",
@@ -180,16 +180,16 @@
       "startTime": "10:30",
       "endTime": "11:20",
       "duration": 50,
-      "instructor": "TERRAZA",
+      "instructor": "DIEGO",
       "room": "TERRAZA",
       "capacity": {
         "current": 0,
-        "max": 20
+        "max": 24
       },
       "difficulty": 2
     },
     {
-      "id": "ef915285e993",
+      "id": "d027e05a29f7",
       "name": "PILATES",
       "category": "cuerpo-y-mente",
       "date": "2026-04-20",
@@ -197,7 +197,7 @@
       "startTime": "10:30",
       "endTime": "11:20",
       "duration": 50,
-      "instructor": "SALA 1",
+      "instructor": "LUIS",
       "room": "SALA 1",
       "capacity": {
         "current": 0,
@@ -223,7 +223,7 @@
       "difficulty": 0
     },
     {
-      "id": "8c9c8e7401ac",
+      "id": "f6ebc1375891",
       "name": "YOGA",
       "category": "cuerpo-y-mente",
       "date": "2026-04-20",
@@ -231,7 +231,7 @@
       "startTime": "11:30",
       "endTime": "12:20",
       "duration": 50,
-      "instructor": "SALA 1",
+      "instructor": "MANUELA",
       "room": "SALA 1",
       "capacity": {
         "current": 0,
@@ -257,7 +257,7 @@
       "difficulty": 1
     },
     {
-      "id": "0aa703b03a42",
+      "id": "e040f00dd362",
       "name": "FUNCTIONAL",
       "category": "tonificacion",
       "date": "2026-04-20",
@@ -266,7 +266,7 @@
       "endTime": "13:00",
       "duration": 30,
       "instructor": "FUNCTIONAL",
-      "room": "SALA FITNESS",
+      "room": "TERRAZA",
       "capacity": {
         "current": 0,
         "max": 20
@@ -274,32 +274,15 @@
       "difficulty": 1
     },
     {
-      "id": "73911857c960",
-      "name": "HYROX",
-      "category": "cardiovasculares",
-      "date": "2026-04-20",
-      "dayOfWeek": "lunes",
-      "startTime": "13:30",
-      "endTime": "14:20",
-      "duration": 50,
-      "instructor": "TERRAZA",
-      "room": "TERRAZA",
-      "capacity": {
-        "current": 0,
-        "max": 20
-      },
-      "difficulty": 2
-    },
-    {
-      "id": "56b49dbf530d",
+      "id": "783cd362da4a",
       "name": "PEAK CYCLE",
       "category": "cardiovasculares",
       "date": "2026-04-20",
       "dayOfWeek": "lunes",
-      "startTime": "14:30",
-      "endTime": "15:15",
+      "startTime": "13:30",
+      "endTime": "14:15",
       "duration": 45,
-      "instructor": "CICLO",
+      "instructor": "PAULA",
       "room": "CICLO",
       "capacity": {
         "current": 0,
@@ -325,7 +308,24 @@
       "difficulty": 2
     },
     {
-      "id": "39ff31f11432",
+      "id": "096e06b1b293",
+      "name": "HYROX",
+      "category": "cardiovasculares",
+      "date": "2026-04-20",
+      "dayOfWeek": "lunes",
+      "startTime": "14:30",
+      "endTime": "15:20",
+      "duration": 50,
+      "instructor": "JONATHAN",
+      "room": "TERRAZA",
+      "capacity": {
+        "current": 0,
+        "max": 24
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "60f302b362c3",
       "name": "BODY PUMP",
       "category": "cardiovasculares",
       "date": "2026-04-20",
@@ -333,7 +333,7 @@
       "startTime": "16:00",
       "endTime": "16:50",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "LUCÍA",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -342,7 +342,7 @@
       "difficulty": 1
     },
     {
-      "id": "4151a54b8482",
+      "id": "9dbebfa5b293",
       "name": "BARRE",
       "category": "cuerpo-y-mente",
       "date": "2026-04-20",
@@ -350,7 +350,7 @@
       "startTime": "17:00",
       "endTime": "17:45",
       "duration": 45,
-      "instructor": "SALA 2",
+      "instructor": "PAULA",
       "room": "SALA 2",
       "capacity": {
         "current": 0,
@@ -359,7 +359,7 @@
       "difficulty": 2
     },
     {
-      "id": "9f25c3f59090",
+      "id": "8ab8d1036806",
       "name": "FUERZA",
       "category": "tonificacion",
       "date": "2026-04-20",
@@ -367,16 +367,16 @@
       "startTime": "17:00",
       "endTime": "17:50",
       "duration": 50,
-      "instructor": "TERRAZA",
+      "instructor": "EDUARDO",
       "room": "TERRAZA",
       "capacity": {
         "current": 0,
-        "max": 20
+        "max": 24
       },
       "difficulty": 0
     },
     {
-      "id": "1c688af58137",
+      "id": "d24e6c9b9358",
       "name": "YOGA",
       "category": "cuerpo-y-mente",
       "date": "2026-04-20",
@@ -384,7 +384,7 @@
       "startTime": "17:00",
       "endTime": "17:50",
       "duration": 50,
-      "instructor": "SALA 1",
+      "instructor": "GALA",
       "room": "SALA 1",
       "capacity": {
         "current": 0,
@@ -410,7 +410,7 @@
       "difficulty": 2
     },
     {
-      "id": "80a4fc556339",
+      "id": "81f47c12a1da",
       "name": "BODY PUMP",
       "category": "cardiovasculares",
       "date": "2026-04-20",
@@ -418,7 +418,7 @@
       "startTime": "17:30",
       "endTime": "18:20",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "JONATHAN",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -427,7 +427,7 @@
       "difficulty": 1
     },
     {
-      "id": "89811c3b317e",
+      "id": "690b47405bef",
       "name": "PILATES IMPLEMENTOS",
       "category": "cuerpo-y-mente",
       "date": "2026-04-20",
@@ -435,7 +435,7 @@
       "startTime": "18:00",
       "endTime": "18:50",
       "duration": 50,
-      "instructor": "SALA 1",
+      "instructor": "PAULA",
       "room": "SALA 1",
       "capacity": {
         "current": 0,
@@ -444,7 +444,7 @@
       "difficulty": 2
     },
     {
-      "id": "ecdee5610b53",
+      "id": "c433bda3d7ff",
       "name": "BODY COMBAT",
       "category": "cardiovasculares",
       "date": "2026-04-20",
@@ -452,7 +452,7 @@
       "startTime": "18:00",
       "endTime": "18:50",
       "duration": 50,
-      "instructor": "SALA 2",
+      "instructor": "MARCOS",
       "room": "SALA 2",
       "capacity": {
         "current": 0,
@@ -461,7 +461,7 @@
       "difficulty": 2
     },
     {
-      "id": "b1920b2690ae",
+      "id": "ecf06df3d816",
       "name": "PEAK CYCLE",
       "category": "cardiovasculares",
       "date": "2026-04-20",
@@ -469,7 +469,7 @@
       "startTime": "18:30",
       "endTime": "19:15",
       "duration": 45,
-      "instructor": "CICLO",
+      "instructor": "JONATHAN",
       "room": "CICLO",
       "capacity": {
         "current": 0,
@@ -478,7 +478,7 @@
       "difficulty": 1
     },
     {
-      "id": "39a4f6b3d7e3",
+      "id": "3739ae902862",
       "name": "TRAINING GLÚTEO",
       "category": "tonificacion",
       "date": "2026-04-20",
@@ -486,7 +486,7 @@
       "startTime": "18:30",
       "endTime": "19:20",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "LUCÍA",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -495,7 +495,7 @@
       "difficulty": 1
     },
     {
-      "id": "cd07842f362c",
+      "id": "f152f72c4a03",
       "name": "ZUMBA",
       "category": "coreograficas",
       "date": "2026-04-20",
@@ -503,7 +503,7 @@
       "startTime": "19:00",
       "endTime": "19:50",
       "duration": 50,
-      "instructor": "SALA 2",
+      "instructor": "GALA",
       "room": "SALA 2",
       "capacity": {
         "current": 0,
@@ -512,7 +512,7 @@
       "difficulty": 1
     },
     {
-      "id": "2ff583bc9bb1",
+      "id": "52bc07d05b3f",
       "name": "BODY BALANCE",
       "category": "cuerpo-y-mente",
       "date": "2026-04-20",
@@ -520,7 +520,7 @@
       "startTime": "19:00",
       "endTime": "19:50",
       "duration": 50,
-      "instructor": "SALA 1",
+      "instructor": "PAULA",
       "room": "SALA 1",
       "capacity": {
         "current": 0,
@@ -546,7 +546,7 @@
       "difficulty": 0
     },
     {
-      "id": "b24505697151",
+      "id": "081ce621867e",
       "name": "PEAK CYCLE",
       "category": "cardiovasculares",
       "date": "2026-04-20",
@@ -554,7 +554,7 @@
       "startTime": "19:30",
       "endTime": "20:15",
       "duration": 45,
-      "instructor": "CICLO",
+      "instructor": "LUCÍA",
       "room": "CICLO",
       "capacity": {
         "current": 0,
@@ -580,7 +580,7 @@
       "difficulty": 1
     },
     {
-      "id": "cbc2b42d7f83",
+      "id": "0a7d319e0f3a",
       "name": "BODY PUMP",
       "category": "cardiovasculares",
       "date": "2026-04-20",
@@ -588,7 +588,7 @@
       "startTime": "19:30",
       "endTime": "20:20",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "MARCOS",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -597,7 +597,7 @@
       "difficulty": 1
     },
     {
-      "id": "85a0e1701671",
+      "id": "74bf043e6636",
       "name": "HYROX",
       "category": "cardiovasculares",
       "date": "2026-04-20",
@@ -605,16 +605,16 @@
       "startTime": "19:45",
       "endTime": "20:35",
       "duration": 50,
-      "instructor": "TERRAZA",
+      "instructor": "ANTONIO",
       "room": "TERRAZA",
       "capacity": {
         "current": 0,
-        "max": 20
+        "max": 24
       },
       "difficulty": 2
     },
     {
-      "id": "78688c3a95c0",
+      "id": "79eef2bb0435",
       "name": "YOGA",
       "category": "cuerpo-y-mente",
       "date": "2026-04-20",
@@ -622,7 +622,7 @@
       "startTime": "20:00",
       "endTime": "20:50",
       "duration": 50,
-      "instructor": "SALA 1",
+      "instructor": "GALA",
       "room": "SALA 1",
       "capacity": {
         "current": 0,
@@ -631,7 +631,7 @@
       "difficulty": 1
     },
     {
-      "id": "02257423ad41",
+      "id": "750ef552a954",
       "name": "PEAK CYCLE",
       "category": "cardiovasculares",
       "date": "2026-04-20",
@@ -639,7 +639,7 @@
       "startTime": "20:30",
       "endTime": "21:15",
       "duration": 45,
-      "instructor": "CICLO",
+      "instructor": "MARCOS",
       "room": "CICLO",
       "capacity": {
         "current": 0,
@@ -682,7 +682,7 @@
       "difficulty": 2
     },
     {
-      "id": "0f53d98fa30d",
+      "id": "e406cf199e59",
       "name": "BODY PUMP",
       "category": "cardiovasculares",
       "date": "2026-04-20",
@@ -690,7 +690,7 @@
       "startTime": "20:30",
       "endTime": "21:20",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "EDUARDO",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -699,7 +699,7 @@
       "difficulty": 1
     },
     {
-      "id": "34799111b8b5",
+      "id": "b31c42d2577f",
       "name": "BODY PUMP",
       "category": "cardiovasculares",
       "date": "2026-04-21",
@@ -707,7 +707,7 @@
       "startTime": "07:00",
       "endTime": "07:50",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "LUIS",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -716,7 +716,7 @@
       "difficulty": 1
     },
     {
-      "id": "a6f0bb6cad40",
+      "id": "8e142c154e48",
       "name": "PILATES",
       "category": "cuerpo-y-mente",
       "date": "2026-04-21",
@@ -724,7 +724,7 @@
       "startTime": "08:00",
       "endTime": "08:50",
       "duration": 50,
-      "instructor": "SALA 1",
+      "instructor": "LUIS",
       "room": "SALA 1",
       "capacity": {
         "current": 0,
@@ -750,7 +750,24 @@
       "difficulty": 1
     },
     {
-      "id": "c7049a698dce",
+      "id": "eb50518d1053",
+      "name": "YOGA",
+      "category": "cuerpo-y-mente",
+      "date": "2026-04-21",
+      "dayOfWeek": "martes",
+      "startTime": "09:30",
+      "endTime": "10:20",
+      "duration": 50,
+      "instructor": "GALA",
+      "room": "SALA 1",
+      "capacity": {
+        "current": 0,
+        "max": 40
+      },
+      "difficulty": 1
+    },
+    {
+      "id": "400ec7ec58ea",
       "name": "ZUMBA",
       "category": "coreograficas",
       "date": "2026-04-21",
@@ -758,7 +775,7 @@
       "startTime": "09:30",
       "endTime": "10:20",
       "duration": 50,
-      "instructor": "SALA 2",
+      "instructor": "PAULA",
       "room": "SALA 2",
       "capacity": {
         "current": 0,
@@ -767,7 +784,7 @@
       "difficulty": 1
     },
     {
-      "id": "9aa08db5616a",
+      "id": "aed12ea5490f",
       "name": "BODY COMBAT",
       "category": "cardiovasculares",
       "date": "2026-04-21",
@@ -775,7 +792,7 @@
       "startTime": "09:30",
       "endTime": "10:20",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "JONATHAN",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -801,7 +818,7 @@
       "difficulty": 1
     },
     {
-      "id": "7392e8bf2218",
+      "id": "88c38b56b95b",
       "name": "PEAK CYCLE",
       "category": "cardiovasculares",
       "date": "2026-04-21",
@@ -809,7 +826,7 @@
       "startTime": "10:30",
       "endTime": "11:20",
       "duration": 50,
-      "instructor": "CICLO",
+      "instructor": "GALA",
       "room": "CICLO",
       "capacity": {
         "current": 0,
@@ -818,7 +835,7 @@
       "difficulty": 1
     },
     {
-      "id": "eee8cfc1afd5",
+      "id": "43c3616186f6",
       "name": "BARRE",
       "category": "cuerpo-y-mente",
       "date": "2026-04-21",
@@ -826,7 +843,7 @@
       "startTime": "10:30",
       "endTime": "11:20",
       "duration": 50,
-      "instructor": "SALA 2",
+      "instructor": "PAULA",
       "room": "SALA 2",
       "capacity": {
         "current": 0,
@@ -835,7 +852,7 @@
       "difficulty": 2
     },
     {
-      "id": "d8a6378e7219",
+      "id": "b396ea5a965b",
       "name": "VITAL POWER",
       "category": "tonificacion",
       "date": "2026-04-21",
@@ -843,7 +860,7 @@
       "startTime": "10:30",
       "endTime": "11:20",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "LUIS",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -886,7 +903,7 @@
       "difficulty": 1
     },
     {
-      "id": "6c26113bec92",
+      "id": "6ce59aa9f19e",
       "name": "TRAINING GLÚTEO",
       "category": "tonificacion",
       "date": "2026-04-21",
@@ -894,7 +911,7 @@
       "startTime": "11:30",
       "endTime": "12:20",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "JONATHAN",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -903,7 +920,7 @@
       "difficulty": 1
     },
     {
-      "id": "a0edad97a1f0",
+      "id": "c2a85e15d063",
       "name": "PILATES IMPLEMENTOS",
       "category": "cuerpo-y-mente",
       "date": "2026-04-21",
@@ -911,7 +928,7 @@
       "startTime": "11:30",
       "endTime": "12:20",
       "duration": 50,
-      "instructor": "SALA 1",
+      "instructor": "PAULA",
       "room": "SALA 1",
       "capacity": {
         "current": 0,
@@ -920,7 +937,7 @@
       "difficulty": 2
     },
     {
-      "id": "d4fdb26f8034",
+      "id": "0eadc595217c",
       "name": "ACTIVATE",
       "category": "tonificacion",
       "date": "2026-04-21",
@@ -928,8 +945,8 @@
       "startTime": "12:00",
       "endTime": "12:30",
       "duration": 30,
-      "instructor": "FUNCTIONAL",
-      "room": "SALA FITNESS",
+      "instructor": "TERRAZA",
+      "room": "TERRAZA",
       "capacity": {
         "current": 0,
         "max": 20
@@ -954,7 +971,7 @@
       "difficulty": 0
     },
     {
-      "id": "84404fc63447",
+      "id": "1993f7520545",
       "name": "HYROX",
       "category": "cardiovasculares",
       "date": "2026-04-21",
@@ -962,11 +979,11 @@
       "startTime": "13:30",
       "endTime": "14:20",
       "duration": 50,
-      "instructor": "TERRAZA",
+      "instructor": "GALA",
       "room": "TERRAZA",
       "capacity": {
         "current": 0,
-        "max": 20
+        "max": 24
       },
       "difficulty": 2
     },
@@ -988,7 +1005,7 @@
       "difficulty": 1
     },
     {
-      "id": "060a6dd2ba50",
+      "id": "ceca7c032e28",
       "name": "BODY PUMP",
       "category": "cardiovasculares",
       "date": "2026-04-21",
@@ -996,7 +1013,7 @@
       "startTime": "14:30",
       "endTime": "15:20",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "JONATHAN",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -1022,7 +1039,7 @@
       "difficulty": 0
     },
     {
-      "id": "2f5c64d60bb5",
+      "id": "ec466becf873",
       "name": "BODY COMBAT",
       "category": "cardiovasculares",
       "date": "2026-04-21",
@@ -1030,7 +1047,7 @@
       "startTime": "16:30",
       "endTime": "17:20",
       "duration": 50,
-      "instructor": "SALA 2",
+      "instructor": "LUCÍA",
       "room": "SALA 2",
       "capacity": {
         "current": 0,
@@ -1039,7 +1056,7 @@
       "difficulty": 2
     },
     {
-      "id": "b4aa37c800f1",
+      "id": "a3fa2f477d46",
       "name": "BODY PUMP",
       "category": "cardiovasculares",
       "date": "2026-04-21",
@@ -1047,7 +1064,7 @@
       "startTime": "17:00",
       "endTime": "17:50",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "MARTA",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -1056,7 +1073,7 @@
       "difficulty": 1
     },
     {
-      "id": "8581f6bcdbe0",
+      "id": "0a0646847740",
       "name": "CROSSVIDING",
       "category": "cardiovasculares",
       "date": "2026-04-21",
@@ -1064,16 +1081,16 @@
       "startTime": "17:00",
       "endTime": "17:50",
       "duration": 50,
-      "instructor": "TERRAZA",
+      "instructor": "DIEGO",
       "room": "TERRAZA",
       "capacity": {
         "current": 0,
-        "max": 20
+        "max": 24
       },
       "difficulty": 3
     },
     {
-      "id": "be417e27d6eb",
+      "id": "21a3f3addc33",
       "name": "BARRE",
       "category": "cuerpo-y-mente",
       "date": "2026-04-21",
@@ -1081,7 +1098,7 @@
       "startTime": "17:30",
       "endTime": "18:15",
       "duration": 45,
-      "instructor": "SALA 2",
+      "instructor": "MANUELA",
       "room": "SALA 2",
       "capacity": {
         "current": 0,
@@ -1090,7 +1107,7 @@
       "difficulty": 2
     },
     {
-      "id": "d7ace63873b2",
+      "id": "957bde03f1c5",
       "name": "PILATES",
       "category": "cuerpo-y-mente",
       "date": "2026-04-21",
@@ -1098,7 +1115,7 @@
       "startTime": "17:30",
       "endTime": "18:20",
       "duration": 50,
-      "instructor": "SALA 1",
+      "instructor": "LYDIA",
       "room": "SALA 1",
       "capacity": {
         "current": 0,
@@ -1124,7 +1141,7 @@
       "difficulty": 1
     },
     {
-      "id": "91d8399fead5",
+      "id": "52da9baa064e",
       "name": "PEAK CYCLE",
       "category": "cardiovasculares",
       "date": "2026-04-21",
@@ -1132,7 +1149,7 @@
       "startTime": "18:00",
       "endTime": "18:45",
       "duration": 45,
-      "instructor": "CICLO",
+      "instructor": "DIEGO",
       "room": "CICLO",
       "capacity": {
         "current": 0,
@@ -1141,7 +1158,7 @@
       "difficulty": 1
     },
     {
-      "id": "cc766db52f47",
+      "id": "ddf12e98c969",
       "name": "TRAINING GLÚTEO",
       "category": "tonificacion",
       "date": "2026-04-21",
@@ -1149,7 +1166,7 @@
       "startTime": "18:00",
       "endTime": "18:50",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "LUCÍA",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -1158,7 +1175,7 @@
       "difficulty": 1
     },
     {
-      "id": "562ea05d4066",
+      "id": "129337785bde",
       "name": "FUERZA",
       "category": "tonificacion",
       "date": "2026-04-21",
@@ -1166,16 +1183,16 @@
       "startTime": "18:00",
       "endTime": "18:50",
       "duration": 50,
-      "instructor": "TERRAZA",
+      "instructor": "MARCOS",
       "room": "TERRAZA",
       "capacity": {
         "current": 0,
-        "max": 20
+        "max": 24
       },
       "difficulty": 0
     },
     {
-      "id": "6056578f79ac",
+      "id": "92e6f58b9b5b",
       "name": "YOGA",
       "category": "cuerpo-y-mente",
       "date": "2026-04-21",
@@ -1183,7 +1200,7 @@
       "startTime": "18:30",
       "endTime": "19:20",
       "duration": 50,
-      "instructor": "SALA 1",
+      "instructor": "EDUARDO",
       "room": "SALA 1",
       "capacity": {
         "current": 0,
@@ -1192,7 +1209,7 @@
       "difficulty": 1
     },
     {
-      "id": "e4ae295cf82c",
+      "id": "1f939ef8f9e4",
       "name": "BODY COMBAT",
       "category": "cardiovasculares",
       "date": "2026-04-21",
@@ -1200,7 +1217,7 @@
       "startTime": "18:30",
       "endTime": "19:20",
       "duration": 50,
-      "instructor": "SALA 2",
+      "instructor": "MARTA",
       "room": "SALA 2",
       "capacity": {
         "current": 0,
@@ -1226,7 +1243,7 @@
       "difficulty": 0
     },
     {
-      "id": "ba1df64a5639",
+      "id": "e9d4be20204a",
       "name": "PEAK CYCLE",
       "category": "cardiovasculares",
       "date": "2026-04-21",
@@ -1234,7 +1251,7 @@
       "startTime": "19:00",
       "endTime": "19:45",
       "duration": 45,
-      "instructor": "CICLO",
+      "instructor": "LUCÍA",
       "room": "CICLO",
       "capacity": {
         "current": 0,
@@ -1243,7 +1260,7 @@
       "difficulty": 1
     },
     {
-      "id": "018fa3f99130",
+      "id": "726a3c49f1c3",
       "name": "BODY PUMP",
       "category": "cardiovasculares",
       "date": "2026-04-21",
@@ -1251,7 +1268,7 @@
       "startTime": "19:00",
       "endTime": "19:50",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "MARCOS",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -1260,7 +1277,7 @@
       "difficulty": 1
     },
     {
-      "id": "9dc1cf6faa52",
+      "id": "5974b287c776",
       "name": "FUNCTIONAL",
       "category": "tonificacion",
       "date": "2026-04-21",
@@ -1269,7 +1286,7 @@
       "endTime": "19:45",
       "duration": 30,
       "instructor": "FUNCTIONAL",
-      "room": "SALA FITNESS",
+      "room": "TERRAZA",
       "capacity": {
         "current": 0,
         "max": 20
@@ -1294,7 +1311,7 @@
       "difficulty": 2
     },
     {
-      "id": "ab9077f56766",
+      "id": "79989db12374",
       "name": "BAILES LATINOS",
       "category": "coreograficas",
       "date": "2026-04-21",
@@ -1302,7 +1319,7 @@
       "startTime": "19:30",
       "endTime": "20:15",
       "duration": 45,
-      "instructor": "SALA 2",
+      "instructor": "LYDIA",
       "room": "SALA 2",
       "capacity": {
         "current": 0,
@@ -1311,7 +1328,7 @@
       "difficulty": 1
     },
     {
-      "id": "52fe6e811627",
+      "id": "da98d8f98692",
       "name": "BODY BALANCE",
       "category": "cuerpo-y-mente",
       "date": "2026-04-21",
@@ -1319,7 +1336,7 @@
       "startTime": "19:30",
       "endTime": "20:20",
       "duration": 50,
-      "instructor": "SALA 1",
+      "instructor": "EDUARDO",
       "room": "SALA 1",
       "capacity": {
         "current": 0,
@@ -1328,7 +1345,7 @@
       "difficulty": 2
     },
     {
-      "id": "53f222cf8cf8",
+      "id": "98358e33c6e1",
       "name": "PEAK CYCLE",
       "category": "cardiovasculares",
       "date": "2026-04-21",
@@ -1336,7 +1353,7 @@
       "startTime": "20:00",
       "endTime": "20:45",
       "duration": 45,
-      "instructor": "CICLO",
+      "instructor": "MARCOS",
       "room": "CICLO",
       "capacity": {
         "current": 0,
@@ -1345,7 +1362,7 @@
       "difficulty": 1
     },
     {
-      "id": "c4b364e6ca59",
+      "id": "5d95e9b2f589",
       "name": "HYROX",
       "category": "cardiovasculares",
       "date": "2026-04-21",
@@ -1353,16 +1370,16 @@
       "startTime": "20:00",
       "endTime": "20:50",
       "duration": 50,
-      "instructor": "TERRAZA",
+      "instructor": "DIEGO",
       "room": "TERRAZA",
       "capacity": {
         "current": 0,
-        "max": 20
+        "max": 24
       },
       "difficulty": 2
     },
     {
-      "id": "7e02878884e3",
+      "id": "2560abfca283",
       "name": "BODY PUMP",
       "category": "cardiovasculares",
       "date": "2026-04-21",
@@ -1370,7 +1387,7 @@
       "startTime": "20:00",
       "endTime": "20:50",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "MARTA",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -1396,7 +1413,7 @@
       "difficulty": 1
     },
     {
-      "id": "b1b7deacde04",
+      "id": "3c6960f3bd0a",
       "name": "ZUMBA",
       "category": "coreograficas",
       "date": "2026-04-21",
@@ -1404,7 +1421,7 @@
       "startTime": "20:30",
       "endTime": "21:20",
       "duration": 50,
-      "instructor": "SALA 2",
+      "instructor": "LYDIA",
       "room": "SALA 2",
       "capacity": {
         "current": 0,
@@ -1413,7 +1430,7 @@
       "difficulty": 1
     },
     {
-      "id": "a157b76a6a0b",
+      "id": "bc6dfd077f49",
       "name": "PILATES IMPLEMENTOS",
       "category": "cuerpo-y-mente",
       "date": "2026-04-21",
@@ -1421,7 +1438,7 @@
       "startTime": "20:30",
       "endTime": "21:20",
       "duration": 50,
-      "instructor": "SALA 1",
+      "instructor": "EDUARDO",
       "room": "SALA 1",
       "capacity": {
         "current": 0,
@@ -1447,7 +1464,7 @@
       "difficulty": 0
     },
     {
-      "id": "cf6a446351f0",
+      "id": "8936c529bf84",
       "name": "BODY PUMP",
       "category": "cardiovasculares",
       "date": "2026-04-22",
@@ -1455,7 +1472,7 @@
       "startTime": "06:35",
       "endTime": "07:25",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "GALA",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -1464,7 +1481,7 @@
       "difficulty": 1
     },
     {
-      "id": "3b088dfd419c",
+      "id": "7b59b2150aee",
       "name": "PEAK CYCLE",
       "category": "cardiovasculares",
       "date": "2026-04-22",
@@ -1472,7 +1489,7 @@
       "startTime": "07:30",
       "endTime": "08:15",
       "duration": 45,
-      "instructor": "CICLO",
+      "instructor": "LUIS",
       "room": "CICLO",
       "capacity": {
         "current": 0,
@@ -1498,7 +1515,7 @@
       "difficulty": 1
     },
     {
-      "id": "ebbe474c0663",
+      "id": "1b438ce2f911",
       "name": "HYROX",
       "category": "cardiovasculares",
       "date": "2026-04-22",
@@ -1506,11 +1523,11 @@
       "startTime": "08:30",
       "endTime": "09:20",
       "duration": 50,
-      "instructor": "TERRAZA",
+      "instructor": "GALA",
       "room": "TERRAZA",
       "capacity": {
         "current": 0,
-        "max": 20
+        "max": 24
       },
       "difficulty": 2
     },
@@ -1532,7 +1549,7 @@
       "difficulty": 1
     },
     {
-      "id": "fc768750cd7c",
+      "id": "07df433a3c04",
       "name": "PEAK CYCLE",
       "category": "cardiovasculares",
       "date": "2026-04-22",
@@ -1540,7 +1557,7 @@
       "startTime": "09:30",
       "endTime": "10:15",
       "duration": 45,
-      "instructor": "CICLO",
+      "instructor": "LUCÍA",
       "room": "CICLO",
       "capacity": {
         "current": 0,
@@ -1549,7 +1566,7 @@
       "difficulty": 1
     },
     {
-      "id": "ad4362a66af0",
+      "id": "64faa7483c1e",
       "name": "PILATES",
       "category": "cuerpo-y-mente",
       "date": "2026-04-22",
@@ -1557,7 +1574,7 @@
       "startTime": "09:30",
       "endTime": "10:20",
       "duration": 50,
-      "instructor": "SALA 1",
+      "instructor": "MARCOS",
       "room": "SALA 1",
       "capacity": {
         "current": 0,
@@ -1566,7 +1583,7 @@
       "difficulty": 1
     },
     {
-      "id": "fcf2f39addbe",
+      "id": "a6bca0665f00",
       "name": "BODY PUMP",
       "category": "cardiovasculares",
       "date": "2026-04-22",
@@ -1574,7 +1591,7 @@
       "startTime": "09:30",
       "endTime": "10:20",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "LYDIA",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -1600,7 +1617,7 @@
       "difficulty": 2
     },
     {
-      "id": "0c01df245ac7",
+      "id": "e4002f528094",
       "name": "BODY BALANCE",
       "category": "cuerpo-y-mente",
       "date": "2026-04-22",
@@ -1608,7 +1625,7 @@
       "startTime": "10:30",
       "endTime": "11:20",
       "duration": 50,
-      "instructor": "SALA 1",
+      "instructor": "MARCOS",
       "room": "SALA 1",
       "capacity": {
         "current": 0,
@@ -1617,7 +1634,7 @@
       "difficulty": 2
     },
     {
-      "id": "fcfb8d9eb1b7",
+      "id": "06782b8ede1e",
       "name": "VITAL POWER",
       "category": "tonificacion",
       "date": "2026-04-22",
@@ -1625,7 +1642,7 @@
       "startTime": "10:30",
       "endTime": "11:20",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "LUCÍA",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -1634,7 +1651,7 @@
       "difficulty": 1
     },
     {
-      "id": "ca6955cea443",
+      "id": "c51ed14dea14",
       "name": "ABDOMINALES",
       "category": "tonificacion",
       "date": "2026-04-22",
@@ -1643,7 +1660,7 @@
       "endTime": "11:15",
       "duration": 15,
       "instructor": "FUNCTIONAL",
-      "room": "SALA FITNESS",
+      "room": "TERRAZA",
       "capacity": {
         "current": 0,
         "max": 20
@@ -1651,7 +1668,7 @@
       "difficulty": 0
     },
     {
-      "id": "37315cf0e93c",
+      "id": "fd676d93e295",
       "name": "ZUMBA",
       "category": "coreograficas",
       "date": "2026-04-22",
@@ -1659,7 +1676,7 @@
       "startTime": "11:30",
       "endTime": "12:20",
       "duration": 50,
-      "instructor": "SALA 2",
+      "instructor": "GALA",
       "room": "SALA 2",
       "capacity": {
         "current": 0,
@@ -1668,7 +1685,7 @@
       "difficulty": 1
     },
     {
-      "id": "b38a90bee705",
+      "id": "f2b95097a6af",
       "name": "VITAL MOVE",
       "category": "cuerpo-y-mente",
       "date": "2026-04-22",
@@ -1676,7 +1693,7 @@
       "startTime": "11:30",
       "endTime": "12:20",
       "duration": 50,
-      "instructor": "SALA 1",
+      "instructor": "LYDIA",
       "room": "SALA 1",
       "capacity": {
         "current": 0,
@@ -1685,7 +1702,7 @@
       "difficulty": 1
     },
     {
-      "id": "5f218fa4c0be",
+      "id": "ee589afc0f9f",
       "name": "FUERZA",
       "category": "tonificacion",
       "date": "2026-04-22",
@@ -1693,11 +1710,11 @@
       "startTime": "11:30",
       "endTime": "12:20",
       "duration": 50,
-      "instructor": "TERRAZA",
+      "instructor": "LUIS",
       "room": "TERRAZA",
       "capacity": {
         "current": 0,
-        "max": 20
+        "max": 24
       },
       "difficulty": 0
     },
@@ -1719,7 +1736,7 @@
       "difficulty": 1
     },
     {
-      "id": "31553fa6b968",
+      "id": "b869718fa883",
       "name": "CROSSVIDING",
       "category": "cardiovasculares",
       "date": "2026-04-22",
@@ -1727,16 +1744,16 @@
       "startTime": "12:30",
       "endTime": "13:20",
       "duration": 50,
-      "instructor": "TERRAZA",
+      "instructor": "MARCOS",
       "room": "TERRAZA",
       "capacity": {
         "current": 0,
-        "max": 20
+        "max": 24
       },
       "difficulty": 3
     },
     {
-      "id": "438fbe25e29e",
+      "id": "fb96697424d6",
       "name": "PEAK CYCLE",
       "category": "cardiovasculares",
       "date": "2026-04-22",
@@ -1744,7 +1761,7 @@
       "startTime": "14:30",
       "endTime": "15:15",
       "duration": 45,
-      "instructor": "CICLO",
+      "instructor": "EDUARDO",
       "room": "CICLO",
       "capacity": {
         "current": 0,
@@ -1770,7 +1787,41 @@
       "difficulty": 2
     },
     {
-      "id": "d1ecc6d09f56",
+      "id": "52d8b0361315",
+      "name": "BODY BALANCE",
+      "category": "cuerpo-y-mente",
+      "date": "2026-04-22",
+      "dayOfWeek": "miercoles",
+      "startTime": "15:30",
+      "endTime": "16:20",
+      "duration": 50,
+      "instructor": "PAULA",
+      "room": "SALA 1",
+      "capacity": {
+        "current": 0,
+        "max": 40
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "9199779545ee",
+      "name": "PILATES",
+      "category": "cuerpo-y-mente",
+      "date": "2026-04-22",
+      "dayOfWeek": "miercoles",
+      "startTime": "16:30",
+      "endTime": "17:20",
+      "duration": 50,
+      "instructor": "EDUARDO",
+      "room": "SALA 1",
+      "capacity": {
+        "current": 0,
+        "max": 40
+      },
+      "difficulty": 1
+    },
+    {
+      "id": "7c362ab952ac",
       "name": "HYROX",
       "category": "cardiovasculares",
       "date": "2026-04-22",
@@ -1778,16 +1829,16 @@
       "startTime": "16:30",
       "endTime": "17:20",
       "duration": 50,
-      "instructor": "TERRAZA",
+      "instructor": "JONATHAN",
       "room": "TERRAZA",
       "capacity": {
         "current": 0,
-        "max": 20
+        "max": 24
       },
       "difficulty": 2
     },
     {
-      "id": "11a105315332",
+      "id": "21b0e214853f",
       "name": "TRAINING GLÚTEO",
       "category": "tonificacion",
       "date": "2026-04-22",
@@ -1795,7 +1846,7 @@
       "startTime": "17:00",
       "endTime": "17:50",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "MARTA",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -1821,7 +1872,7 @@
       "difficulty": 2
     },
     {
-      "id": "9423c391eae5",
+      "id": "f7c92d7a1cc5",
       "name": "PEAK CYCLE",
       "category": "cardiovasculares",
       "date": "2026-04-22",
@@ -1829,7 +1880,7 @@
       "startTime": "17:30",
       "endTime": "18:15",
       "duration": 45,
-      "instructor": "CICLO",
+      "instructor": "JONATHAN",
       "room": "CICLO",
       "capacity": {
         "current": 0,
@@ -1838,7 +1889,7 @@
       "difficulty": 1
     },
     {
-      "id": "fbaf109a1689",
+      "id": "2ea83e4e37ba",
       "name": "YOGA",
       "category": "cuerpo-y-mente",
       "date": "2026-04-22",
@@ -1846,7 +1897,7 @@
       "startTime": "17:30",
       "endTime": "18:20",
       "duration": 50,
-      "instructor": "SALA 1",
+      "instructor": "MANUELA",
       "room": "SALA 1",
       "capacity": {
         "current": 0,
@@ -1855,7 +1906,7 @@
       "difficulty": 1
     },
     {
-      "id": "9e1273e6e257",
+      "id": "3bd0f7e4da80",
       "name": "ZUMBA",
       "category": "coreograficas",
       "date": "2026-04-22",
@@ -1863,7 +1914,7 @@
       "startTime": "17:30",
       "endTime": "18:20",
       "duration": 50,
-      "instructor": "SALA 2",
+      "instructor": "PAULA",
       "room": "SALA 2",
       "capacity": {
         "current": 0,
@@ -1872,7 +1923,7 @@
       "difficulty": 1
     },
     {
-      "id": "e79ef726a363",
+      "id": "3b0573ebff21",
       "name": "BODY PUMP",
       "category": "cardiovasculares",
       "date": "2026-04-22",
@@ -1880,7 +1931,7 @@
       "startTime": "18:00",
       "endTime": "18:50",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "EDUARDO",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -1901,12 +1952,12 @@
       "room": "TERRAZA",
       "capacity": {
         "current": 0,
-        "max": 20
+        "max": 24
       },
       "difficulty": 0
     },
     {
-      "id": "ed922f652579",
+      "id": "6c27b51ce514",
       "name": "BARRE",
       "category": "cuerpo-y-mente",
       "date": "2026-04-22",
@@ -1914,7 +1965,7 @@
       "startTime": "18:30",
       "endTime": "19:15",
       "duration": 45,
-      "instructor": "SALA 2",
+      "instructor": "MANUELA",
       "room": "SALA 2",
       "capacity": {
         "current": 0,
@@ -1923,7 +1974,7 @@
       "difficulty": 2
     },
     {
-      "id": "02be1715531c",
+      "id": "c3abb7296e9f",
       "name": "BODY BALANCE",
       "category": "cuerpo-y-mente",
       "date": "2026-04-22",
@@ -1931,7 +1982,7 @@
       "startTime": "18:30",
       "endTime": "19:20",
       "duration": 50,
-      "instructor": "SALA 1",
+      "instructor": "PAULA",
       "room": "SALA 1",
       "capacity": {
         "current": 0,
@@ -1940,7 +1991,7 @@
       "difficulty": 2
     },
     {
-      "id": "f5d4a6cd6ca1",
+      "id": "dbb4f9a83beb",
       "name": "PEAK CYCLE",
       "category": "cardiovasculares",
       "date": "2026-04-22",
@@ -1948,7 +1999,7 @@
       "startTime": "18:45",
       "endTime": "19:30",
       "duration": 45,
-      "instructor": "CICLO",
+      "instructor": "MARTA",
       "room": "CICLO",
       "capacity": {
         "current": 0,
@@ -1957,7 +2008,7 @@
       "difficulty": 1
     },
     {
-      "id": "de8bfcdcc689",
+      "id": "a9f587d83f9f",
       "name": "ABDOMINALES",
       "category": "tonificacion",
       "date": "2026-04-22",
@@ -1966,7 +2017,7 @@
       "endTime": "19:15",
       "duration": 15,
       "instructor": "FUNCTIONAL",
-      "room": "SALA FITNESS",
+      "room": "TERRAZA",
       "capacity": {
         "current": 0,
         "max": 20
@@ -1974,7 +2025,7 @@
       "difficulty": 0
     },
     {
-      "id": "dbc0671ed100",
+      "id": "e6ca93074aaf",
       "name": "BODY COMBAT",
       "category": "cardiovasculares",
       "date": "2026-04-22",
@@ -1982,7 +2033,7 @@
       "startTime": "19:00",
       "endTime": "19:50",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "JONATHAN",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -2008,7 +2059,7 @@
       "difficulty": 1
     },
     {
-      "id": "24e7d1652ad3",
+      "id": "1013d303f597",
       "name": "PILATES",
       "category": "cuerpo-y-mente",
       "date": "2026-04-22",
@@ -2016,7 +2067,7 @@
       "startTime": "19:30",
       "endTime": "20:20",
       "duration": 50,
-      "instructor": "SALA 1",
+      "instructor": "EDUARDO",
       "room": "SALA 1",
       "capacity": {
         "current": 0,
@@ -2025,7 +2076,7 @@
       "difficulty": 1
     },
     {
-      "id": "ea7a86b62730",
+      "id": "88901a9f81e6",
       "name": "ZUMBA",
       "category": "coreograficas",
       "date": "2026-04-22",
@@ -2033,7 +2084,7 @@
       "startTime": "19:30",
       "endTime": "20:20",
       "duration": 50,
-      "instructor": "SALA 2",
+      "instructor": "MANUELA",
       "room": "SALA 2",
       "capacity": {
         "current": 0,
@@ -2042,7 +2093,7 @@
       "difficulty": 1
     },
     {
-      "id": "a8ba20d4e849",
+      "id": "80b4cc00bafb",
       "name": "PEAK CYCLE",
       "category": "cardiovasculares",
       "date": "2026-04-22",
@@ -2050,7 +2101,7 @@
       "startTime": "19:45",
       "endTime": "20:30",
       "duration": 45,
-      "instructor": "CICLO",
+      "instructor": "MARTA",
       "room": "CICLO",
       "capacity": {
         "current": 0,
@@ -2059,7 +2110,7 @@
       "difficulty": 1
     },
     {
-      "id": "742c529dee8c",
+      "id": "07569dbe8e26",
       "name": "BODY PUMP",
       "category": "cardiovasculares",
       "date": "2026-04-22",
@@ -2067,7 +2118,7 @@
       "startTime": "20:00",
       "endTime": "20:50",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "JONATHAN",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -2110,7 +2161,7 @@
       "difficulty": 0
     },
     {
-      "id": "d3a2d92fec40",
+      "id": "3b16b20a2031",
       "name": "CROSSVIDING",
       "category": "cardiovasculares",
       "date": "2026-04-22",
@@ -2118,16 +2169,16 @@
       "startTime": "20:30",
       "endTime": "21:20",
       "duration": 50,
-      "instructor": "TERRAZA",
+      "instructor": "PAULA",
       "room": "TERRAZA",
       "capacity": {
         "current": 0,
-        "max": 20
+        "max": 24
       },
       "difficulty": 3
     },
     {
-      "id": "bdcc51f1c929",
+      "id": "3b0c7050b6a7",
       "name": "ABDOMINALES",
       "category": "tonificacion",
       "date": "2026-04-22",
@@ -2136,7 +2187,7 @@
       "endTime": "21:45",
       "duration": 15,
       "instructor": "FUNCTIONAL",
-      "room": "SALA FITNESS",
+      "room": "TERRAZA",
       "capacity": {
         "current": 0,
         "max": 20
@@ -2229,7 +2280,7 @@
       "difficulty": 1
     },
     {
-      "id": "6fa94a46ffdd",
+      "id": "6a609d004e0a",
       "name": "PEAK CYCLE",
       "category": "cardiovasculares",
       "date": "2026-04-24",
@@ -2237,7 +2288,7 @@
       "startTime": "07:00",
       "endTime": "07:45",
       "duration": 45,
-      "instructor": "CICLO",
+      "instructor": "DIEGO",
       "room": "CICLO",
       "capacity": {
         "current": 0,
@@ -2246,7 +2297,7 @@
       "difficulty": 1
     },
     {
-      "id": "c54b608e4147",
+      "id": "2cbed2446e62",
       "name": "CROSSVIDING",
       "category": "cardiovasculares",
       "date": "2026-04-24",
@@ -2254,11 +2305,11 @@
       "startTime": "08:00",
       "endTime": "08:50",
       "duration": 50,
-      "instructor": "TERRAZA",
+      "instructor": "DIEGO",
       "room": "TERRAZA",
       "capacity": {
         "current": 0,
-        "max": 20
+        "max": 24
       },
       "difficulty": 3
     },
@@ -2280,7 +2331,7 @@
       "difficulty": 1
     },
     {
-      "id": "f03e6902eabc",
+      "id": "5cd4b687c100",
       "name": "PEAK CYCLE",
       "category": "cardiovasculares",
       "date": "2026-04-24",
@@ -2288,7 +2339,7 @@
       "startTime": "09:30",
       "endTime": "10:15",
       "duration": 45,
-      "instructor": "CICLO",
+      "instructor": "DIEGO",
       "room": "CICLO",
       "capacity": {
         "current": 0,
@@ -2297,24 +2348,7 @@
       "difficulty": 1
     },
     {
-      "id": "aa5d0ee07cf7",
-      "name": "YOGA",
-      "category": "cuerpo-y-mente",
-      "date": "2026-04-24",
-      "dayOfWeek": "viernes",
-      "startTime": "09:30",
-      "endTime": "10:20",
-      "duration": 50,
-      "instructor": "SALA 1",
-      "room": "SALA 1",
-      "capacity": {
-        "current": 0,
-        "max": 40
-      },
-      "difficulty": 1
-    },
-    {
-      "id": "2277ec434fd1",
+      "id": "b569a02e140d",
       "name": "BODY COMBAT",
       "category": "cardiovasculares",
       "date": "2026-04-24",
@@ -2322,30 +2356,13 @@
       "startTime": "09:30",
       "endTime": "10:20",
       "duration": 50,
-      "instructor": "SALA 2",
+      "instructor": "MARTA",
       "room": "SALA 2",
       "capacity": {
         "current": 0,
         "max": 39
       },
       "difficulty": 2
-    },
-    {
-      "id": "104de4e45fc7",
-      "name": "BODY PUMP",
-      "category": "cardiovasculares",
-      "date": "2026-04-24",
-      "dayOfWeek": "viernes",
-      "startTime": "09:30",
-      "endTime": "10:20",
-      "duration": 50,
-      "instructor": "SALA 3",
-      "room": "SALA 3",
-      "capacity": {
-        "current": 0,
-        "max": 40
-      },
-      "difficulty": 1
     },
     {
       "id": "397f5033b0d9",
@@ -2365,7 +2382,24 @@
       "difficulty": 1
     },
     {
-      "id": "223a6e7731fa",
+      "id": "f07cd1772adf",
+      "name": "BODY PUMP",
+      "category": "cardiovasculares",
+      "date": "2026-04-24",
+      "dayOfWeek": "viernes",
+      "startTime": "10:30",
+      "endTime": "11:20",
+      "duration": 50,
+      "instructor": "MARTA",
+      "room": "SALA 3",
+      "capacity": {
+        "current": 0,
+        "max": 40
+      },
+      "difficulty": 1
+    },
+    {
+      "id": "fc4c05cd1990",
       "name": "ZUMBA",
       "category": "coreograficas",
       "date": "2026-04-24",
@@ -2373,7 +2407,7 @@
       "startTime": "10:30",
       "endTime": "11:20",
       "duration": 50,
-      "instructor": "SALA 2",
+      "instructor": "LYDIA",
       "room": "SALA 2",
       "capacity": {
         "current": 0,
@@ -2399,7 +2433,7 @@
       "difficulty": 1
     },
     {
-      "id": "1481e12c2a97",
+      "id": "3477570dad08",
       "name": "FUERZA",
       "category": "tonificacion",
       "date": "2026-04-24",
@@ -2407,11 +2441,11 @@
       "startTime": "10:30",
       "endTime": "11:20",
       "duration": 50,
-      "instructor": "TERRAZA",
+      "instructor": "GALA",
       "room": "TERRAZA",
       "capacity": {
         "current": 0,
-        "max": 20
+        "max": 24
       },
       "difficulty": 0
     },
@@ -2433,7 +2467,7 @@
       "difficulty": 1
     },
     {
-      "id": "d63bfd297370",
+      "id": "7d0f4f421f73",
       "name": "BAILES LATINOS",
       "category": "coreograficas",
       "date": "2026-04-24",
@@ -2441,7 +2475,7 @@
       "startTime": "11:30",
       "endTime": "12:20",
       "duration": 50,
-      "instructor": "SALA 2",
+      "instructor": "LYDIA",
       "room": "SALA 2",
       "capacity": {
         "current": 0,
@@ -2450,7 +2484,7 @@
       "difficulty": 1
     },
     {
-      "id": "afa253f23a3d",
+      "id": "e9df455538cd",
       "name": "VITAL POWER",
       "category": "tonificacion",
       "date": "2026-04-24",
@@ -2458,7 +2492,7 @@
       "startTime": "11:30",
       "endTime": "12:20",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "DIEGO",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -2467,7 +2501,7 @@
       "difficulty": 1
     },
     {
-      "id": "b45bf81e035e",
+      "id": "988fec0e1443",
       "name": "PILATES IMPLEMENTOS",
       "category": "cuerpo-y-mente",
       "date": "2026-04-24",
@@ -2475,7 +2509,7 @@
       "startTime": "11:30",
       "endTime": "12:20",
       "duration": 50,
-      "instructor": "SALA 1",
+      "instructor": "GALA",
       "room": "SALA 1",
       "capacity": {
         "current": 0,
@@ -2484,7 +2518,7 @@
       "difficulty": 2
     },
     {
-      "id": "a55bede6e23d",
+      "id": "bc889fcf59c6",
       "name": "ABDOMINALES",
       "category": "tonificacion",
       "date": "2026-04-24",
@@ -2493,7 +2527,7 @@
       "endTime": "12:00",
       "duration": 15,
       "instructor": "FUNCTIONAL",
-      "room": "SALA FITNESS",
+      "room": "TERRAZA",
       "capacity": {
         "current": 0,
         "max": 20
@@ -2501,7 +2535,7 @@
       "difficulty": 0
     },
     {
-      "id": "effa73466cb5",
+      "id": "cb22f4ec864f",
       "name": "BODY BALANCE",
       "category": "cuerpo-y-mente",
       "date": "2026-04-24",
@@ -2509,7 +2543,7 @@
       "startTime": "12:30",
       "endTime": "13:20",
       "duration": 50,
-      "instructor": "SALA 1",
+      "instructor": "LYDIA",
       "room": "SALA 1",
       "capacity": {
         "current": 0,
@@ -2518,7 +2552,7 @@
       "difficulty": 2
     },
     {
-      "id": "0e4e3a283410",
+      "id": "5fbfd7e3ba0e",
       "name": "BODY PUMP",
       "category": "cardiovasculares",
       "date": "2026-04-24",
@@ -2526,7 +2560,7 @@
       "startTime": "13:30",
       "endTime": "14:20",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "GALA",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -2535,15 +2569,15 @@
       "difficulty": 1
     },
     {
-      "id": "d4b722a95445",
+      "id": "320a0a2bc339",
       "name": "PEAK CYCLE",
       "category": "cardiovasculares",
       "date": "2026-04-24",
       "dayOfWeek": "viernes",
-      "startTime": "15:00",
-      "endTime": "15:45",
+      "startTime": "14:30",
+      "endTime": "15:15",
       "duration": 45,
-      "instructor": "CICLO",
+      "instructor": "MARTA",
       "room": "CICLO",
       "capacity": {
         "current": 0,
@@ -2552,7 +2586,7 @@
       "difficulty": 1
     },
     {
-      "id": "50bd4d30d797",
+      "id": "89ed55866539",
       "name": "BODY PUMP",
       "category": "cardiovasculares",
       "date": "2026-04-24",
@@ -2560,7 +2594,7 @@
       "startTime": "16:30",
       "endTime": "17:20",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "MARCOS",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -2569,7 +2603,7 @@
       "difficulty": 1
     },
     {
-      "id": "f5c39c2adbac",
+      "id": "29d629357cdc",
       "name": "BODY BALANCE",
       "category": "cuerpo-y-mente",
       "date": "2026-04-24",
@@ -2577,7 +2611,7 @@
       "startTime": "17:00",
       "endTime": "17:50",
       "duration": 50,
-      "instructor": "SALA 1",
+      "instructor": "PAULA",
       "room": "SALA 1",
       "capacity": {
         "current": 0,
@@ -2586,7 +2620,7 @@
       "difficulty": 2
     },
     {
-      "id": "fc0de22fb9f5",
+      "id": "ef565852ddb4",
       "name": "BODY COMBAT",
       "category": "cardiovasculares",
       "date": "2026-04-24",
@@ -2594,7 +2628,7 @@
       "startTime": "17:00",
       "endTime": "17:50",
       "duration": 50,
-      "instructor": "SALA 2",
+      "instructor": "LUCÍA",
       "room": "SALA 2",
       "capacity": {
         "current": 0,
@@ -2603,32 +2637,15 @@
       "difficulty": 2
     },
     {
-      "id": "81b98b2f24f7",
-      "name": "TRAINING GLÚTEO",
-      "category": "tonificacion",
-      "date": "2026-04-24",
-      "dayOfWeek": "viernes",
-      "startTime": "17:30",
-      "endTime": "18:20",
-      "duration": 50,
-      "instructor": "SALA 3",
-      "room": "SALA 3",
-      "capacity": {
-        "current": 0,
-        "max": 40
-      },
-      "difficulty": 1
-    },
-    {
-      "id": "73a3cd18687d",
+      "id": "b9a82df6a593",
       "name": "PEAK CYCLE",
       "category": "cardiovasculares",
       "date": "2026-04-24",
       "dayOfWeek": "viernes",
-      "startTime": "18:00",
-      "endTime": "18:45",
+      "startTime": "17:30",
+      "endTime": "18:15",
       "duration": 45,
-      "instructor": "CICLO",
+      "instructor": "MARCOS",
       "room": "CICLO",
       "capacity": {
         "current": 0,
@@ -2637,7 +2654,7 @@
       "difficulty": 1
     },
     {
-      "id": "46f41f410a29",
+      "id": "94d8f4c8ef3c",
       "name": "BARRE",
       "category": "cuerpo-y-mente",
       "date": "2026-04-24",
@@ -2645,7 +2662,7 @@
       "startTime": "18:00",
       "endTime": "18:45",
       "duration": 45,
-      "instructor": "SALA 2",
+      "instructor": "PAULA",
       "room": "SALA 2",
       "capacity": {
         "current": 0,
@@ -2654,24 +2671,7 @@
       "difficulty": 2
     },
     {
-      "id": "d511bb544e15",
-      "name": "PILATES",
-      "category": "cuerpo-y-mente",
-      "date": "2026-04-24",
-      "dayOfWeek": "viernes",
-      "startTime": "18:00",
-      "endTime": "18:50",
-      "duration": 50,
-      "instructor": "SALA 1",
-      "room": "SALA 1",
-      "capacity": {
-        "current": 0,
-        "max": 40
-      },
-      "difficulty": 1
-    },
-    {
-      "id": "a903379c7e9b",
+      "id": "a397bd9111bd",
       "name": "BODY PUMP",
       "category": "cardiovasculares",
       "date": "2026-04-24",
@@ -2679,7 +2679,7 @@
       "startTime": "18:30",
       "endTime": "19:20",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "LUCÍA",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -2688,49 +2688,15 @@
       "difficulty": 1
     },
     {
-      "id": "41273b9580c1",
-      "name": "PEAK CYCLE",
-      "category": "cardiovasculares",
-      "date": "2026-04-24",
-      "dayOfWeek": "viernes",
-      "startTime": "19:00",
-      "endTime": "19:45",
-      "duration": 45,
-      "instructor": "CICLO",
-      "room": "CICLO",
-      "capacity": {
-        "current": 0,
-        "max": 45
-      },
-      "difficulty": 1
-    },
-    {
-      "id": "02d3a956666e",
-      "name": "ZUMBA",
-      "category": "coreograficas",
-      "date": "2026-04-24",
-      "dayOfWeek": "viernes",
-      "startTime": "19:00",
-      "endTime": "19:50",
-      "duration": 50,
-      "instructor": "SALA 2",
-      "room": "SALA 2",
-      "capacity": {
-        "current": 0,
-        "max": 39
-      },
-      "difficulty": 1
-    },
-    {
-      "id": "b2f7cb6c75a5",
+      "id": "178eaed741da",
       "name": "PILATES IMPLEMENTOS",
       "category": "cuerpo-y-mente",
       "date": "2026-04-24",
       "dayOfWeek": "viernes",
-      "startTime": "19:00",
-      "endTime": "19:50",
+      "startTime": "18:30",
+      "endTime": "19:20",
       "duration": 50,
-      "instructor": "SALA 1",
+      "instructor": "MARCOS",
       "room": "SALA 1",
       "capacity": {
         "current": 0,
@@ -2739,7 +2705,24 @@
       "difficulty": 2
     },
     {
-      "id": "e0418ca12b4a",
+      "id": "5b7e456a5299",
+      "name": "ZUMBA",
+      "category": "coreograficas",
+      "date": "2026-04-24",
+      "dayOfWeek": "viernes",
+      "startTime": "19:00",
+      "endTime": "19:50",
+      "duration": 50,
+      "instructor": "PAULA",
+      "room": "SALA 2",
+      "capacity": {
+        "current": 0,
+        "max": 39
+      },
+      "difficulty": 1
+    },
+    {
+      "id": "031134ada726",
       "name": "ABDOMINALES",
       "category": "tonificacion",
       "date": "2026-04-24",
@@ -2748,12 +2731,29 @@
       "endTime": "19:45",
       "duration": 15,
       "instructor": "FUNCTIONAL",
-      "room": "SALA FITNESS",
+      "room": "TERRAZA",
       "capacity": {
         "current": 0,
         "max": 20
       },
       "difficulty": 0
+    },
+    {
+      "id": "9914838b1958",
+      "name": "PEAK CYCLE",
+      "category": "cardiovasculares",
+      "date": "2026-04-24",
+      "dayOfWeek": "viernes",
+      "startTime": "19:30",
+      "endTime": "20:15",
+      "duration": 45,
+      "instructor": "LUCÍA",
+      "room": "CICLO",
+      "capacity": {
+        "current": 0,
+        "max": 45
+      },
+      "difficulty": 1
     },
     {
       "id": "a19bb33ada32",
@@ -2773,24 +2773,7 @@
       "difficulty": 1
     },
     {
-      "id": "c38e7fd5fcf4",
-      "name": "YOGA",
-      "category": "cuerpo-y-mente",
-      "date": "2026-04-24",
-      "dayOfWeek": "viernes",
-      "startTime": "20:00",
-      "endTime": "20:50",
-      "duration": 50,
-      "instructor": "SALA 1",
-      "room": "SALA 1",
-      "capacity": {
-        "current": 0,
-        "max": 40
-      },
-      "difficulty": 1
-    },
-    {
-      "id": "20ee9cbda1e3",
+      "id": "3d877e897a4b",
       "name": "HYROX",
       "category": "cardiovasculares",
       "date": "2026-04-24",
@@ -2798,11 +2781,11 @@
       "startTime": "20:00",
       "endTime": "20:50",
       "duration": 50,
-      "instructor": "TERRAZA",
+      "instructor": "MARCOS",
       "room": "TERRAZA",
       "capacity": {
         "current": 0,
-        "max": 20
+        "max": 24
       },
       "difficulty": 2
     },
