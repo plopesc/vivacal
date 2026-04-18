@@ -3300,7 +3300,7 @@
       "difficulty": 1
     },
     {
-      "id": "44eb22f90a4f",
+      "id": "2a6f21667bc1",
       "name": "PILATES",
       "category": "cuerpo-y-mente",
       "date": "2026-04-18",
@@ -3308,7 +3308,7 @@
       "startTime": "09:10",
       "endTime": "09:50",
       "duration": 40,
-      "instructor": "SALA 1",
+      "instructor": "LYDIA",
       "room": "SALA 1",
       "capacity": {
         "current": 0,
@@ -3334,7 +3334,7 @@
       "difficulty": 1
     },
     {
-      "id": "f12fdbebea25",
+      "id": "740c776d6d87",
       "name": "PEAK CYCLE",
       "category": "cardiovasculares",
       "date": "2026-04-18",
@@ -3342,7 +3342,7 @@
       "startTime": "10:00",
       "endTime": "10:45",
       "duration": 45,
-      "instructor": "CICLO",
+      "instructor": "JONATHAN",
       "room": "CICLO",
       "capacity": {
         "current": 0,
@@ -3368,7 +3368,7 @@
       "difficulty": 1
     },
     {
-      "id": "e9d445cd51cf",
+      "id": "da62d196f02e",
       "name": "BODY PUMP",
       "category": "cardiovasculares",
       "date": "2026-04-18",
@@ -3376,7 +3376,7 @@
       "startTime": "10:45",
       "endTime": "11:35",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "LYDIA",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -3385,7 +3385,7 @@
       "difficulty": 1
     },
     {
-      "id": "ebd180a145c3",
+      "id": "5806e1284bc3",
       "name": "PEAK CYCLE",
       "category": "cardiovasculares",
       "date": "2026-04-18",
@@ -3393,7 +3393,7 @@
       "startTime": "11:45",
       "endTime": "12:30",
       "duration": 45,
-      "instructor": "CICLO",
+      "instructor": "JONATHAN",
       "room": "CICLO",
       "capacity": {
         "current": 0,
@@ -3402,7 +3402,7 @@
       "difficulty": 1
     },
     {
-      "id": "03e1902d95ee",
+      "id": "f564a339055c",
       "name": "PILATES",
       "category": "cuerpo-y-mente",
       "date": "2026-04-18",
@@ -3410,7 +3410,7 @@
       "startTime": "12:40",
       "endTime": "13:20",
       "duration": 40,
-      "instructor": "SALA 1",
+      "instructor": "JONATHAN",
       "room": "SALA 1",
       "capacity": {
         "current": 0,
@@ -3419,7 +3419,7 @@
       "difficulty": 1
     },
     {
-      "id": "7fbac9f36848",
+      "id": "a50d884f5174",
       "name": "BODY PUMP",
       "category": "cardiovasculares",
       "date": "2026-04-18",
@@ -3427,7 +3427,7 @@
       "startTime": "13:30",
       "endTime": "14:20",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "LYDIA",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
