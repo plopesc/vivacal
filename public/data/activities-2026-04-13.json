@@ -3453,7 +3453,7 @@
       "difficulty": 1
     },
     {
-      "id": "7ef5b74bd154",
+      "id": "f8e0e331d2ed",
       "name": "BODY PUMP",
       "category": "cardiovasculares",
       "date": "2026-04-19",
@@ -3461,7 +3461,7 @@
       "startTime": "10:00",
       "endTime": "10:50",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "JONATHAN",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -3487,7 +3487,7 @@
       "difficulty": 0
     },
     {
-      "id": "4a9db38f904a",
+      "id": "4fa9e3da399b",
       "name": "PILATES",
       "category": "cuerpo-y-mente",
       "date": "2026-04-19",
@@ -3495,7 +3495,7 @@
       "startTime": "11:00",
       "endTime": "11:50",
       "duration": 50,
-      "instructor": "SALA 1",
+      "instructor": "EDUARDO",
       "room": "SALA 1",
       "capacity": {
         "current": 0,
@@ -3504,7 +3504,7 @@
       "difficulty": 1
     },
     {
-      "id": "d62b097f8e35",
+      "id": "438327b578e4",
       "name": "PEAK CYCLE",
       "category": "cardiovasculares",
       "date": "2026-04-19",
@@ -3512,7 +3512,7 @@
       "startTime": "12:00",
       "endTime": "12:45",
       "duration": 45,
-      "instructor": "CICLO",
+      "instructor": "EDUARDO",
       "room": "CICLO",
       "capacity": {
         "current": 0,
