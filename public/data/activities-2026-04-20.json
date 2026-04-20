@@ -2,210 +2,6 @@
   "weekStart": "2026-04-20",
   "activities": [
     {
-      "id": "bdfd1eb52d5f",
-      "name": "PEAK CYCLE",
-      "category": "cardiovasculares",
-      "date": "2026-04-20",
-      "dayOfWeek": "lunes",
-      "startTime": "06:35",
-      "endTime": "07:20",
-      "duration": 45,
-      "instructor": "MARTA",
-      "room": "CICLO",
-      "capacity": {
-        "current": 0,
-        "max": 45
-      },
-      "difficulty": 1
-    },
-    {
-      "id": "92be18dbb489",
-      "name": "BODY PUMP",
-      "category": "cardiovasculares",
-      "date": "2026-04-20",
-      "dayOfWeek": "lunes",
-      "startTime": "07:30",
-      "endTime": "08:20",
-      "duration": 50,
-      "instructor": "MARTA",
-      "room": "SALA 3",
-      "capacity": {
-        "current": 0,
-        "max": 40
-      },
-      "difficulty": 1
-    },
-    {
-      "id": "0318fa6f095d",
-      "name": "AQUAGYM",
-      "category": "acuaticas",
-      "date": "2026-04-20",
-      "dayOfWeek": "lunes",
-      "startTime": "08:15",
-      "endTime": "09:00",
-      "duration": 45,
-      "instructor": "VASO AADD",
-      "room": "VASO AADD",
-      "capacity": {
-        "current": 0,
-        "max": 35
-      },
-      "difficulty": 1
-    },
-    {
-      "id": "c933d22c6e65",
-      "name": "BODY BALANCE",
-      "category": "cuerpo-y-mente",
-      "date": "2026-04-20",
-      "dayOfWeek": "lunes",
-      "startTime": "08:30",
-      "endTime": "09:20",
-      "duration": 50,
-      "instructor": "MARTA",
-      "room": "SALA 1",
-      "capacity": {
-        "current": 0,
-        "max": 40
-      },
-      "difficulty": 2
-    },
-    {
-      "id": "88a82264e0ee",
-      "name": "AQUAVIDING",
-      "category": "acuaticas",
-      "date": "2026-04-20",
-      "dayOfWeek": "lunes",
-      "startTime": "09:15",
-      "endTime": "10:00",
-      "duration": 45,
-      "instructor": "VASO AADD",
-      "room": "VASO AADD",
-      "capacity": {
-        "current": 0,
-        "max": 35
-      },
-      "difficulty": 1
-    },
-    {
-      "id": "5113c6ea3a65",
-      "name": "PEAK CYCLE",
-      "category": "cardiovasculares",
-      "date": "2026-04-20",
-      "dayOfWeek": "lunes",
-      "startTime": "09:30",
-      "endTime": "10:15",
-      "duration": 45,
-      "instructor": "DIEGO",
-      "room": "CICLO",
-      "capacity": {
-        "current": 0,
-        "max": 45
-      },
-      "difficulty": 1
-    },
-    {
-      "id": "8a09e844579f",
-      "name": "VITAL MOVE",
-      "category": "cuerpo-y-mente",
-      "date": "2026-04-20",
-      "dayOfWeek": "lunes",
-      "startTime": "09:30",
-      "endTime": "10:20",
-      "duration": 50,
-      "instructor": "LUIS",
-      "room": "SALA 1",
-      "capacity": {
-        "current": 0,
-        "max": 39
-      },
-      "difficulty": 1
-    },
-    {
-      "id": "d474278edfef",
-      "name": "BODY PUMP",
-      "category": "cardiovasculares",
-      "date": "2026-04-20",
-      "dayOfWeek": "lunes",
-      "startTime": "09:30",
-      "endTime": "10:20",
-      "duration": 50,
-      "instructor": "MANUELA",
-      "room": "SALA 3",
-      "capacity": {
-        "current": 0,
-        "max": 40
-      },
-      "difficulty": 1
-    },
-    {
-      "id": "e375143d9404",
-      "name": "AQUAPOWER",
-      "category": "acuaticas",
-      "date": "2026-04-20",
-      "dayOfWeek": "lunes",
-      "startTime": "10:15",
-      "endTime": "10:45",
-      "duration": 30,
-      "instructor": "VASO AADD",
-      "room": "VASO AADD",
-      "capacity": {
-        "current": 0,
-        "max": 35
-      },
-      "difficulty": 2
-    },
-    {
-      "id": "85dd0029a911",
-      "name": "BARRE",
-      "category": "cuerpo-y-mente",
-      "date": "2026-04-20",
-      "dayOfWeek": "lunes",
-      "startTime": "10:30",
-      "endTime": "11:15",
-      "duration": 45,
-      "instructor": "MANUELA",
-      "room": "SALA 2",
-      "capacity": {
-        "current": 0,
-        "max": 39
-      },
-      "difficulty": 2
-    },
-    {
-      "id": "163059e450de",
-      "name": "HYROX",
-      "category": "cardiovasculares",
-      "date": "2026-04-20",
-      "dayOfWeek": "lunes",
-      "startTime": "10:30",
-      "endTime": "11:20",
-      "duration": 50,
-      "instructor": "DIEGO",
-      "room": "TERRAZA",
-      "capacity": {
-        "current": 0,
-        "max": 24
-      },
-      "difficulty": 2
-    },
-    {
-      "id": "d027e05a29f7",
-      "name": "PILATES",
-      "category": "cuerpo-y-mente",
-      "date": "2026-04-20",
-      "dayOfWeek": "lunes",
-      "startTime": "10:30",
-      "endTime": "11:20",
-      "duration": 50,
-      "instructor": "LUIS",
-      "room": "SALA 1",
-      "capacity": {
-        "current": 0,
-        "max": 40
-      },
-      "difficulty": 1
-    },
-    {
       "id": "775b981fda94",
       "name": "ABDOMINALES",
       "category": "tonificacion",
@@ -869,7 +665,7 @@
       "difficulty": 1
     },
     {
-      "id": "6617f52e8bbd",
+      "id": "1ee3e7b93482",
       "name": "FLAMENCO FERIA DE ABRIL",
       "category": "otros",
       "date": "2026-04-21",
@@ -877,8 +673,8 @@
       "startTime": "10:30",
       "endTime": "12:30",
       "duration": 120,
-      "instructor": "ANTONIO",
-      "room": "EXTERIOR",
+      "instructor": "MANUELA",
+      "room": "SALA 1",
       "capacity": {
         "current": 0,
         "max": 40
@@ -920,7 +716,7 @@
       "difficulty": 1
     },
     {
-      "id": "c2a85e15d063",
+      "id": "8a9d64a44782",
       "name": "PILATES IMPLEMENTOS",
       "category": "cuerpo-y-mente",
       "date": "2026-04-21",
@@ -929,7 +725,7 @@
       "endTime": "12:20",
       "duration": 50,
       "instructor": "PAULA",
-      "room": "SALA 1",
+      "room": "SALA 2",
       "capacity": {
         "current": 0,
         "max": 40
