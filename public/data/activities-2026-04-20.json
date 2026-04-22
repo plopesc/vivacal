@@ -2093,7 +2093,7 @@
       "difficulty": 1
     },
     {
-      "id": "07569dbe8e26",
+      "id": "a70083ad932f",
       "name": "BODY PUMP",
       "category": "cardiovasculares",
       "date": "2026-04-22",
@@ -2101,7 +2101,7 @@
       "startTime": "20:00",
       "endTime": "20:50",
       "duration": 50,
-      "instructor": "JONATHAN",
+      "instructor": "PAULA",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -2144,7 +2144,7 @@
       "difficulty": 0
     },
     {
-      "id": "3b16b20a2031",
+      "id": "5c0b51e2cb9e",
       "name": "CROSSVIDING",
       "category": "cardiovasculares",
       "date": "2026-04-22",
@@ -2152,7 +2152,7 @@
       "startTime": "20:30",
       "endTime": "21:20",
       "duration": 50,
-      "instructor": "PAULA",
+      "instructor": "JONATHAN",
       "room": "TERRAZA",
       "capacity": {
         "current": 0,
