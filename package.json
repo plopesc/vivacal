@@ -31,9 +31,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.3",
     "playwright": "^1.59.1",
-    "playwright-extra": "^4.3.6",
     "prettier": "3.8.3",
-    "puppeteer-extra-plugin-stealth": "^2.11.2",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

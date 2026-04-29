@@ -26,7 +26,7 @@ const BASE_URL =
 const USER_AGENT =
   "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
 const MAX_WEEKS = 4;
-const FETCH_DELAY_MS = 500;
+const FETCH_DELAY_MS = 2_000;
 const RETENTION_DAYS = 14;
 const EMPTY_MARKER = "No se han encontrado clases colectivas disponibles";
 
@@ -245,21 +245,34 @@ function writeManifest() {
 
 async function fetchWeekHtml(page, weekStart) {
   const url = buildUrl(weekStart);
-  await page.goto(url, { waitUntil: "load", timeout: 60_000 });
+  // Use "commit" so we don't block on the gym site's background connections.
+  await page.goto(url, { waitUntil: "commit", timeout: 60_000 });
 
-  // If Cloudflare's managed challenge is active the title is "Just a moment..."
-  // and the page will redirect itself once the JS proof-of-work completes.
-  // We wait for the title to change (challenge resolved) then wait for the
-  // real page to finish loading.
-  if ((await page.title()).includes("Just a moment")) {
-    console.log(
-      `  Cloudflare challenge detected for week ${toYMD(weekStart)}, waiting…`,
+  // Wait for EITHER the activity buttons OR the empty-schedule marker to appear.
+  // This handles Cloudflare's managed challenge transparently: the challenge
+  // page has neither element, so we keep waiting until the real page loads
+  // after the JS proof-of-work completes (up to 90 s).
+  const found = await page
+    .waitForFunction(
+      (emptyMarker) =>
+        document.querySelector(".botonClaseColectiva") !== null ||
+        (document.body && document.body.innerText.includes(emptyMarker)),
+      EMPTY_MARKER,
+      { timeout: 90_000 },
+    )
+    .catch(() => null);
+
+  const title = await page.title();
+  if (!found) {
+    // Challenge didn't resolve or content never appeared. Log and return the
+    // current page HTML — the caller will see 0 activities and stop the loop
+    // (or log a warning if this is week 0).
+    console.warn(
+      `  [warn] Content not found for week ${toYMD(weekStart)} after 90 s ` +
+        `(title="${title}"). Cloudflare may be blocking this request.`,
     );
-    await page.waitForFunction(
-      () => !document.title.includes("Just a moment"),
-      { timeout: 60_000 },
-    );
-    await page.waitForLoadState("load", { timeout: 30_000 });
+  } else {
+    console.log(`  title="${title}"`);
   }
 
   return await page.content();
@@ -277,14 +290,22 @@ async function main() {
 
   pruneOldWeekFiles(currentMonday);
 
-  // playwright-extra + stealth plugin patches the browser APIs that Cloudflare's
-  // bot management probes (canvas fingerprinting, WebGL, navigator.webdriver, …).
-  const { chromium } = await import("playwright-extra");
-  const { default: StealthPlugin } =
-    await import("puppeteer-extra-plugin-stealth");
-  chromium.use(StealthPlugin());
-  const browser = await chromium.launch();
+  const { chromium } = await import("playwright");
+  const browser = await chromium.launch({
+    args: ["--disable-blink-features=AutomationControlled"],
+  });
   const context = await browser.newContext({ userAgent: USER_AGENT });
+  // Patch the APIs Cloudflare's bot-management probes before any page script runs.
+  await context.addInitScript(() => {
+    Object.defineProperty(navigator, "webdriver", { get: () => undefined });
+    Object.defineProperty(window, "chrome", {
+      writable: true,
+      value: { runtime: {} },
+    });
+    Object.defineProperty(navigator, "plugins", {
+      get: () => [{ name: "PDF Viewer" }, { name: "Chrome PDF Viewer" }],
+    });
+  });
   const page = await context.newPage();
 
   let totalActivities = 0;
@@ -293,20 +314,24 @@ async function main() {
     for (let i = 0; i < MAX_WEEKS; i++) {
       const weekStart = addDays(currentMonday, i * 7);
       const label = toYMD(weekStart);
-      if (i > 0) await sleep(FETCH_DELAY_MS);
+      if (i > 0) {
+        // Navigate to a blank page to stop any background requests from the
+        // previous week before sleeping — reduces Cloudflare re-challenges on
+        // rapid sequential navigations to the same host.
+        await page.goto("about:blank", { waitUntil: "commit" });
+        await sleep(FETCH_DELAY_MS);
+      }
       console.log(`\nFetching week ${label}...`);
       const html = await fetchWeekHtml(page, weekStart);
       const parsed = parseWeekHtml(html, weekStart);
-      if (parsed.empty) {
-        console.log(`Week ${label} returned the empty marker. Stopping.`);
-        break;
-      }
-      if (i === 0 && parsed.activities.length === 0) {
-        throw new Error(
-          "FATAL: current week returned 0 activities - parser likely broken or site changed.",
-        );
-      }
-      if (parsed.activities.length === 0) {
+      if (parsed.empty || parsed.activities.length === 0) {
+        if (i === 0) {
+          console.warn(
+            `[warn] Current week ${label} has no activities — ` +
+              `gym may be on a break, site structure may have changed, ` +
+              `or a Cloudflare challenge was not resolved.`,
+          );
+        }
         console.log(`Week ${label} has no activities. Stopping.`);
         break;
       }
