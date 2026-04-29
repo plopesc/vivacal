@@ -23,7 +23,8 @@ import {
 const DATA_DIR = path.join(process.cwd(), "public", "data");
 const BASE_URL =
   "https://valladolid-viding.viding.es/ActividadesColectivas/ActividadesColectivasHorarioSemanal";
-const USER_AGENT = "Mozilla/5.0";
+const USER_AGENT =
+  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
 const MAX_WEEKS = 4;
 const FETCH_DELAY_MS = 500;
 const RETENTION_DAYS = 14;
@@ -242,15 +243,26 @@ function writeManifest() {
   return manifest;
 }
 
-async function fetchWeekHtml(weekStart) {
+async function fetchWeekHtml(page, weekStart) {
   const url = buildUrl(weekStart);
-  const res = await fetch(url, { headers: { "User-Agent": USER_AGENT } });
-  if (!res.ok) {
-    throw new Error(
-      `Fetch failed for week ${toYMD(weekStart)}: HTTP ${res.status}`,
+  await page.goto(url, { waitUntil: "load", timeout: 60_000 });
+
+  // If Cloudflare's managed challenge is active the title is "Just a moment..."
+  // and the page will redirect itself once the JS proof-of-work completes.
+  // We wait for the title to change (challenge resolved) then wait for the
+  // real page to finish loading.
+  if ((await page.title()).includes("Just a moment")) {
+    console.log(
+      `  Cloudflare challenge detected for week ${toYMD(weekStart)}, waiting…`,
     );
+    await page.waitForFunction(
+      () => !document.title.includes("Just a moment"),
+      { timeout: 60_000 },
+    );
+    await page.waitForLoadState("load", { timeout: 30_000 });
   }
-  return await res.text();
+
+  return await page.content();
 }
 
 function sleep(ms) {
@@ -265,35 +277,48 @@ async function main() {
 
   pruneOldWeekFiles(currentMonday);
 
+  // playwright-extra + stealth plugin patches the browser APIs that Cloudflare's
+  // bot management probes (canvas fingerprinting, WebGL, navigator.webdriver, …).
+  const { chromium } = await import("playwright-extra");
+  const { default: StealthPlugin } =
+    await import("puppeteer-extra-plugin-stealth");
+  chromium.use(StealthPlugin());
+  const browser = await chromium.launch();
+  const context = await browser.newContext({ userAgent: USER_AGENT });
+  const page = await context.newPage();
+
   let totalActivities = 0;
   let weeksWritten = 0;
-  for (let i = 0; i < MAX_WEEKS; i++) {
-    const weekStart = addDays(currentMonday, i * 7);
-    const label = toYMD(weekStart);
-    if (i > 0) await sleep(FETCH_DELAY_MS);
-    console.log(`\nFetching week ${label}...`);
-    const html = await fetchWeekHtml(weekStart);
-    const parsed = parseWeekHtml(html, weekStart);
-    if (parsed.empty) {
-      console.log(`Week ${label} returned the empty marker. Stopping.`);
-      break;
-    }
-    if (i === 0 && parsed.activities.length === 0) {
-      console.error(
-        "FATAL: current week returned 0 activities - parser likely broken or site changed.",
+  try {
+    for (let i = 0; i < MAX_WEEKS; i++) {
+      const weekStart = addDays(currentMonday, i * 7);
+      const label = toYMD(weekStart);
+      if (i > 0) await sleep(FETCH_DELAY_MS);
+      console.log(`\nFetching week ${label}...`);
+      const html = await fetchWeekHtml(page, weekStart);
+      const parsed = parseWeekHtml(html, weekStart);
+      if (parsed.empty) {
+        console.log(`Week ${label} returned the empty marker. Stopping.`);
+        break;
+      }
+      if (i === 0 && parsed.activities.length === 0) {
+        throw new Error(
+          "FATAL: current week returned 0 activities - parser likely broken or site changed.",
+        );
+      }
+      if (parsed.activities.length === 0) {
+        console.log(`Week ${label} has no activities. Stopping.`);
+        break;
+      }
+      const file = writeWeekFile(weekStart, parsed.activities);
+      console.log(
+        `Wrote ${parsed.activities.length} activities -> ${path.relative(process.cwd(), file)}`,
       );
-      process.exit(1);
+      totalActivities += parsed.activities.length;
+      weeksWritten += 1;
     }
-    if (parsed.activities.length === 0) {
-      console.log(`Week ${label} has no activities. Stopping.`);
-      break;
-    }
-    const file = writeWeekFile(weekStart, parsed.activities);
-    console.log(
-      `Wrote ${parsed.activities.length} activities -> ${path.relative(process.cwd(), file)}`,
-    );
-    totalActivities += parsed.activities.length;
-    weeksWritten += 1;
+  } finally {
+    await browser.close();
   }
 
   const manifest = writeManifest();
