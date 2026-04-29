@@ -252,7 +252,9 @@ async function fetchWeekHtml(page, weekStart) {
   // We wait for the title to change (challenge resolved) then wait for the
   // real page to finish loading.
   if ((await page.title()).includes("Just a moment")) {
-    console.log(`  Cloudflare challenge detected for week ${toYMD(weekStart)}, waiting…`);
+    console.log(
+      `  Cloudflare challenge detected for week ${toYMD(weekStart)}, waiting…`,
+    );
     await page.waitForFunction(
       () => !document.title.includes("Just a moment"),
       { timeout: 60_000 },
@@ -278,9 +280,8 @@ async function main() {
   // playwright-extra + stealth plugin patches the browser APIs that Cloudflare's
   // bot management probes (canvas fingerprinting, WebGL, navigator.webdriver, …).
   const { chromium } = await import("playwright-extra");
-  const { default: StealthPlugin } = await import(
-    "puppeteer-extra-plugin-stealth"
-  );
+  const { default: StealthPlugin } =
+    await import("puppeteer-extra-plugin-stealth");
   chromium.use(StealthPlugin());
   const browser = await chromium.launch();
   const context = await browser.newContext({ userAgent: USER_AGENT });
