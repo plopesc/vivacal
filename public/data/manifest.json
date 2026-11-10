@@ -1,6 +1,11 @@
 {
-  "lastUpdated": "2026-11-10T01:56:42.182Z",
-  "earliestWeek": null,
-  "latestWeek": null,
-  "weeks": []
+  "lastUpdated": "2026-11-10T15:23:24.611Z",
+  "earliestWeek": "2026-11-09",
+  "latestWeek": "2026-11-30",
+  "weeks": [
+    "2026-11-09",
+    "2026-11-16",
+    "2026-11-23",
+    "2026-11-30"
+  ]
 }
