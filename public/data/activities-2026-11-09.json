@@ -3402,23 +3402,6 @@
       "difficulty": 1
     },
     {
-      "id": "b44780423a1e",
-      "name": "PILATES",
-      "category": "cuerpo-y-mente",
-      "date": "2026-11-14",
-      "dayOfWeek": "sabado",
-      "startTime": "10:30",
-      "endTime": "11:20",
-      "duration": 50,
-      "instructor": "SALA 1",
-      "room": "SALA 1",
-      "capacity": {
-        "current": 0,
-        "max": 40
-      },
-      "difficulty": 1
-    },
-    {
       "id": "d76e4375417f",
       "name": "BODYPUMP",
       "category": "otros",
@@ -3434,23 +3417,6 @@
         "max": 40
       },
       "difficulty": 3
-    },
-    {
-      "id": "b0604b49f9ed",
-      "name": "PEAK CYCLE",
-      "category": "cardiovasculares",
-      "date": "2026-11-14",
-      "dayOfWeek": "sabado",
-      "startTime": "12:30",
-      "endTime": "13:15",
-      "duration": 45,
-      "instructor": "CICLO",
-      "room": "CICLO",
-      "capacity": {
-        "current": 0,
-        "max": 40
-      },
-      "difficulty": 1
     },
     {
       "id": "bc65075f9bfe",
