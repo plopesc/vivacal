@@ -1498,7 +1498,7 @@
       "difficulty": 3
     },
     {
-      "id": "d57338d7a88b",
+      "id": "2139a97c8320",
       "name": "PEAK CYCLE",
       "category": "cardiovasculares",
       "date": "2026-11-11",
@@ -1506,7 +1506,7 @@
       "startTime": "07:30",
       "endTime": "08:15",
       "duration": 45,
-      "instructor": "LUIS",
+      "instructor": "SALA 3",
       "room": "CICLO",
       "capacity": {
         "current": 0,
@@ -1566,7 +1566,7 @@
       "difficulty": 1
     },
     {
-      "id": "3303ebd7f7c1",
+      "id": "1f1d16cb01ce",
       "name": "PEAK CYCLE",
       "category": "cardiovasculares",
       "date": "2026-11-11",
@@ -1574,7 +1574,7 @@
       "startTime": "09:30",
       "endTime": "10:15",
       "duration": 45,
-      "instructor": "LUCÍA",
+      "instructor": "LYDIA",
       "room": "CICLO",
       "capacity": {
         "current": 0,
@@ -1600,7 +1600,7 @@
       "difficulty": 1
     },
     {
-      "id": "5499c43e248a",
+      "id": "67f821f599bb",
       "name": "BODYPUMP",
       "category": "otros",
       "date": "2026-11-11",
@@ -1608,7 +1608,7 @@
       "startTime": "09:30",
       "endTime": "10:20",
       "duration": 50,
-      "instructor": "LYDIA",
+      "instructor": "LUCÍA",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -1666,23 +1666,6 @@
         "max": 40
       },
       "difficulty": 1
-    },
-    {
-      "id": "fd118f116e44",
-      "name": "ABDOMINALES",
-      "category": "tonificacion",
-      "date": "2026-11-11",
-      "dayOfWeek": "miercoles",
-      "startTime": "11:00",
-      "endTime": "11:15",
-      "duration": 15,
-      "instructor": "LYDIA",
-      "room": "TERRAZA",
-      "capacity": {
-        "current": 0,
-        "max": 20
-      },
-      "difficulty": 0
     },
     {
       "id": "1d4028e2781c",
@@ -2246,23 +2229,6 @@
       "difficulty": 3
     },
     {
-      "id": "cbfd9edb2cd2",
-      "name": "ABDOMINALES",
-      "category": "tonificacion",
-      "date": "2026-11-11",
-      "dayOfWeek": "miercoles",
-      "startTime": "21:30",
-      "endTime": "21:45",
-      "duration": 15,
-      "instructor": "MANUELA",
-      "room": "TERRAZA",
-      "capacity": {
-        "current": 0,
-        "max": 20
-      },
-      "difficulty": 0
-    },
-    {
       "id": "85705eb0c573",
       "name": "FUERZA",
       "category": "tonificacion",
@@ -2280,7 +2246,7 @@
       "difficulty": 0
     },
     {
-      "id": "bff553c24898",
+      "id": "5fa6ce98b84f",
       "name": "BODYPUMP",
       "category": "otros",
       "date": "2026-11-12",
@@ -2288,7 +2254,7 @@
       "startTime": "08:30",
       "endTime": "09:20",
       "duration": 50,
-      "instructor": "PAULA",
+      "instructor": "MARCOS",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -2297,7 +2263,7 @@
       "difficulty": 3
     },
     {
-      "id": "d40ab5562055",
+      "id": "da310f60c33e",
       "name": "PILATES",
       "category": "cuerpo-y-mente",
       "date": "2026-11-12",
@@ -2305,7 +2271,7 @@
       "startTime": "08:30",
       "endTime": "09:20",
       "duration": 50,
-      "instructor": "MARCOS",
+      "instructor": "PAULA",
       "room": "SALA 1",
       "capacity": {
         "current": 0,
@@ -2637,7 +2603,7 @@
       "difficulty": 1
     },
     {
-      "id": "e687e822f55f",
+      "id": "b106b98aae4c",
       "name": "TRAINING GLÚTEO",
       "category": "tonificacion",
       "date": "2026-11-12",
@@ -2645,7 +2611,7 @@
       "startTime": "18:00",
       "endTime": "18:50",
       "duration": 50,
-      "instructor": "LYDIA",
+      "instructor": "DIEGO",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -2671,21 +2637,21 @@
       "difficulty": 2
     },
     {
-      "id": "cb15b15f852f",
-      "name": "CROSSVIDING",
+      "id": "4f7f01ed4068",
+      "name": "PEAK CYCLE",
       "category": "cardiovasculares",
       "date": "2026-11-12",
       "dayOfWeek": "jueves",
       "startTime": "18:30",
-      "endTime": "19:20",
-      "duration": 50,
+      "endTime": "19:15",
+      "duration": 45,
       "instructor": "LUIS",
-      "room": "TERRAZA",
+      "room": "CICLO",
       "capacity": {
         "current": 0,
-        "max": 30
+        "max": 40
       },
-      "difficulty": 3
+      "difficulty": 1
     },
     {
       "id": "84bb32a4ab3a",
@@ -2703,23 +2669,6 @@
         "max": 40
       },
       "difficulty": 3
-    },
-    {
-      "id": "88f8bbbc8d79",
-      "name": "YOGA",
-      "category": "cuerpo-y-mente",
-      "date": "2026-11-12",
-      "dayOfWeek": "jueves",
-      "startTime": "19:00",
-      "endTime": "19:50",
-      "duration": 50,
-      "instructor": "MANUELA",
-      "room": "SALA 1",
-      "capacity": {
-        "current": 0,
-        "max": 40
-      },
-      "difficulty": 1
     },
     {
       "id": "24784f147508",
@@ -2756,24 +2705,7 @@
       "difficulty": 2
     },
     {
-      "id": "c12d47c2324c",
-      "name": "PEAK CYCLE",
-      "category": "cardiovasculares",
-      "date": "2026-11-12",
-      "dayOfWeek": "jueves",
-      "startTime": "19:30",
-      "endTime": "20:15",
-      "duration": 45,
-      "instructor": "LUIS",
-      "room": "CICLO",
-      "capacity": {
-        "current": 0,
-        "max": 40
-      },
-      "difficulty": 1
-    },
-    {
-      "id": "ffffcb5ceee4",
+      "id": "b9ea22cfb998",
       "name": "HYROX",
       "category": "cardiovasculares",
       "date": "2026-11-12",
@@ -2781,7 +2713,7 @@
       "startTime": "19:30",
       "endTime": "20:20",
       "duration": 50,
-      "instructor": "DIEGO",
+      "instructor": "LUIS",
       "room": "TERRAZA",
       "capacity": {
         "current": 0,
@@ -3096,7 +3028,7 @@
       "difficulty": 2
     },
     {
-      "id": "26fa1ff1be8d",
+      "id": "6d08cc1f3fba",
       "name": "ABDOMINALES",
       "category": "tonificacion",
       "date": "2026-11-13",
@@ -3104,7 +3036,7 @@
       "startTime": "11:45",
       "endTime": "12:00",
       "duration": 15,
-      "instructor": "LUCÍA",
+      "instructor": "MARTA",
       "room": "TERRAZA",
       "capacity": {
         "current": 0,
