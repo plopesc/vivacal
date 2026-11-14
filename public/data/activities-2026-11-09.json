@@ -3351,7 +3351,7 @@
       "difficulty": 1
     },
     {
-      "id": "87094b0ddfca",
+      "id": "2a781e47cdbb",
       "name": "BODYPUMP",
       "category": "otros",
       "date": "2026-11-14",
@@ -3359,7 +3359,7 @@
       "startTime": "09:30",
       "endTime": "10:20",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "SERGIO",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -3385,7 +3385,7 @@
       "difficulty": 1
     },
     {
-      "id": "7ac09d79dfb9",
+      "id": "aef70519d6d9",
       "name": "PEAK CYCLE",
       "category": "cardiovasculares",
       "date": "2026-11-14",
@@ -3393,7 +3393,7 @@
       "startTime": "10:30",
       "endTime": "11:15",
       "duration": 45,
-      "instructor": "CICLO",
+      "instructor": "SERGIO",
       "room": "CICLO",
       "capacity": {
         "current": 0,
@@ -3402,7 +3402,7 @@
       "difficulty": 1
     },
     {
-      "id": "d76e4375417f",
+      "id": "2d41ed82277a",
       "name": "BODYPUMP",
       "category": "otros",
       "date": "2026-11-14",
@@ -3410,7 +3410,7 @@
       "startTime": "11:30",
       "endTime": "12:20",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "PAULA",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -3419,7 +3419,7 @@
       "difficulty": 3
     },
     {
-      "id": "bc65075f9bfe",
+      "id": "9caeb08beb08",
       "name": "PILATES",
       "category": "cuerpo-y-mente",
       "date": "2026-11-14",
@@ -3427,7 +3427,7 @@
       "startTime": "12:30",
       "endTime": "13:20",
       "duration": 50,
-      "instructor": "SALA 1",
+      "instructor": "PAULA",
       "room": "SALA 1",
       "capacity": {
         "current": 0,
