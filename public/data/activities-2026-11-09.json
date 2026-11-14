@@ -3487,7 +3487,7 @@
       "difficulty": 1
     },
     {
-      "id": "b57b6655948f",
+      "id": "c5169f4cab2f",
       "name": "PILATES",
       "category": "cuerpo-y-mente",
       "date": "2026-11-15",
@@ -3495,7 +3495,7 @@
       "startTime": "10:00",
       "endTime": "10:50",
       "duration": 50,
-      "instructor": "SALA 1",
+      "instructor": "PAULA",
       "room": "SALA 1",
       "capacity": {
         "current": 0,
@@ -3538,7 +3538,7 @@
       "difficulty": 0
     },
     {
-      "id": "4dd263fa242e",
+      "id": "e9855f61379c",
       "name": "BODYPUMP",
       "category": "otros",
       "date": "2026-11-15",
@@ -3546,7 +3546,7 @@
       "startTime": "11:00",
       "endTime": "11:50",
       "duration": 50,
-      "instructor": "SALA 3",
+      "instructor": "SERGIO",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -3555,7 +3555,7 @@
       "difficulty": 3
     },
     {
-      "id": "e6655ed90f6f",
+      "id": "1cf6b9bb896f",
       "name": "PEAK CYCLE",
       "category": "cardiovasculares",
       "date": "2026-11-15",
@@ -3563,7 +3563,7 @@
       "startTime": "12:00",
       "endTime": "12:45",
       "duration": 45,
-      "instructor": "CICLO",
+      "instructor": "PAULA",
       "room": "CICLO",
       "capacity": {
         "current": 0,
@@ -3572,7 +3572,7 @@
       "difficulty": 1
     },
     {
-      "id": "5e8554b1f3dd",
+      "id": "bb07ac588ff9",
       "name": "HYROX",
       "category": "cardiovasculares",
       "date": "2026-11-15",
@@ -3580,7 +3580,7 @@
       "startTime": "13:00",
       "endTime": "13:50",
       "duration": 50,
-      "instructor": "TERRAZA",
+      "instructor": "SERGIO",
       "room": "TERRAZA",
       "capacity": {
         "current": 0,
