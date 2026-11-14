@@ -3283,7 +3283,7 @@
       "difficulty": 1
     },
     {
-      "id": "e4222fb24ef0",
+      "id": "d019b9a12038",
       "name": "HYROX",
       "category": "cardiovasculares",
       "date": "2026-11-13",
@@ -3291,7 +3291,7 @@
       "startTime": "20:00",
       "endTime": "20:50",
       "duration": 50,
-      "instructor": "MANUELA",
+      "instructor": "LUIS",
       "room": "TERRAZA",
       "capacity": {
         "current": 0,
