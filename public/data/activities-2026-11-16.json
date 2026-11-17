@@ -1192,23 +1192,6 @@
       "difficulty": 1
     },
     {
-      "id": "832ab079bd58",
-      "name": "BODYPUMP",
-      "category": "otros",
-      "date": "2026-11-17",
-      "dayOfWeek": "martes",
-      "startTime": "18:00",
-      "endTime": "18:50",
-      "duration": 50,
-      "instructor": "EDUARDO",
-      "room": "SALA 3",
-      "capacity": {
-        "current": 0,
-        "max": 40
-      },
-      "difficulty": 3
-    },
-    {
       "id": "2ba9496a42d6",
       "name": "FUERZA",
       "category": "tonificacion",
@@ -1224,6 +1207,23 @@
         "max": 20
       },
       "difficulty": 0
+    },
+    {
+      "id": "832ab079bd58",
+      "name": "BODYPUMP",
+      "category": "otros",
+      "date": "2026-11-17",
+      "dayOfWeek": "martes",
+      "startTime": "18:00",
+      "endTime": "18:50",
+      "duration": 50,
+      "instructor": "EDUARDO",
+      "room": "SALA 3",
+      "capacity": {
+        "current": 0,
+        "max": 40
+      },
+      "difficulty": 3
     },
     {
       "id": "6abdf4c4b2d5",
@@ -1345,24 +1345,7 @@
       "difficulty": 1
     },
     {
-      "id": "2cd1569df1d0",
-      "name": "BODY BALANCE",
-      "category": "cuerpo-y-mente",
-      "date": "2026-11-17",
-      "dayOfWeek": "martes",
-      "startTime": "19:30",
-      "endTime": "20:20",
-      "duration": 50,
-      "instructor": "MARTA",
-      "room": "SALA 1",
-      "capacity": {
-        "current": 0,
-        "max": 40
-      },
-      "difficulty": 2
-    },
-    {
-      "id": "9c08e3d28b77",
+      "id": "4709640c967b",
       "name": "TALLER DE HIPOPRESIVOS",
       "category": "otros",
       "date": "2026-11-17",
@@ -1371,7 +1354,7 @@
       "endTime": "20:30",
       "duration": 60,
       "instructor": "MANUELA",
-      "room": "EXTERIOR",
+      "room": "SALA 1",
       "capacity": {
         "current": 0,
         "max": 40
@@ -1464,14 +1447,14 @@
       "difficulty": 1
     },
     {
-      "id": "96a0b274ab8b",
+      "id": "7e8b0fad8eb7",
       "name": "PILATES IMPLEMENTOS",
       "category": "cuerpo-y-mente",
       "date": "2026-11-17",
       "dayOfWeek": "martes",
-      "startTime": "20:30",
+      "startTime": "20:35",
       "endTime": "21:20",
-      "duration": 50,
+      "duration": 45,
       "instructor": "EDUARDO",
       "room": "SALA 1",
       "capacity": {
@@ -2705,21 +2688,21 @@
       "difficulty": 3
     },
     {
-      "id": "f76785a941e8",
-      "name": "BODYPUMP",
-      "category": "otros",
+      "id": "968dbe4392d9",
+      "name": "PEAK CYCLE",
+      "category": "cardiovasculares",
       "date": "2026-11-19",
       "dayOfWeek": "jueves",
       "startTime": "19:00",
-      "endTime": "19:50",
-      "duration": 50,
-      "instructor": "LYDIA",
-      "room": "SALA 3",
+      "endTime": "19:45",
+      "duration": 45,
+      "instructor": "DIEGO",
+      "room": "CICLO",
       "capacity": {
         "current": 0,
         "max": 40
       },
-      "difficulty": 3
+      "difficulty": 1
     },
     {
       "id": "5067d2babc65",
@@ -2756,6 +2739,23 @@
       "difficulty": 2
     },
     {
+      "id": "f76785a941e8",
+      "name": "BODYPUMP",
+      "category": "otros",
+      "date": "2026-11-19",
+      "dayOfWeek": "jueves",
+      "startTime": "19:00",
+      "endTime": "19:50",
+      "duration": 50,
+      "instructor": "LYDIA",
+      "room": "SALA 3",
+      "capacity": {
+        "current": 0,
+        "max": 40
+      },
+      "difficulty": 3
+    },
+    {
       "id": "43930a54978a",
       "name": "AQUAPOWER",
       "category": "acuaticas",
@@ -2771,23 +2771,6 @@
         "max": 38
       },
       "difficulty": 2
-    },
-    {
-      "id": "3024e8dfaab7",
-      "name": "PEAK CYCLE",
-      "category": "cardiovasculares",
-      "date": "2026-11-19",
-      "dayOfWeek": "jueves",
-      "startTime": "19:30",
-      "endTime": "20:15",
-      "duration": 45,
-      "instructor": "DIEGO",
-      "room": "CICLO",
-      "capacity": {
-        "current": 0,
-        "max": 40
-      },
-      "difficulty": 1
     },
     {
       "id": "aff3a6620c4b",
