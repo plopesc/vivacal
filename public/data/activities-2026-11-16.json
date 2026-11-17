@@ -2,6 +2,448 @@
   "weekStart": "2026-11-16",
   "activities": [
     {
+      "id": "7c164a9793aa",
+      "name": "PEAK CYCLE",
+      "category": "cardiovasculares",
+      "date": "2026-11-16",
+      "dayOfWeek": "lunes",
+      "startTime": "06:35",
+      "endTime": "07:20",
+      "duration": 45,
+      "instructor": "MARTA",
+      "room": "CICLO",
+      "capacity": {
+        "current": 0,
+        "max": 40
+      },
+      "difficulty": 1
+    },
+    {
+      "id": "4a5af9fa1d3b",
+      "name": "BODYPUMP",
+      "category": "otros",
+      "date": "2026-11-16",
+      "dayOfWeek": "lunes",
+      "startTime": "07:30",
+      "endTime": "08:20",
+      "duration": 50,
+      "instructor": "MARTA",
+      "room": "SALA 3",
+      "capacity": {
+        "current": 0,
+        "max": 40
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "6c18de136486",
+      "name": "AQUAGYM",
+      "category": "acuaticas",
+      "date": "2026-11-16",
+      "dayOfWeek": "lunes",
+      "startTime": "08:15",
+      "endTime": "09:00",
+      "duration": 45,
+      "instructor": "VASO AADD",
+      "room": "VASO AADD",
+      "capacity": {
+        "current": 0,
+        "max": 38
+      },
+      "difficulty": 1
+    },
+    {
+      "id": "f79595c28b38",
+      "name": "VIDING RUNNERS",
+      "category": "otros",
+      "date": "2026-11-16",
+      "dayOfWeek": "lunes",
+      "startTime": "08:30",
+      "endTime": "09:20",
+      "duration": 50,
+      "instructor": "MARTA",
+      "room": "TERRAZA",
+      "capacity": {
+        "current": 0,
+        "max": 15
+      },
+      "difficulty": 0
+    },
+    {
+      "id": "de985ac8097c",
+      "name": "TALLER DE HIPOPRESIVOS",
+      "category": "otros",
+      "date": "2026-11-16",
+      "dayOfWeek": "lunes",
+      "startTime": "08:30",
+      "endTime": "09:29",
+      "duration": 59,
+      "instructor": "MANUELA",
+      "room": "SALA 1",
+      "capacity": {
+        "current": 0,
+        "max": 40
+      },
+      "difficulty": 0
+    },
+    {
+      "id": "5ee0433c2971",
+      "name": "AQUAVIDING",
+      "category": "acuaticas",
+      "date": "2026-11-16",
+      "dayOfWeek": "lunes",
+      "startTime": "09:15",
+      "endTime": "10:00",
+      "duration": 45,
+      "instructor": "VASO AADD",
+      "room": "VASO AADD",
+      "capacity": {
+        "current": 0,
+        "max": 38
+      },
+      "difficulty": 1
+    },
+    {
+      "id": "56b6867336f6",
+      "name": "PEAK CYCLE",
+      "category": "cardiovasculares",
+      "date": "2026-11-16",
+      "dayOfWeek": "lunes",
+      "startTime": "09:30",
+      "endTime": "10:15",
+      "duration": 45,
+      "instructor": "DIEGO",
+      "room": "CICLO",
+      "capacity": {
+        "current": 0,
+        "max": 40
+      },
+      "difficulty": 1
+    },
+    {
+      "id": "78f6b109e813",
+      "name": "VITAL MOVE",
+      "category": "cuerpo-y-mente",
+      "date": "2026-11-16",
+      "dayOfWeek": "lunes",
+      "startTime": "09:30",
+      "endTime": "10:20",
+      "duration": 50,
+      "instructor": "LUIS",
+      "room": "SALA 1",
+      "capacity": {
+        "current": 0,
+        "max": 39
+      },
+      "difficulty": 1
+    },
+    {
+      "id": "98f4ab340ab1",
+      "name": "BODYPUMP",
+      "category": "otros",
+      "date": "2026-11-16",
+      "dayOfWeek": "lunes",
+      "startTime": "09:30",
+      "endTime": "10:20",
+      "duration": 50,
+      "instructor": "MANUELA",
+      "room": "SALA 3",
+      "capacity": {
+        "current": 0,
+        "max": 40
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "80b1f44ccbed",
+      "name": "AQUAPOWER",
+      "category": "acuaticas",
+      "date": "2026-11-16",
+      "dayOfWeek": "lunes",
+      "startTime": "10:15",
+      "endTime": "10:45",
+      "duration": 30,
+      "instructor": "VASO AADD",
+      "room": "VASO AADD",
+      "capacity": {
+        "current": 0,
+        "max": 38
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "6e239d75ba62",
+      "name": "BARRE",
+      "category": "cuerpo-y-mente",
+      "date": "2026-11-16",
+      "dayOfWeek": "lunes",
+      "startTime": "10:30",
+      "endTime": "11:15",
+      "duration": 45,
+      "instructor": "MANUELA",
+      "room": "SALA 2",
+      "capacity": {
+        "current": 0,
+        "max": 39
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "6553eb3db041",
+      "name": "HYROX",
+      "category": "cardiovasculares",
+      "date": "2026-11-16",
+      "dayOfWeek": "lunes",
+      "startTime": "10:30",
+      "endTime": "11:20",
+      "duration": 50,
+      "instructor": "DIEGO",
+      "room": "TERRAZA",
+      "capacity": {
+        "current": 0,
+        "max": 30
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "7f7e5f9b99c8",
+      "name": "PILATES",
+      "category": "cuerpo-y-mente",
+      "date": "2026-11-16",
+      "dayOfWeek": "lunes",
+      "startTime": "10:30",
+      "endTime": "11:20",
+      "duration": 50,
+      "instructor": "PAULA",
+      "room": "SALA 1",
+      "capacity": {
+        "current": 0,
+        "max": 40
+      },
+      "difficulty": 1
+    },
+    {
+      "id": "8ef549087988",
+      "name": "ABDOMINALES",
+      "category": "tonificacion",
+      "date": "2026-11-16",
+      "dayOfWeek": "lunes",
+      "startTime": "11:30",
+      "endTime": "11:45",
+      "duration": 15,
+      "instructor": "DIEGO",
+      "room": "TERRAZA",
+      "capacity": {
+        "current": 0,
+        "max": 20
+      },
+      "difficulty": 0
+    },
+    {
+      "id": "25d670c14a0a",
+      "name": "YOGA",
+      "category": "cuerpo-y-mente",
+      "date": "2026-11-16",
+      "dayOfWeek": "lunes",
+      "startTime": "11:30",
+      "endTime": "12:20",
+      "duration": 50,
+      "instructor": "MANUELA",
+      "room": "SALA 1",
+      "capacity": {
+        "current": 0,
+        "max": 40
+      },
+      "difficulty": 1
+    },
+    {
+      "id": "96e9f9ff4ad7",
+      "name": "AQUAGYM",
+      "category": "acuaticas",
+      "date": "2026-11-16",
+      "dayOfWeek": "lunes",
+      "startTime": "11:45",
+      "endTime": "12:30",
+      "duration": 45,
+      "instructor": "VASO AADD",
+      "room": "VASO AADD",
+      "capacity": {
+        "current": 0,
+        "max": 38
+      },
+      "difficulty": 1
+    },
+    {
+      "id": "4952f49f1705",
+      "name": "PEAK CYCLE",
+      "category": "cardiovasculares",
+      "date": "2026-11-16",
+      "dayOfWeek": "lunes",
+      "startTime": "13:30",
+      "endTime": "14:15",
+      "duration": 45,
+      "instructor": "PAULA",
+      "room": "CICLO",
+      "capacity": {
+        "current": 0,
+        "max": 40
+      },
+      "difficulty": 1
+    },
+    {
+      "id": "ad575d4479b0",
+      "name": "HYROX",
+      "category": "cardiovasculares",
+      "date": "2026-11-16",
+      "dayOfWeek": "lunes",
+      "startTime": "14:30",
+      "endTime": "15:20",
+      "duration": 50,
+      "instructor": "JONATHAN",
+      "room": "TERRAZA",
+      "capacity": {
+        "current": 0,
+        "max": 30
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "3b9cecbfc3fd",
+      "name": "VIDING SWIMMERS",
+      "category": "acuaticas",
+      "date": "2026-11-16",
+      "dayOfWeek": "lunes",
+      "startTime": "15:00",
+      "endTime": "15:45",
+      "duration": 45,
+      "instructor": "CALLE 1",
+      "room": "VASO AADD",
+      "capacity": {
+        "current": 0,
+        "max": 12
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "d8fb034c9e3e",
+      "name": "ABDOMINALES",
+      "category": "tonificacion",
+      "date": "2026-11-16",
+      "dayOfWeek": "lunes",
+      "startTime": "15:30",
+      "endTime": "15:45",
+      "duration": 15,
+      "instructor": "JONATHAN",
+      "room": "TERRAZA",
+      "capacity": {
+        "current": 0,
+        "max": 20
+      },
+      "difficulty": 0
+    },
+    {
+      "id": "b50a99c80304",
+      "name": "BODYPUMP",
+      "category": "otros",
+      "date": "2026-11-16",
+      "dayOfWeek": "lunes",
+      "startTime": "16:00",
+      "endTime": "16:50",
+      "duration": 50,
+      "instructor": "LUCÍA",
+      "room": "SALA 3",
+      "capacity": {
+        "current": 0,
+        "max": 40
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "edda0986e43b",
+      "name": "BARRE",
+      "category": "cuerpo-y-mente",
+      "date": "2026-11-16",
+      "dayOfWeek": "lunes",
+      "startTime": "17:00",
+      "endTime": "17:45",
+      "duration": 45,
+      "instructor": "PAULA",
+      "room": "SALA 2",
+      "capacity": {
+        "current": 0,
+        "max": 39
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "80f10e5f3ee0",
+      "name": "FUERZA",
+      "category": "tonificacion",
+      "date": "2026-11-16",
+      "dayOfWeek": "lunes",
+      "startTime": "17:00",
+      "endTime": "17:50",
+      "duration": 50,
+      "instructor": "SERGIO",
+      "room": "TERRAZA",
+      "capacity": {
+        "current": 0,
+        "max": 20
+      },
+      "difficulty": 0
+    },
+    {
+      "id": "9b7199658891",
+      "name": "YOGA",
+      "category": "cuerpo-y-mente",
+      "date": "2026-11-16",
+      "dayOfWeek": "lunes",
+      "startTime": "17:00",
+      "endTime": "17:50",
+      "duration": 50,
+      "instructor": "EDUARDO",
+      "room": "SALA 1",
+      "capacity": {
+        "current": 0,
+        "max": 40
+      },
+      "difficulty": 1
+    },
+    {
+      "id": "bf30b475930c",
+      "name": "AQUAPOWER",
+      "category": "acuaticas",
+      "date": "2026-11-16",
+      "dayOfWeek": "lunes",
+      "startTime": "17:15",
+      "endTime": "17:45",
+      "duration": 30,
+      "instructor": "VASO AADD",
+      "room": "VASO AADD",
+      "capacity": {
+        "current": 0,
+        "max": 38
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "33d40f45c96b",
+      "name": "BODYPUMP",
+      "category": "otros",
+      "date": "2026-11-16",
+      "dayOfWeek": "lunes",
+      "startTime": "17:30",
+      "endTime": "18:20",
+      "duration": 50,
+      "instructor": "JONATHAN",
+      "room": "SALA 3",
+      "capacity": {
+        "current": 0,
+        "max": 40
+      },
+      "difficulty": 3
+    },
+    {
       "id": "b2c69273053b",
       "name": "ABDOMINALES",
       "category": "tonificacion",
@@ -750,23 +1192,6 @@
       "difficulty": 1
     },
     {
-      "id": "2ba9496a42d6",
-      "name": "FUERZA",
-      "category": "tonificacion",
-      "date": "2026-11-17",
-      "dayOfWeek": "martes",
-      "startTime": "18:00",
-      "endTime": "18:50",
-      "duration": 50,
-      "instructor": "DIEGO",
-      "room": "TERRAZA",
-      "capacity": {
-        "current": 0,
-        "max": 20
-      },
-      "difficulty": 0
-    },
-    {
       "id": "832ab079bd58",
       "name": "BODYPUMP",
       "category": "otros",
@@ -782,6 +1207,23 @@
         "max": 40
       },
       "difficulty": 3
+    },
+    {
+      "id": "2ba9496a42d6",
+      "name": "FUERZA",
+      "category": "tonificacion",
+      "date": "2026-11-17",
+      "dayOfWeek": "martes",
+      "startTime": "18:00",
+      "endTime": "18:50",
+      "duration": 50,
+      "instructor": "DIEGO",
+      "room": "TERRAZA",
+      "capacity": {
+        "current": 0,
+        "max": 20
+      },
+      "difficulty": 0
     },
     {
       "id": "6abdf4c4b2d5",
