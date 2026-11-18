@@ -2450,7 +2450,7 @@
       "difficulty": 1
     },
     {
-      "id": "cb821210d774",
+      "id": "caebe873e94d",
       "name": "HYROX",
       "category": "cardiovasculares",
       "date": "2026-11-19",
@@ -2458,7 +2458,7 @@
       "startTime": "11:30",
       "endTime": "12:20",
       "duration": 50,
-      "instructor": "JONATHAN",
+      "instructor": "DIEGO",
       "room": "TERRAZA",
       "capacity": {
         "current": 0,
@@ -2467,7 +2467,7 @@
       "difficulty": 2
     },
     {
-      "id": "20b40c97577b",
+      "id": "e8ddda81d047",
       "name": "FUERZA",
       "category": "tonificacion",
       "date": "2026-11-19",
@@ -2475,7 +2475,7 @@
       "startTime": "13:30",
       "endTime": "14:15",
       "duration": 45,
-      "instructor": "JONATHAN",
+      "instructor": "DIEGO",
       "room": "TERRAZA",
       "capacity": {
         "current": 0,
@@ -2569,7 +2569,7 @@
       "difficulty": 3
     },
     {
-      "id": "e0ea4f272e4c",
+      "id": "634c3108424b",
       "name": "PILATES",
       "category": "cuerpo-y-mente",
       "date": "2026-11-19",
@@ -2577,7 +2577,7 @@
       "startTime": "17:00",
       "endTime": "17:50",
       "duration": 50,
-      "instructor": "DIEGO",
+      "instructor": "JONATHAN",
       "room": "SALA 1",
       "capacity": {
         "current": 0,
@@ -2637,7 +2637,7 @@
       "difficulty": 1
     },
     {
-      "id": "780a6f6d8f30",
+      "id": "13d5a059d469",
       "name": "TRAINING GLÚTEO",
       "category": "tonificacion",
       "date": "2026-11-19",
@@ -2645,7 +2645,7 @@
       "startTime": "18:00",
       "endTime": "18:50",
       "duration": 50,
-      "instructor": "DIEGO",
+      "instructor": "JONATHAN",
       "room": "SALA 3",
       "capacity": {
         "current": 0,
@@ -2688,7 +2688,7 @@
       "difficulty": 3
     },
     {
-      "id": "968dbe4392d9",
+      "id": "5c9e2f1a3044",
       "name": "PEAK CYCLE",
       "category": "cardiovasculares",
       "date": "2026-11-19",
@@ -2696,7 +2696,7 @@
       "startTime": "19:00",
       "endTime": "19:45",
       "duration": 45,
-      "instructor": "DIEGO",
+      "instructor": "JONATHAN",
       "room": "CICLO",
       "capacity": {
         "current": 0,
